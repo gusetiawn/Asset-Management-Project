@@ -7,3 +7,4 @@ AssetManagementAPI/AssetManagementAPI/obj/Debug/netcoreapp3.1/AssetManagementAPI
 AssetManagementAPI/AssetManagementAPI/obj/Debug/netcoreapp3.1/AssetManagementAPI.csprojAssemblyReference.cache
 AssetManagementAPI/AssetManagementAPI/obj/project.assets.json
 AssetManagementAPI/AssetManagementAPI/obj/project.nuget.cache
+*.cache
