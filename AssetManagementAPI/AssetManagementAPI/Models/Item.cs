@@ -17,5 +17,6 @@ namespace AssetManagementAPI.Models
         [Required]
         public int Quantity { get; set; }
         public virtual ICollection<RequestItem> RequestItems { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

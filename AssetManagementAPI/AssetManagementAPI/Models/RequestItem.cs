@@ -26,5 +26,7 @@ namespace AssetManagementAPI.Models
         public int Quantity { get; set; }
         public virtual Account Account { get; set; }
         public virtual Item Item { get; set; }
+        public virtual ReturnItem ReturnItem { get; set; }
+        public virtual Status Status { get; set; }
     }
 }
