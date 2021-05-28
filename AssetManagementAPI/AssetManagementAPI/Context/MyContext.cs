@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,5 +23,51 @@ namespace AssetManagementAPI.Context
         public DbSet<RoleAccount> RoleAccounts { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<User> Users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasOne(a => a.Account)
+                .WithOne(b => b.User)
+                .HasForeignKey<Account>(b => b.Id);
+
+            modelBuilder.Entity<Department>()
+                .HasMany(a => a.Users)
+                .WithOne(b => b.Department);
+
+            modelBuilder.Entity<ReturnItem>()
+                .HasOne(a => a.RequestItem)
+                .WithOne(b => b.ReturnItem);
+
+            modelBuilder.Entity<Status>()
+                .HasMany(a => a.RequestItems)
+                .WithOne(b => b.Status);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(a => a.Items)
+                .WithOne(b => b.Category);
+
+            modelBuilder.Entity<RoleAccount>()
+                .HasKey(ar => new { ar.AccountId, ar.RoleId });
+            modelBuilder.Entity<RoleAccount>()
+                .HasOne(ar => ar.Account)
+                .WithMany(a => a.RoleAccounts)
+                .HasForeignKey(ar => ar.AccountId);
+            modelBuilder.Entity<RoleAccount>()
+                .HasOne(ar => ar.Role)
+                .WithMany(r => r.RoleAccounts)
+                .HasForeignKey(ar => ar.RoleId);
+
+            modelBuilder.Entity<RequestItem>()
+                .HasKey(ri => new { ri.AccountId, ri.ItemId });
+            modelBuilder.Entity<RequestItem>()
+                .HasOne(a => a.Account)
+                .WithMany(ri => ri.RequestItems)
+                .HasForeignKey(a => a.AccountId);
+            modelBuilder.Entity<RequestItem>()
+                .HasOne(i => i.Item)
+                .WithMany(r => r.RequestItems)
+                .HasForeignKey(i => i.ItemId);
+        }
     }
+
 }

@@ -15,5 +15,6 @@ namespace AssetManagementAPI.Models
         [Required]
         [MaxLength(30, ErrorMessage = "Maksimal 30 karakter")]
         public string Name { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }
