@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssetManagementAPI.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210529083325_FirstMigration")]
+    [Migration("20210529154113_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,8 @@ namespace AssetManagementAPI.Migrations
 
             modelBuilder.Entity("AssetManagementAPI.Models.Account", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -101,8 +101,8 @@ namespace AssetManagementAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -179,8 +179,8 @@ namespace AssetManagementAPI.Migrations
 
             modelBuilder.Entity("AssetManagementAPI.Models.RoleAccount", b =>
                 {
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
@@ -211,10 +211,8 @@ namespace AssetManagementAPI.Migrations
 
             modelBuilder.Entity("AssetManagementAPI.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasMaxLength(255)
@@ -282,9 +280,7 @@ namespace AssetManagementAPI.Migrations
                 {
                     b.HasOne("AssetManagementAPI.Models.Account", "Account")
                         .WithMany("RequestItems")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AccountId");
 
                     b.HasOne("AssetManagementAPI.Models.Item", "Item")
                         .WithMany("RequestItems")

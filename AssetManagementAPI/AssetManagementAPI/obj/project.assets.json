@@ -5805,11 +5805,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Asset Management\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
+      "projectUniqueName": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
       "projectName": "AssetManagementAPI",
-      "projectPath": "E:\\Asset Management\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
+      "projectPath": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
       "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "E:\\Asset Management\\AssetManagementAPI\\AssetManagementAPI\\obj\\",
+      "outputPath": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

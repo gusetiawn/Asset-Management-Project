@@ -15,7 +15,7 @@ namespace AssetManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : BaseController<User, UserRepository, int>
+    public class UsersController : BaseController<User, UserRepository, string>
     {
         private readonly UserRepository userRepository;
         private readonly MyContext myContext;

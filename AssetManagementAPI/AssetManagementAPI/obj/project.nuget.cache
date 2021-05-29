@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "djf2erkcTBhWe+IEC+9JaJdgGUcYJEIacza2pBCgvNCWHpmGF/ryP81s+NfE94FwcChJvogOA73F2a3KQ2Rx0A==",
+  "dgSpecHash": "DL8jDK/UgKW4Nme0dyhyQ0FL/hvH7atTys9Z5p9qr+PL1iU8vBfQnJ5EVfca3Mb6S2KJ1j7Nz4ma62/PtHp3DQ==",
   "success": true,
-  "projectFilePath": "E:\\Asset Management\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
+  "projectFilePath": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\acer\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
