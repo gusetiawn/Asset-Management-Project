@@ -16,6 +16,7 @@ namespace AssetManagementAPI.Models
         public string Penalty { get; set; }
         [Required]
         public string Notes { get; set; }
+        public int RequestItemId { get; set; }
         public virtual RequestItem RequestItem { get; set; }
     }
 }

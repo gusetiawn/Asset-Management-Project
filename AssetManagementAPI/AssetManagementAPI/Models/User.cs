@@ -27,6 +27,8 @@ namespace AssetManagementAPI.Models
         public string Contact { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), EmailAddress(ErrorMessage = "Masukan format email yang valid"), MaxLength(255, ErrorMessage = "Maksimal 255 karakter")]
         public string Email { get; set; }
+        [Required]
+        public int DepartmentId { get; set; }
         public virtual Account Account { get; set; }
         public virtual Department Department { get; set; }
     }

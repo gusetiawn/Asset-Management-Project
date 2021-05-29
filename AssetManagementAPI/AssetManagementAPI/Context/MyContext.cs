@@ -34,18 +34,6 @@ namespace AssetManagementAPI.Context
                 .HasMany(a => a.Users)
                 .WithOne(b => b.Department);
 
-            modelBuilder.Entity<ReturnItem>()
-                .HasOne(a => a.RequestItem)
-                .WithOne(b => b.ReturnItem);
-
-            modelBuilder.Entity<Status>()
-                .HasMany(a => a.RequestItems)
-                .WithOne(b => b.Status);
-
-            modelBuilder.Entity<Category>()
-                .HasMany(a => a.Items)
-                .WithOne(b => b.Category);
-
             modelBuilder.Entity<RoleAccount>()
                 .HasKey(ar => new { ar.AccountId, ar.RoleId });
             modelBuilder.Entity<RoleAccount>()
@@ -57,8 +45,8 @@ namespace AssetManagementAPI.Context
                 .WithMany(r => r.RoleAccounts)
                 .HasForeignKey(ar => ar.RoleId);
 
-            modelBuilder.Entity<RequestItem>()
-                .HasKey(ri => new { ri.AccountId, ri.ItemId });
+            //modelBuilder.Entity<RequestItem>()
+                //.HasKey(ri => new { ri.AccountId, ri.ItemId });
             modelBuilder.Entity<RequestItem>()
                 .HasOne(a => a.Account)
                 .WithMany(ri => ri.RequestItems)
@@ -67,6 +55,20 @@ namespace AssetManagementAPI.Context
                 .HasOne(i => i.Item)
                 .WithMany(r => r.RequestItems)
                 .HasForeignKey(i => i.ItemId);
+
+            modelBuilder.Entity<Status>()
+                .HasMany(a => a.RequestItems)
+                .WithOne(b => b.Status);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(a => a.Items)
+                .WithOne(b => b.Category);
+
+            modelBuilder.Entity<ReturnItem>()
+                .HasOne(a => a.RequestItem)
+                .WithOne(b => b.ReturnItem)
+                .HasForeignKey<ReturnItem>(b => b.RequestItemId);
+
         }
     }
 
