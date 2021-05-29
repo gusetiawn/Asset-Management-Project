@@ -1,4 +1,5 @@
 using AssetManagementAPI.Context;
+using AssetManagementAPI.Repositories.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,16 @@ namespace AssetManagementAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<DepartmentRepository>();
+            services.AddScoped<RoleAccountRepository>();
+            services.AddScoped<RoleRepository>();
+            services.AddScoped<RequestItemRepository>();
+            services.AddScoped<ItemRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<StatusRepository>();
+            services.AddScoped<ReturnItemRepository>();
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
         }
 
