@@ -12,7 +12,7 @@ namespace AssetManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleAccountsController : BaseController<RoleAccount, RoleAccountRepository, int>
+    public class RoleAccountsController : BaseController<RoleAccount, RoleAccountRepository, string>
     {
         public RoleAccountsController(RoleAccountRepository roleAccountRepository) : base(roleAccountRepository)
         {

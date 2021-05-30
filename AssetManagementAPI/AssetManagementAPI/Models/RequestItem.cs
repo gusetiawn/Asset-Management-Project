@@ -13,7 +13,7 @@ namespace AssetManagementAPI.Models
         [Key]
         public int Id { get; set; }
         public int ItemId { get; set; }
-        public int AccountId { get; set; }
+        public string AccountId { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime StartDate { get; set; }

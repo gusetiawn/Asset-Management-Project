@@ -11,7 +11,7 @@ namespace AssetManagementAPI.Models
     public class Account
     {
         [Key, Required(ErrorMessage = "Tidak boleh kosong")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), DataType(DataType.Password), MinLength(8, ErrorMessage = "Minimal 8 karakter")]
         public string Password { get; set; }
         public virtual User User { get; set; }

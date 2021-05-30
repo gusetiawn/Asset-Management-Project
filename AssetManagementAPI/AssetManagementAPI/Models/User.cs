@@ -11,7 +11,7 @@ namespace AssetManagementAPI.Models
     public class User
     {
         [Key, Required(ErrorMessage = "Tidak boleh kosong")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), MaxLength(30, ErrorMessage = "Maksimal 30 karakter"), RegularExpression(@"^\D+$", ErrorMessage = "Tidak boleh berupa angka")]
         public string FirstName { get; set; }
         [MaxLength(255, ErrorMessage = "Maksimal 255 karakter"), RegularExpression(@"^\D+$", ErrorMessage = "Tidak boleh berupa angka")]
