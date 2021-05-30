@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace AssetManagementAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddScoped<UserRepository>();
             services.AddScoped<AccountRepository>();
             services.AddScoped<DepartmentRepository>();
@@ -39,7 +40,7 @@ namespace AssetManagementAPI
             services.AddScoped<CategoryRepository>();
             services.AddScoped<StatusRepository>();
             services.AddScoped<ReturnItemRepository>();
-            services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
+            services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")).UseLazyLoadingProxies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
