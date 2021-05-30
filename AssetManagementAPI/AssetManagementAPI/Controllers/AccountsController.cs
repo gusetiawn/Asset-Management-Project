@@ -27,6 +27,7 @@ namespace AssetManagementAPI.Controllers
         private readonly AccountRepository accountRepository;
         private readonly MyContext myContext;
         private readonly IConfiguration configuration;
+        private readonly SendMail sendMail = new SendMail();
         public AccountsController(AccountRepository accountRepository, MyContext myContext, IConfiguration configuration) : base(accountRepository)
         {
             this.accountRepository = accountRepository;
@@ -85,6 +86,10 @@ namespace AssetManagementAPI.Controllers
                 account.Password = Hashing.HashPassword(changePasswordVM.NewPassword);
                 myContext.Entry(account).State = EntityState.Modified;
                 var result = myContext.SaveChanges();
+
+                var subject = "Change Password";
+                var body = "Hi, Baru saja Akun anda melakukan Change Password, Jika Anda tidak melakukan hal tersebut, segera lakukan Forgot Password! ";
+                sendMail.SendEmail(changePasswordVM.Email, body, subject);
                 return StatusCode(200, new { Status = "200", message = "Change Password Successful!!" });
             }
             else
@@ -105,7 +110,11 @@ namespace AssetManagementAPI.Controllers
                 account.Password = Hashing.HashPassword(resetPass);
                 myContext.Entry(account).State = EntityState.Modified;
                 var result = myContext.SaveChanges();
-                return StatusCode(result, new { Status = "200", message = "Request Password baru anda berhasil, password baru anda:"+resetPass });
+
+                var subject = "Password Reset Request";
+                var body = "Hi, Request Password baru anda berhasil, Silahkan Gunakan Password Berikut: " + resetPass;
+                sendMail.SendEmail(forgotPasswordVM.Email, body, subject);
+                return StatusCode(result, new { Status = "200", message = "Request Password baru anda berhasil, Silahkan Cek Email Anda" });
             }
             else
             {
