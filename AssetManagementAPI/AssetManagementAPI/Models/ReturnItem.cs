@@ -13,10 +13,11 @@ namespace AssetManagementAPI.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public int RequestItemId { get; set; }
+        [Required]
         public string Penalty { get; set; }
         [Required]
         public string Notes { get; set; }
-        public int RequestItemId { get; set; }
         public virtual RequestItem RequestItem { get; set; }
     }
 }
