@@ -1,5 +1,6 @@
 ﻿using AssetManagementAPI.Base;
 using AssetManagementAPI.Context;
+using AssetManagementAPI.Handler;
 using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
 using AssetManagementAPI.ViewModel;
@@ -49,7 +50,7 @@ namespace AssetManagementAPI.Controllers
                 var account = new Account()
                 {
                     Id = registerVM.Id,
-                    Password = registerVM.Password
+                    Password = Hashing.HashPassword(registerVM.Password)
                 };
                 myContext.Accounts.Add(account);
                 myContext.SaveChanges();
