@@ -61,3 +61,9 @@ E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Deb
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.dll
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.pdb
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.genruntimeconfig.cache
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
