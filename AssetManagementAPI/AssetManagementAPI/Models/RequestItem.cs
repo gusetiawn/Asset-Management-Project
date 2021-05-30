@@ -12,7 +12,9 @@ namespace AssetManagementAPI.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public int ItemId { get; set; }
+        [Required]
         public string AccountId { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
@@ -24,6 +26,8 @@ namespace AssetManagementAPI.Models
         public string Notes { get; set; }
         [Required]
         public int Quantity { get; set; }
+        [Required]
+        public int StatusId { get; set; }
         public virtual Account Account { get; set; }
         public virtual Item Item { get; set; }
         public virtual ReturnItem ReturnItem { get; set; }
