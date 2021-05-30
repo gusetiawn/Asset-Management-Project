@@ -146,5 +146,38 @@ namespace AssetManagementAPI.Controllers
                            };
             return Ok(userData);
         }
+
+        [HttpGet("Profile/{Id}")]
+        public ActionResult GetProfileById(string Id)
+        {
+            var user = myContext.Users.Find(Id);
+            if (user != null)
+            {
+                var profile = from u in myContext.Users
+                               join d in myContext.Departments on u.DepartmentId equals d.Id
+                               join a in myContext.Accounts on u.Id equals a.Id
+                               join ra in myContext.RoleAccounts on a.Id equals ra.AccountId
+                               join r in myContext.Roles on ra.RoleId equals r.Id
+                               where u.Id == Id
+                               select new
+                               {
+                                   Id = u.Id,
+                                   FirstName = u.FirstName,
+                                   LastName = u.LastName,
+                                   Gender = u.Gender,
+                                   BirthDate = u.BirthDate,
+                                   Address = u.Address,
+                                   Contact = u.Contact,
+                                   Email = u.Email,
+                                   Department = d.Name,
+                                   Role = r.Name
+                               };
+                return Ok(profile);
+            }
+            else
+            {
+                return NotFound("Id Not Registered");
+            }
+        }
     }
 }
