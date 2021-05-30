@@ -122,5 +122,29 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+
+        [HttpGet("UserData")]
+        public ActionResult UserData()
+        {
+            var userData = from u in myContext.Users
+                           join d in myContext.Departments on u.DepartmentId equals d.Id
+                           join a in myContext.Accounts on u.Id equals a.Id
+                           join ra in myContext.RoleAccounts on a.Id equals ra.AccountId
+                           join r in myContext.Roles on ra.RoleId equals r.Id
+                           select new
+                           {
+                               Id = u.Id,
+                               FirstName = u.FirstName,
+                               LastName = u.LastName,
+                               Gender = u.Gender,
+                               BirthDate = u.BirthDate,
+                               Address = u.Address,
+                               Contact = u.Contact,
+                               Email = u.Email,
+                               Department = d.Name,
+                               Role = r.Name
+                           };
+            return Ok(userData);
+        }
     }
 }
