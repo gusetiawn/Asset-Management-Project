@@ -4,14 +4,18 @@ using AssetManagementAPI.Handler;
 using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
 using AssetManagementAPI.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AssetManagementAPI.Controllers
@@ -38,7 +42,24 @@ namespace AssetManagementAPI.Controllers
                 var account = myContext.Accounts.Where(a => a.Id == user.Id).FirstOrDefault();
                 if (account != null && Hashing.ValidatePassword(loginVM.Password, account.Password))
                 {
-                    return StatusCode(200, new { Status = "200", message = "Login Berhasil!" });
+                    var roles = myContext.RoleAccounts.Where(ra => ra.AccountId == account.Id).ToList();
+
+                    var claims = new List<Claim> {
+                    new Claim("Email", user.Email),
+                    new Claim("Name", user.FirstName),
+                    new Claim("Name", user.LastName)
+                    };
+                    foreach (var item in roles)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, myContext.Roles.Where(r => r.Id == item.RoleId).FirstOrDefault().Name));
+                    }
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+
+                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                    var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddMinutes(5), signingCredentials: signIn);
+
+                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
 
                 }
                 else
@@ -53,6 +74,7 @@ namespace AssetManagementAPI.Controllers
 
 
         }
+        [Authorize]
         [HttpPut("ChangePassword")]
         public ActionResult ChangePassword(ChangePasswordVM changePasswordVM)
         {
@@ -71,6 +93,7 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+        [Authorize]
         [HttpPost("ForgotPassword")]
         public ActionResult ForgotPassword(ForgotPasswordVM forgotPasswordVM)
         {

@@ -67,3 +67,4 @@ E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Deb
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
