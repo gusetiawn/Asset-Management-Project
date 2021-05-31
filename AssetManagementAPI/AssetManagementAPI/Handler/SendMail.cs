@@ -20,7 +20,7 @@ namespace AssetManagementAPI.Handler
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
+            smtp.UseDefaultCredentials = true;
             smtp.Credentials = networkCredential;
             smtp.Port = 587;
             smtp.Send(mailMessage);
