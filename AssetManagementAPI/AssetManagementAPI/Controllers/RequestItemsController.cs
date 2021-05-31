@@ -5,6 +5,7 @@ using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,41 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        
-        
+
+        [HttpPut("Approval")]
+        public ActionResult ApproveRequest(RequestItem requestItem)
+        {
+            try
+            {
+                var request = new RequestItem
+                {
+                    Id = requestItem.Id,
+                    AccountId = requestItem.AccountId,
+                    ItemId = requestItem.ItemId,
+                    StartDate = requestItem.StartDate,
+                    EndDate = requestItem.EndDate,
+                    Quantity = requestItem.Quantity,
+                    Notes = requestItem.Notes,
+                    StatusId = 2 //Id 2 di table status aku buat "Approved"
+                };
+                myContext.Entry(request).State = EntityState.Modified;
+                myContext.SaveChanges();
+
+                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                var subject = "Approval Request";
+                var body = "Hi, Request anda telah disetujui oleh Manager. Silahkan Anda mendatangi admin untuk proses selanjutnya. Terima kasih. ";
+                sendMail.SendEmail(user.Email, body, subject);
+
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Approve" });
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+            }
+
+        }
+
     }
 }
