@@ -96,8 +96,8 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        [HttpPut("TakeAnAsset")]
-        public ActionResult TakeAnAsset(RequestItem requestItem)
+        [HttpPut("Reject")]
+        public ActionResult Reject(RequestItem requestItem)
         {
             try
             {
@@ -116,17 +116,51 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Asset Telah anda terima";
-                var body = "Hi, pulangkan asset sesuai dengan waktunya ";
+                var subject = "Request for An Asset";
+                var body = "Hi, mohon maaf request anda  ditolak";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Approve" });
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Anda Ditolak " });
 
             }
             catch (Exception)
             {
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal Penolakan" });
+            }
+
+        }
+        [HttpPut("TakeAnAsset")]
+        public ActionResult TakeAnAsset(RequestItem requestItem)
+        {
+            try
+            {
+                var request = new RequestItem
+                {
+                    Id = requestItem.Id,
+                    AccountId = requestItem.AccountId,
+                    ItemId = requestItem.ItemId,
+                    StartDate = requestItem.StartDate,
+                    EndDate = requestItem.EndDate,
+                    Quantity = requestItem.Quantity,
+                    Notes = requestItem.Notes,
+                    StatusId = 4 //Id 2 di table status aku buat "Approved"
+                };
+                myContext.Entry(request).State = EntityState.Modified;
+                myContext.SaveChanges();
+
+                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                var subject = "Asset Telah anda terima";
+                var body = "Hi, pulangkan asset sesuai dengan waktunya ";
+                sendMail.SendEmail(user.Email, body, subject);
+
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Batal diambil" });
             }
 
         }
