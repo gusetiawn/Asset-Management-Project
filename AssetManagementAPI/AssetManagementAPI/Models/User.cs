@@ -17,7 +17,7 @@ namespace AssetManagementAPI.Models
         [MaxLength(255, ErrorMessage = "Maksimal 255 karakter"), RegularExpression(@"^\D+$", ErrorMessage = "Tidak boleh berupa angka")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong")]
-        public string Gender { get; set; }
+        public int GenderId { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime BirthDate { get; set; }
@@ -31,5 +31,6 @@ namespace AssetManagementAPI.Models
         public int DepartmentId { get; set; }
         public virtual Account Account { get; set; }
         public virtual Department Department { get; set; }
+        public virtual Gender Gender { get; set; }
     }
 }

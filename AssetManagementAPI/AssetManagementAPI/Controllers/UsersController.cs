@@ -37,7 +37,7 @@ namespace AssetManagementAPI.Controllers
                     Id = registerVM.Id,
                     FirstName = registerVM.FirstName,
                     LastName = registerVM.LastName,
-                    Gender = registerVM.Gender,
+                    GenderId = registerVM.GenderId,
                     BirthDate = registerVM.BirthDate,
                     Address = registerVM.Address,
                     Contact = registerVM.Contact,

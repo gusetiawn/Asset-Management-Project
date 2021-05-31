@@ -34,6 +34,10 @@ namespace AssetManagementAPI.Context
                 .HasMany(a => a.Users)
                 .WithOne(b => b.Department);
 
+            modelBuilder.Entity<Gender>()
+                .HasMany(a => a.Users)
+                .WithOne(b => b.Gender);
+
             modelBuilder.Entity<RoleAccount>()
                 .HasKey(ar => new { ar.AccountId, ar.RoleId });
             modelBuilder.Entity<RoleAccount>()

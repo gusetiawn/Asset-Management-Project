@@ -34,6 +34,19 @@ namespace AssetManagementAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TB_M_Genders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_M_Genders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TB_M_Roles",
                 columns: table => new
                 {
@@ -87,7 +100,7 @@ namespace AssetManagementAPI.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GenderId = table.Column<int>(type: "int", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Contact = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
@@ -101,6 +114,12 @@ namespace AssetManagementAPI.Migrations
                         name: "FK_TB_M_Users_TB_M_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "TB_M_Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TB_M_Users_TB_M_Genders_GenderId",
+                        column: x => x.GenderId,
+                        principalTable: "TB_M_Genders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -130,12 +149,12 @@ namespace AssetManagementAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ItemId = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    AccountId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    StatusId = table.Column<int>(type: "int", nullable: true)
+                    StatusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,7 +164,7 @@ namespace AssetManagementAPI.Migrations
                         column: x => x.AccountId,
                         principalTable: "TB_M_Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TB_T_RequestItems_TB_M_Items_ItemId",
                         column: x => x.ItemId,
@@ -157,7 +176,7 @@ namespace AssetManagementAPI.Migrations
                         column: x => x.StatusId,
                         principalTable: "TB_M_Statuses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,9 +209,9 @@ namespace AssetManagementAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestItemId = table.Column<int>(type: "int", nullable: false),
                     Penalty = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RequestItemId = table.Column<int>(type: "int", nullable: false)
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,6 +233,11 @@ namespace AssetManagementAPI.Migrations
                 name: "IX_TB_M_Users_DepartmentId",
                 table: "TB_M_Users",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_M_Users_GenderId",
+                table: "TB_M_Users",
+                column: "GenderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TB_T_RequestItems_AccountId",
@@ -273,6 +297,9 @@ namespace AssetManagementAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "TB_M_Departments");
+
+            migrationBuilder.DropTable(
+                name: "TB_M_Genders");
         }
     }
 }
