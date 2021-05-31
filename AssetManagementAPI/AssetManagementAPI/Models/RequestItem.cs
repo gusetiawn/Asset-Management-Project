@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -28,9 +29,13 @@ namespace AssetManagementAPI.Models
         public int Quantity { get; set; }
         [Required]
         public int StatusId { get; set; }
+        [JsonIgnore]
         public virtual Account Account { get; set; }
+        [JsonIgnore]
         public virtual Item Item { get; set; }
+        [JsonIgnore]
         public virtual ReturnItem ReturnItem { get; set; }
+        [JsonIgnore]
         public virtual Status Status { get; set; }
     }
 }

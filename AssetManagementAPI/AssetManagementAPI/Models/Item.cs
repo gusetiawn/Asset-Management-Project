@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,7 +19,9 @@ namespace AssetManagementAPI.Models
         public int Quantity { get; set; }
         [Required]
         public int CategoryId { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RequestItem> RequestItems { get; set; }
+        [JsonIgnore]
         public virtual Category Category { get; set; }
     }
 }
