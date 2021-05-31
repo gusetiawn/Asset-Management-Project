@@ -138,3 +138,8 @@ D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\ob
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.dll
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.pdb
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.genruntimeconfig.cache
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.MvcApplicationPartsAssemblyInfo.cs
