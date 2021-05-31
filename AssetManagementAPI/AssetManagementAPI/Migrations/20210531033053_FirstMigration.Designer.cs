@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssetManagementAPI.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210529154113_FirstMigration")]
+    [Migration("20210531033053_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,22 @@ namespace AssetManagementAPI.Migrations
                     b.ToTable("TB_M_Departments");
                 });
 
+            modelBuilder.Entity("AssetManagementAPI.Models.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_M_Genders");
+                });
+
             modelBuilder.Entity("AssetManagementAPI.Models.Item", b =>
                 {
                     b.Property<int>("Id")
@@ -102,6 +118,7 @@ namespace AssetManagementAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AccountId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("EndDate")
@@ -120,7 +137,7 @@ namespace AssetManagementAPI.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StatusId")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -239,9 +256,8 @@ namespace AssetManagementAPI.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(255)
@@ -250,6 +266,8 @@ namespace AssetManagementAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("GenderId");
 
                     b.ToTable("TB_M_Users");
                 });
@@ -280,7 +298,9 @@ namespace AssetManagementAPI.Migrations
                 {
                     b.HasOne("AssetManagementAPI.Models.Account", "Account")
                         .WithMany("RequestItems")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AssetManagementAPI.Models.Item", "Item")
                         .WithMany("RequestItems")
@@ -290,7 +310,9 @@ namespace AssetManagementAPI.Migrations
 
                     b.HasOne("AssetManagementAPI.Models.Status", "Status")
                         .WithMany("RequestItems")
-                        .HasForeignKey("StatusId");
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -337,7 +359,15 @@ namespace AssetManagementAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AssetManagementAPI.Models.Gender", "Gender")
+                        .WithMany("Users")
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Department");
+
+                    b.Navigation("Gender");
                 });
 
             modelBuilder.Entity("AssetManagementAPI.Models.Account", b =>
@@ -353,6 +383,11 @@ namespace AssetManagementAPI.Migrations
                 });
 
             modelBuilder.Entity("AssetManagementAPI.Models.Department", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("AssetManagementAPI.Models.Gender", b =>
                 {
                     b.Navigation("Users");
                 });
