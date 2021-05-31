@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,6 +30,7 @@ namespace AssetManagementAPI.Models
         public string Email { get; set; }
         [Required]
         public int DepartmentId { get; set; }
+        [JsonIgnore]
         public virtual Account Account { get; set; }
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }
