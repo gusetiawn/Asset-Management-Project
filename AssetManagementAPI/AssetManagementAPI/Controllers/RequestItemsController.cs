@@ -164,6 +164,40 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+        [HttpPut("ReturnAsset")]
+        public ActionResult ReturnAsset(RequestItem requestItem)
+        {
+            try
+            {
+                var request = new RequestItem
+                {
+                    Id = requestItem.Id,
+                    AccountId = requestItem.AccountId,
+                    ItemId = requestItem.ItemId,
+                    StartDate = requestItem.StartDate,
+                    EndDate = requestItem.EndDate,
+                    Quantity = requestItem.Quantity,
+                    Notes = requestItem.Notes,
+                    StatusId = 5
+                };
+                myContext.Entry(request).State = EntityState.Modified;
+                myContext.SaveChanges();
+
+                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                var subject = "Asset Telah kami terima";
+                var body = "Hi, terimakasih telah mengembalikan asset";
+                sendMail.SendEmail(user.Email, body, subject);
+
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Batal diambil" });
+            }
+
+        }
 
     }
 }
