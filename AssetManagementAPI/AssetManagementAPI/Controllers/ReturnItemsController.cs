@@ -1,5 +1,6 @@
 ﻿using AssetManagementAPI.Base;
 using AssetManagementAPI.Context;
+using AssetManagementAPI.Handler;
 using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
 using Microsoft.AspNetCore.Http;
@@ -18,13 +19,14 @@ namespace AssetManagementAPI.Controllers
     {
         private readonly ReturnItemRepository returnItemRepository;
         private readonly MyContext myContext;
+        private readonly SendMail sendMail = new SendMail();
         public ReturnItemsController(ReturnItemRepository returnItemRepository, MyContext myContext) : base(returnItemRepository)
         {
             this.returnItemRepository = returnItemRepository;
             this.myContext = myContext;
         }
 
-        [HttpPost("NewRequest")]
+        [HttpPost("NewRequest")] 
         public ActionResult ReturnItem(ReturnItem returnItem)
         {
             try
@@ -37,6 +39,12 @@ namespace AssetManagementAPI.Controllers
                 };
                 myContext.ReturnItems.Add(returnItm);
                 myContext.SaveChanges();
+
+                var reqItem = myContext.RequestItems.Where(u => u.Id == returnItem.RequestItemId).FirstOrDefault();
+                var user = myContext.Users.Where(u => u.Id == reqItem.AccountId).FirstOrDefault();
+                var subject = "Return Item Berhasil";
+                var body = "Hi, Terima kasih Anda telah mengembalikan barang yang telah Anda pinjam. ";
+                sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Return Item Berhasil" });
             }
