@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,8 +15,11 @@ namespace AssetManagementAPI.Models
         public string Id { get; set; }
         [Required(ErrorMessage = "Tidak boleh kosong"), DataType(DataType.Password), MinLength(8, ErrorMessage = "Minimal 8 karakter")]
         public string Password { get; set; }
+        [JsonIgnore]
         public virtual User User { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RoleAccount> RoleAccounts { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RequestItem> RequestItems { get; set; }
     }
 }
