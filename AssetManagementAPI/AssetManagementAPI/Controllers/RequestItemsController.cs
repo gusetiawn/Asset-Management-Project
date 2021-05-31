@@ -1,5 +1,6 @@
 ﻿using AssetManagementAPI.Base;
 using AssetManagementAPI.Context;
+using AssetManagementAPI.Handler;
 using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +20,7 @@ namespace AssetManagementAPI.Controllers
     {
         private readonly RequestItemRepository requestItemRepository;
         private readonly MyContext myContext;
+        private readonly SendMail sendMail = new SendMail();
         public RequestItemsController(RequestItemRepository requestItemRepository, MyContext myContext) : base(requestItemRepository)
         {
             this.requestItemRepository = requestItemRepository;
@@ -42,6 +44,11 @@ namespace AssetManagementAPI.Controllers
                 };
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
+
+                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                var subject = "Request Item Berhasil";
+                var body = "Hi, Request anda berhasil. Status request Anda saat ini adalah waiting for approval. Silakan menunggu beberapa saat sampai disetujui oleh manager. Terima kasih. ";
+                sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil"});
 
