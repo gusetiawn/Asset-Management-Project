@@ -11,12 +11,12 @@ namespace AssetManagementAPI.Handler
     {
         public void SendEmail(string emailAddress, string body, string subject)
         {
-            MailMessage mailMessage = new MailMessage("belajardotmcc49@gmail.com", emailAddress);
+            MailMessage mailMessage = new MailMessage("saipularipinjuned@gmail.com", emailAddress);
             mailMessage.Subject = subject;
             mailMessage.Body = body;
             mailMessage.IsBodyHtml = true;
 
-            NetworkCredential networkCredential = new NetworkCredential("belajardotnetmcc49@gmail.com", "@Mcc49.com");
+            NetworkCredential networkCredential = new NetworkCredential("saipularipinjuned@gmail.com", "SaipulAripin123");
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.EnableSsl = true;
