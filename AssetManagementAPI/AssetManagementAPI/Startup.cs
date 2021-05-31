@@ -43,6 +43,7 @@ namespace AssetManagementAPI
             services.AddScoped<CategoryRepository>();
             services.AddScoped<StatusRepository>();
             services.AddScoped<ReturnItemRepository>();
+            services.AddScoped<GenderRepository>();
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")).UseLazyLoadingProxies());
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
             {
