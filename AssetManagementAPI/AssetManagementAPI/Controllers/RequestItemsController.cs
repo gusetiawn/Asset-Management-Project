@@ -3,12 +3,16 @@ using AssetManagementAPI.Context;
 using AssetManagementAPI.Handler;
 using AssetManagementAPI.Models;
 using AssetManagementAPI.Repositories.Data;
+using AssetManagementAPI.ViewModel;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -22,10 +26,13 @@ namespace AssetManagementAPI.Controllers
         private readonly RequestItemRepository requestItemRepository;
         private readonly MyContext myContext;
         private readonly SendMail sendMail = new SendMail();
-        public RequestItemsController(RequestItemRepository requestItemRepository, MyContext myContext) : base(requestItemRepository)
+        private readonly CommandType commandType = CommandType.StoredProcedure;
+        public IConfiguration Configuration { get; }
+        public RequestItemsController(RequestItemRepository requestItemRepository, MyContext myContext, IConfiguration Configuration) : base(requestItemRepository)
         {
             this.requestItemRepository = requestItemRepository;
             this.myContext = myContext;
+            this.Configuration = Configuration;
         }
         
         [HttpPost("NewRequest")]
@@ -41,14 +48,14 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 1 //Id 1 di table status aku buat "Waiting for Approval"
+                    StatusId = 1 //Waiting for Approval"
                 };
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Request Item Berhasil";
-                var body = "Hi, Request anda berhasil. Status request Anda saat ini adalah waiting for approval. Silakan menunggu beberapa saat sampai disetujui oleh manager. Terima kasih. ";
+                var subject = "Request for An Asset";
+                var body = $"Hai {user.FirstName},\nRequest anda telah kami terima, Request Anda akan kami Proses Setelah mendapatkan Persetujuan dari Manager. Kami akan informasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil"});
@@ -62,7 +69,7 @@ namespace AssetManagementAPI.Controllers
 
         }
 
-        [HttpPut("Approval")]
+        [HttpPut("Approve")]
         public ActionResult ApproveRequest(RequestItem requestItem)
         {
             try
@@ -76,28 +83,28 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 2 //Id 2 di table status aku buat "Approved"
+                    StatusId = 2 //Already Approved
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Approval Request";
-                var body = "Hi, Request anda telah disetujui oleh Manager. Silahkan Anda mendatangi admin untuk proses selanjutnya. Terima kasih. ";
+                var subject = "Request for An Asset";
+                var body = $"Hai {user.FirstName},\nRequest anda telah disetujui oleh Manager, Request Anda sedang kami Proses. Silahkan anda datang ke ruangan Admin untuk tahap selanjutnya.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Approve" });
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Setujui Manager" });
 
             }
             catch (Exception)
             {
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Proses Persetujuan Gagal" });
             }
 
         }
         [HttpPut("Reject")]
-        public ActionResult Reject(RequestItem requestItem)
+        public ActionResult RejectRequest(RequestItem requestItem)
         {
             try
             {
@@ -110,23 +117,23 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 3 //Id 2 di table status aku buat "Approved"
+                    StatusId = 3 //Has Been Rejected
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
                 var subject = "Request for An Asset";
-                var body = "Hi, mohon maaf request anda  ditolak";
+                var body = $"Hai {user.FirstName},\nMohon maaf Request anda tidak disetujui oleh Manager, Request Anda tidak bisa kami Proses. Untuk Info lebih lanjut anda dapat menghubungi pihak manager.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Anda Ditolak " });
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item anda tidak disetujui Manager" });
 
             }
             catch (Exception)
             {
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal Penolakan" });
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Proses Penolakan Gagal" });
             }
 
         }
@@ -144,23 +151,23 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 4 //Id 2 di table status aku buat "Approved"
+                    StatusId = 4 //Already Picked Up
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Asset Telah anda terima";
-                var body = "Hi, pulangkan asset sesuai dengan waktunya ";
+                var subject = "Request An Asset";
+                var body = $"Hai {user.FirstName},\nTerima kasih telah melakukan request denngan sistem kami, Kami harap Anda dapat menjaga Asset dengan baik dan mengembalikan sesuai dengan jadwal yang ditetapkan, apabila terjadi kerusakan dan kehilangan maka anda akan dikenakan biaya pinalty sesuai dengan kondisi yang terjadi, Mohon Kerjasamanya.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Item telah berhasil diambil Pemohon" });
 
             }
             catch (Exception)
             {
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Batal diambil" });
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Item Gagal diambil" });
             }
 
         }
@@ -178,23 +185,51 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 5
+                    StatusId = 5 //Has been Returned
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Asset Telah kami terima";
-                var body = "Hi, terimakasih telah mengembalikan asset";
+                var subject = "Return An Asset";
+                var body = $"Hai {user.FirstName},\nTerima kasih telah ikut serta dalam menjaga Asset kami, Status request Anda telah selesai dan anda terbebas dari tanggungjawab terhadap Asset yang telah anda pinjam sebelumnya.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Asset telah Berhasil dikembalikan" });
 
             }
             catch (Exception)
             {
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Batal diambil" });
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal Proses Pengembalian Asset" });
+            }
+
+        }
+        
+        [HttpGet("GetRequest/{id}")]
+        public ActionResult ReturnAsset(string id)
+        {
+            try
+            {
+                string connectStr = Configuration.GetConnectionString("MyConnection");
+                SqlConnection db = new SqlConnection(connectStr);
+                var parameter = new DynamicParameters();
+                string readSp = "SP_GetRequestId";
+                parameter.Add("id_", id);
+                var result = db.Query<GetRequestidVM>(readSp, parameter, commandType: commandType).ToList();
+                if (result.Count() >= 1)
+                {
+                    return Ok(result);
+                }
+                return StatusCode(404, "Id Tidak ditemukan");
+
+                //return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal Mengambil data Request" });
             }
 
         }
