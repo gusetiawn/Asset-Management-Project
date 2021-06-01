@@ -88,9 +88,9 @@ namespace AssetManagementAPI.Controllers
                 var result = myContext.SaveChanges();
 
                 var subject = "Change Password";
-                var body = "Hi, Baru saja Akun anda melakukan Change Password, Jika Anda tidak melakukan hal tersebut, segera lakukan Forgot Password! ";
+                var body = $"Hai {user.FirstName},\nAnda baru saja melakukan perubahan password pada akun anda, Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
                 sendMail.SendEmail(changePasswordVM.Email, body, subject);
-                return StatusCode(200, new { Status = "200", message = "Change Password Successful!!" });
+                return StatusCode(200, new { Status = "200", message = "Perubahan Password Berhasil" });
             }
             else
             {
@@ -111,8 +111,8 @@ namespace AssetManagementAPI.Controllers
                 myContext.Entry(account).State = EntityState.Modified;
                 var result = myContext.SaveChanges();
 
-                var subject = "Password Reset Request";
-                var body = "Hi, Request Password baru anda berhasil, Silahkan Gunakan Password Berikut: " + resetPass;
+                var subject = "Request Reset Password";
+                var body = $"Hai {check.FirstName},\nAnda baru saja melakukan  request lupa password, Gunakan password berikut untuk melakukan login, dan segera lakukan perubahan password.\nPassword Baru : {resetPass}\n Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password kembali pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
                 sendMail.SendEmail(forgotPasswordVM.Email, body, subject);
                 return StatusCode(result, new { Status = "200", message = "Request Password baru anda berhasil, Silahkan Cek Email Anda" });
             }
