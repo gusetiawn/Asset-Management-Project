@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj": {}
+    "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj": {
+    "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
+        "projectUniqueName": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
         "projectName": "AssetManagementAPI",
-        "projectPath": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
+        "projectPath": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\AssetManagementAPI.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\obj\\",
+        "outputPath": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
