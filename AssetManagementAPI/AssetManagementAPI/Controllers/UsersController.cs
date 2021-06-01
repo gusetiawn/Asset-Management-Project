@@ -20,12 +20,10 @@ namespace AssetManagementAPI.Controllers
     {
         private readonly UserRepository userRepository;
         private readonly MyContext myContext;
-        private readonly IConfiguration configuration;
-        public UsersController(UserRepository userRepository, MyContext myContext, IConfiguration configuration) : base(userRepository)
+        public UsersController(UserRepository userRepository, MyContext myContext) : base(userRepository)
         {
             this.userRepository = userRepository;
             this.myContext = myContext;
-            this.configuration = configuration;
         }
         [HttpPost("Register")]
         public ActionResult Register(RegisterVM registerVM)
