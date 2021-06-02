@@ -38,8 +38,8 @@ namespace AssetManagementAPI.Controllers
         [HttpPost("NewRequest")]
         public ActionResult RequestItem(RequestItem requestItem)
         {
-            try
-            {
+            //try
+            //{
                 var request = new RequestItem
                 {
                     AccountId = requestItem.AccountId,
@@ -53,6 +53,18 @@ namespace AssetManagementAPI.Controllers
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
 
+                var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).AsNoTracking().FirstOrDefault();
+                var QtyNow = recentQty.Quantity - requestItem.Quantity;
+                var item = new Item
+                {
+                    Id = recentQty.Id,
+                    Name = recentQty.Name,
+                    Quantity = QtyNow,
+                    CategoryId = recentQty.CategoryId
+                };
+                myContext.Entry(item).State = EntityState.Modified;
+                myContext.SaveChanges();
+
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
                 var subject = "Request for An Asset";
                 var body = $"Hai {user.FirstName},\nRequest anda telah kami terima, Request Anda akan kami Proses Setelah mendapatkan Persetujuan dari Manager. Kami akan informasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
@@ -60,12 +72,12 @@ namespace AssetManagementAPI.Controllers
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
 
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
-            }
+            //    return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+            //}
 
         }
 
