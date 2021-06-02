@@ -34,7 +34,7 @@ namespace AssetManagementAPI.Controllers
             this.myContext = myContext;
             this.Configuration = Configuration;
         }
-        
+
         [HttpPost("NewRequest")]
         public ActionResult RequestItem(RequestItem requestItem)
         {
@@ -58,7 +58,7 @@ namespace AssetManagementAPI.Controllers
                 var body = $"Hai {user.FirstName},\nRequest anda telah kami terima, Request Anda akan kami Proses Setelah mendapatkan Persetujuan dari Manager. Kami akan informasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
                 sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil"});
+                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
 
             }
             catch (Exception)
@@ -205,8 +205,8 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        
-        [HttpGet("GetRequest/{id}")]
+
+        [HttpGet("GetRequest/{id}")] // Aku Coba Pakai SP
         public ActionResult ReturnAsset(string id)
         {
             try
@@ -216,7 +216,7 @@ namespace AssetManagementAPI.Controllers
                 var parameter = new DynamicParameters();
                 string readSp = "SP_GetRequestId";
                 parameter.Add("id_", id);
-                var result = db.Query<GetRequestidVM>(readSp, parameter, commandType: commandType).ToList();
+                var result = db.Query<GetRequestIdVM>(readSp, parameter, commandType: commandType).ToList();
                 if (result.Count() >= 1)
                 {
                     return Ok(result);
@@ -233,6 +233,20 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+        [HttpGet("UserRequest")]
+        public ActionResult UserRequest()
+        {
+            var userData = from A in myContext.Accounts
+                           join R in myContext.RequestItems on A.Id equals R.AccountId
+                           join I in myContext.Items on R.ItemId equals I.Id
+                           join C in myContext.Categories on I.CategoryId equals C.Id
+                           select new
+                           {
+                               
 
+                           };
+            return Ok(userData);
+
+        }
     }
 }

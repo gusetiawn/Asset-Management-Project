@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AssetManagementAPI.ViewModel
 {
-    public class GetRequestidVM
+    public class GetRequestIdVM
     {
         public int Id { get; set; }
         [Required]
