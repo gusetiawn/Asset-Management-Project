@@ -236,16 +236,24 @@ namespace AssetManagementAPI.Controllers
         [HttpGet("UserRequest")]
         public ActionResult UserRequest()
         {
-            var userData = from A in myContext.Accounts
+            var userRequest = from A in myContext.Accounts
                            join R in myContext.RequestItems on A.Id equals R.AccountId
                            join I in myContext.Items on R.ItemId equals I.Id
                            join C in myContext.Categories on I.CategoryId equals C.Id
+                           join S in myContext.Statuses on R.StatusId equals S.Id
                            select new
                            {
-                               
-
+                               Id = R.Id,
+                               Item = I.Name,
+                               AccountId = R.AccountId,
+                               StartDate = R.StartDate,
+                               EndDate = R.EndDate,
+                               Notes = R.Notes,
+                               Quantity = R.Quantity,
+                               Status = S.Name,
+                               Category = C.Name
                            };
-            return Ok(userData);
+            return Ok(userRequest);
 
         }
     }
