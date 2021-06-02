@@ -1,0 +1,7 @@
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csprojAssemblyReference.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.AssemblyInfoInputs.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.AssemblyInfo.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csproj.CoreCompileInputs.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.MvcApplicationPartsAssemblyInfo.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cs

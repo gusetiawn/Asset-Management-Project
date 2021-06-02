@@ -219,3 +219,12 @@ E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementA
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.dll
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.pdb
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.genruntimeconfig.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\EntityFramework.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
