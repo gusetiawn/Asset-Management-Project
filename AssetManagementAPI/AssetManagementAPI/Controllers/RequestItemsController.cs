@@ -53,6 +53,12 @@ namespace AssetManagementAPI.Controllers
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
 
+                //var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).FirstOrDefault();
+                var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
+                data.Quantity -= requestItem.Quantity;
+                myContext.Entry(data).State = EntityState.Modified;
+                myContext.SaveChanges();
+
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
                 var subject = "Request for An Asset";
                 var body = $"Hai {user.FirstName},\nRequest anda telah kami terima, Request Anda akan kami Proses Setelah mendapatkan Persetujuan dari Manager. Kami akan informasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
@@ -63,11 +69,11 @@ namespace AssetManagementAPI.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
             }
 
         }
+        
 
         [HttpPut("Approve")]
         public ActionResult ApproveRequest(RequestItem requestItem)
@@ -120,6 +126,12 @@ namespace AssetManagementAPI.Controllers
                     StatusId = 3 //Has Been Rejected
                 };
                 myContext.Entry(request).State = EntityState.Modified;
+                myContext.SaveChanges();
+
+                var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).FirstOrDefault();
+                var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
+                data.Quantity = recentQty.Quantity + requestItem.Quantity;
+                myContext.Entry(data).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
