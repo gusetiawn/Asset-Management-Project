@@ -5,43 +5,35 @@ E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementC
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.MvcApplicationPartsAssemblyInfo.cache
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cache
 E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.exe
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.deps.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.runtimeconfig.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.runtimeconfig.dev.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.dll
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.pdb
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.Views.dll
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.Views.pdb
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csprojAssemblyReference.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.AssemblyInfoInputs.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.AssemblyInfo.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csproj.CoreCompileInputs.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.MvcApplicationPartsAssemblyInfo.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorAssemblyInfo.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\staticwebassets\AssetManagementClient.StaticWebAssets.Manifest.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\staticwebassets\AssetManagementClient.StaticWebAssets.xml
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\scopedcss\bundle\AssetManagementClient.styles.css
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.TagHelpers.input.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.TagHelpers.output.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorCoreGenerate.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorTargetAssemblyInfo.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorTargetAssemblyInfo.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.Views.pdb
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csproj.CopyComplete
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.dll
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.pdb
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.genruntimeconfig.cache
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\appsettings.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.exe
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.deps.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.runtimeconfig.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.runtimeconfig.dev.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.pdb
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.Views.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\AssetManagementClient.Views.pdb
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\staticwebassets\AssetManagementClient.StaticWebAssets.Manifest.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\staticwebassets\AssetManagementClient.StaticWebAssets.xml
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\scopedcss\bundle\AssetManagementClient.styles.css
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.TagHelpers.input.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.TagHelpers.output.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorCoreGenerate.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorTargetAssemblyInfo.cache
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.RazorTargetAssemblyInfo.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.Views.pdb
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.csproj.CopyComplete
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.dll
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.pdb
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.genruntimeconfig.cache

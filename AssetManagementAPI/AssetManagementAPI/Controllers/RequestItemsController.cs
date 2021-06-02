@@ -38,8 +38,8 @@ namespace AssetManagementAPI.Controllers
         [HttpPost("NewRequest")]
         public ActionResult RequestItem(RequestItem requestItem)
         {
-            //try
-            //{
+            try
+            {
                 var request = new RequestItem
                 {
                     AccountId = requestItem.AccountId,
@@ -53,16 +53,10 @@ namespace AssetManagementAPI.Controllers
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
 
-                var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).AsNoTracking().FirstOrDefault();
-                var QtyNow = recentQty.Quantity - requestItem.Quantity;
-                var item = new Item
-                {
-                    Id = recentQty.Id,
-                    Name = recentQty.Name,
-                    Quantity = QtyNow,
-                    CategoryId = recentQty.CategoryId
-                };
-                myContext.Entry(item).State = EntityState.Modified;
+                //var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).FirstOrDefault();
+                var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
+                data.Quantity -= requestItem.Quantity;
+                myContext.Entry(data).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
@@ -72,14 +66,14 @@ namespace AssetManagementAPI.Controllers
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
 
-            //}
-            //catch (Exception)
-            //{
-
-            //    return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
-            //}
+            }
+            catch (Exception)
+            {
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+            }
 
         }
+        
 
         [HttpPut("Approve")]
         public ActionResult ApproveRequest(RequestItem requestItem)
@@ -132,6 +126,12 @@ namespace AssetManagementAPI.Controllers
                     StatusId = 3 //Has Been Rejected
                 };
                 myContext.Entry(request).State = EntityState.Modified;
+                myContext.SaveChanges();
+
+                var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).FirstOrDefault();
+                var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
+                data.Quantity = recentQty.Quantity + requestItem.Quantity;
+                myContext.Entry(data).State = EntityState.Modified;
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
