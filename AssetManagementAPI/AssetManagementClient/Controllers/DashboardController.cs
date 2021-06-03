@@ -30,11 +30,5 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
-
-        [Route("Dashboard/Tes")]
-        public IActionResult Tes()
-        {
-            return View();
-        }
     }
 }
