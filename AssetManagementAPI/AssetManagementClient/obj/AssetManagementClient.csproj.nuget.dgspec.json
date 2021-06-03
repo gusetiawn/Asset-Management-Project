@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj": {}
+    "D:\\Kerja\\metrodata\\Asset Management API\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj": {}
   },
   "projects": {
-    "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj": {
+    "D:\\Kerja\\metrodata\\Asset Management API\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj",
+        "projectUniqueName": "D:\\Kerja\\metrodata\\Asset Management API\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj",
         "projectName": "AssetManagementClient",
-        "projectPath": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\Metrodata\\GitHub\\Asset-Management-Project\\AssetManagementAPI\\AssetManagementClient\\obj\\",
+        "projectPath": "D:\\Kerja\\metrodata\\Asset Management API\\AssetManagementAPI\\AssetManagementClient\\AssetManagementClient.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\Kerja\\metrodata\\Asset Management API\\AssetManagementAPI\\AssetManagementClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -69,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

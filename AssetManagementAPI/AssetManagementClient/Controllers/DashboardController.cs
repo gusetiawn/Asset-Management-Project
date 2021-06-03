@@ -12,5 +12,29 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
+
+        [Route("Dashboard/Employee")]
+        public IActionResult Employee()
+        {
+            return View();
+        }
+
+        [Route("Dashboard/Manager")]
+        public IActionResult Manager()
+        {
+            return View();
+        }
+
+        [Route("Dashboard/Admin")]
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
+        [Route("Dashboard/Tes")]
+        public IActionResult Tes()
+        {
+            return View();
+        }
     }
 }
