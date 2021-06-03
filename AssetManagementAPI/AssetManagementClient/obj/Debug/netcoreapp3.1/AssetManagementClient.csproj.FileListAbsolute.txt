@@ -79,8 +79,6 @@ D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.pdb
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\AssetManagementClient.genruntimeconfig.cache
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDashboard.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutTesDashboard.cshtml.g.cs
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\TesDasbor\Index.cshtml.g.cs
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\datatables.net-bs4\package.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\datatables.net\package.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\taskboard\example1\load.json
