@@ -53,7 +53,6 @@ namespace AssetManagementAPI.Controllers
                 myContext.RequestItems.Add(request);
                 myContext.SaveChanges();
 
-                //var recentQty = myContext.Items.Where(I => I.Id == requestItem.ItemId).FirstOrDefault();
                 var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
                 data.Quantity -= requestItem.Quantity;
                 myContext.Entry(data).State = EntityState.Modified;
@@ -183,40 +182,6 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        [HttpPut("ReturnAsset")]
-        public ActionResult ReturnAsset(RequestItem requestItem)
-        {
-            try
-            {
-                var request = new RequestItem
-                {
-                    Id = requestItem.Id,
-                    AccountId = requestItem.AccountId,
-                    ItemId = requestItem.ItemId,
-                    StartDate = requestItem.StartDate,
-                    EndDate = requestItem.EndDate,
-                    Quantity = requestItem.Quantity,
-                    Notes = requestItem.Notes,
-                    StatusId = 5 //Has been Returned
-                };
-                myContext.Entry(request).State = EntityState.Modified;
-                myContext.SaveChanges();
-
-                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Return An Asset";
-                var body = $"Hai {user.FirstName},\nTerima kasih telah ikut serta dalam menjaga Asset kami, Status request Anda telah selesai dan anda terbebas dari tanggungjawab terhadap Asset yang telah anda pinjam sebelumnya.\n Terima kasih dan Selamat Bekerja.";
-                sendMail.SendEmail(user.Email, body, subject);
-
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Asset telah Berhasil dikembalikan" });
-
-            }
-            catch (Exception)
-            {
-
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal Proses Pengembalian Asset" });
-            }
-
-        }
 
         [HttpGet("GetRequest/{id}")] // Aku Coba Pakai SP
         public ActionResult ReturnAsset(string id)
@@ -234,8 +199,6 @@ namespace AssetManagementAPI.Controllers
                     return Ok(result);
                 }
                 return StatusCode(404, "Id Tidak ditemukan");
-
-                //return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di ambil" });
 
             }
             catch (Exception)

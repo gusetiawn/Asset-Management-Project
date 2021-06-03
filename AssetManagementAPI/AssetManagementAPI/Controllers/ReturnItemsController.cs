@@ -30,8 +30,8 @@ namespace AssetManagementAPI.Controllers
         [HttpPost("NewRequest")] 
         public ActionResult ReturnItem(ReturnItem returnItem)
         {
-            //try
-            //{
+            try
+            {
                 var returnItm = new ReturnItem
                 {
                     RequestItemId = returnItem.RequestItemId,
@@ -53,16 +53,16 @@ namespace AssetManagementAPI.Controllers
 
                 var reqItem = myContext.RequestItems.Where(u => u.Id == returnItem.RequestItemId).FirstOrDefault();
                 var user = myContext.Users.Where(u => u.Id == reqItem.AccountId).FirstOrDefault();
-                var subject = "Return Item Berhasil";
-                var body = "Hi, Terima kasih Anda telah mengembalikan barang yang telah Anda pinjam. ";
-                sendMail.SendEmail(user.Email, body, subject);
+            var subject = "Return An Asset";
+            var body = $"Hai {user.FirstName},\nTerima kasih telah ikut serta dalam menjaga Asset kami, Status request Anda telah selesai dan anda terbebas dari tanggungjawab terhadap Asset yang telah anda pinjam sebelumnya.\n Terima kasih dan Selamat Bekerja.";
+            sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Return Item Berhasil" });
-            //}
-            //catch (Exception)
-            //{
-            //    return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Return Item Gagal" });
-            //}
+            }
+            catch (Exception)
+            {
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Return Item Gagal" });
+            }
         }
     }
 }
