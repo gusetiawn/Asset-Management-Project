@@ -88,3 +88,13 @@ D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\dist\js\pages\datatable\data.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\package-lock.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\package.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\datatables.net-bs4\package.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\datatables.net\package.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\extra-libs\taskboard\example1\load.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\assets\libs\morris.js\bower.travis.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\dist\js\pages\datatable\data.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\package-lock.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\bin\Debug\netcoreapp3.1\wwwroot\package.json
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDashboard.cshtml.g.cs
+E:\Metrodata\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs
