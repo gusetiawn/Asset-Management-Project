@@ -69,7 +69,6 @@ E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Deb
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\GitHub\Asset-Management-Project\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\AssetManagementAPI.exe
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\AssetManagementAPI.deps.json
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\AssetManagementAPI.runtimeconfig.json
@@ -234,3 +233,10 @@ D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bi
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\obj\Debug\netcoreapp3.1\AssetManagementAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Kerja\metrodata\Asset Management API\AssetManagementAPI\AssetManagementAPI\bin\Debug\netcoreapp3.1\appsettings.json
