@@ -630,10 +630,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\.gitignore" />
     <None Include="wwwroot\assets\extra-libs\c3\c3.min.css" />
     <None Include="wwwroot\assets\extra-libs\c3\c3.min.js" />
@@ -1290,6 +1286,10 @@
     <Content Update="wwwroot\package.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\Data\" />
   </ItemGroup>
 
 </Project>
