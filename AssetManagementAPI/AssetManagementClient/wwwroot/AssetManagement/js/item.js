@@ -64,22 +64,24 @@ function AddNewItem() {
     Item.quantity = $('#quantity').val();
     Item.categoryId = $('#categoryId').val();
     $.ajax({
-        url: 'https://localhost:44395/API/Items',
         type: "POST",
-        data: Item
+        url: 'https://localhost:44395/API/Items',
+        data: JSON.stringify(Item),
+        contentType: "application/json; charset=utf-8",
+        datatype: "json"
     }).done((result) => {
-        if (result == 200) {
-            swal('Success', 'Request Has Been Added, Cek Your Email', 'success');
+            Swal.fire(
+                'Success',
+                'Item Has Been Added, Cek Your Email',
+                'success'
+            );
             $('#addNewItem').modal('hide');
             $("#id").val(null);
             $("#quantity").val(null);
             $("#categoryId").val(null);
-            table.ajax.reload();
-        }
-        else {
-            swal('Error', 'Something Went Wrong', 'error');
-        }
+            $('#tabledata').DataTable().ajax.reload();
+            
     }).fail((error) => {
-        console.log(error)
+        Swal.fire('Error', 'Something Went Wrong', 'error');
     });
 }

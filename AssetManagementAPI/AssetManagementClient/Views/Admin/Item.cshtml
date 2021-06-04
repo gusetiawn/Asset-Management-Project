@@ -7,9 +7,26 @@
 }
 <div class="page-wrapper">
     <div class="p-3">
-        <h4 class="text-muted font-18 m-b-5 text-center">Welcome</h4>
-        <p class="text-muted text-center">Manage Item Asset</p>
-        <a href="javascript:void(0)" class="btn bg-transparant text-success" data-toggle="modal" data-target="#addNewItem">Add New Item</a>
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Management Asset</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="#">Menu</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="#">Item</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="btn bg-danger text-success" data-toggle="modal" data-target="#addNewItem">Add New Item</a>
         <div class="container-fluid mt-5">
             <table id="tabledataitem" class="table table-striped table-bordered dataTable" style="width:100%">
                 <thead class="thead-light">
@@ -38,7 +55,7 @@
     </div>
 </div>
 
-<!-- Modal Insert Item-->
+<!-- Modal Add Item-->
 <div class="modal fade" id="addNewItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -70,9 +87,9 @@
                     </div>
                     
                     <div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group">
                             <label for="categoryId">Category</label>
-                            <select class="form-control" id="universityId">
+                            <select class="form-control" id="categoryId">
                                 <option selected>Choose...</option>
                                 <option value="1">Elektronik</option>
                                 <option value="2">Alat Tulis Kerja</option>
@@ -87,7 +104,7 @@
 
 
                     <div class="col-12">
-                        <button class="btn btn-primary" onclick="Insert()">Submit form</button>
+                        <button class="btn btn-primary" onclick="AddNewItem()">Submit form</button>
                     </div>
 
                 </form>
@@ -98,7 +115,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Insert -->
+<!-- Modal Add Item -->
 <!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
