@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UserManagementApp.Repository.Interface
+namespace AssetManagementClient.Repository.Interface
 {
     public interface IRepository<T, X>
         where T : class

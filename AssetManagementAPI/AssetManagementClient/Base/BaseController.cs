@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AssetManagementClient.Repository.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserManagementApp.Repository.Interface;
 
-namespace UserManagementApp.Base
+namespace AssetManagementClient.Base
 {
     public class BaseController<TEntity, TRepository, TId> : Controller
         where TEntity : class

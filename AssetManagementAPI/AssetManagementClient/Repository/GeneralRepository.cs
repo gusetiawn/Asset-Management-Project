@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AssetManagementClient.Base;
+using AssetManagementClient.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,10 +9,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using UserManagementApp.Base;
-using UserManagementApp.Repository.Interface;
 
-namespace UserManagementApp.Repository
+namespace AssetManagementClient.Repository
 {
     public class GeneralRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : class

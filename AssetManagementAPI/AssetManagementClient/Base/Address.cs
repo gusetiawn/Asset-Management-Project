@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UserManagementApp.Base
+namespace AssetManagementClient.Base
 {
     public class Address
     {
