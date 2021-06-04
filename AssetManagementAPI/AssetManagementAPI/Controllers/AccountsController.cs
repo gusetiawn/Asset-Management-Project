@@ -128,6 +128,7 @@ namespace AssetManagementAPI.Controllers
         {
             var userData = from u in myContext.Users
                            join d in myContext.Departments on u.DepartmentId equals d.Id
+                           join g in myContext.Genders on u.GenderId equals g.Id
                            join a in myContext.Accounts on u.Id equals a.Id
                            join ra in myContext.RoleAccounts on a.Id equals ra.AccountId
                            join r in myContext.Roles on ra.RoleId equals r.Id
@@ -136,7 +137,7 @@ namespace AssetManagementAPI.Controllers
                                Id = u.Id,
                                FirstName = u.FirstName,
                                LastName = u.LastName,
-                               Gender = u.Gender,
+                               Gender = g.Name,
                                BirthDate = u.BirthDate,
                                Address = u.Address,
                                Contact = u.Contact,
@@ -155,6 +156,7 @@ namespace AssetManagementAPI.Controllers
             {
                 var profile = from u in myContext.Users
                                join d in myContext.Departments on u.DepartmentId equals d.Id
+                               join g in myContext.Genders on u.GenderId equals g.Id
                                join a in myContext.Accounts on u.Id equals a.Id
                                join ra in myContext.RoleAccounts on a.Id equals ra.AccountId
                                join r in myContext.Roles on ra.RoleId equals r.Id
@@ -164,7 +166,7 @@ namespace AssetManagementAPI.Controllers
                                    Id = u.Id,
                                    FirstName = u.FirstName,
                                    LastName = u.LastName,
-                                   Gender = u.Gender,
+                                   Gender = g.Name,
                                    BirthDate = u.BirthDate,
                                    Address = u.Address,
                                    Contact = u.Contact,
