@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.0.3/css/dataTables.dateTime.min.css" />
     <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" />
+    <link rel="stylesheet" href="sweetalert2.min.css" />
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,6 +65,7 @@
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="~/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+
                                 <!-- Light Logo icon -->
                                 <img src="~/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                             </b>
@@ -73,7 +75,7 @@
                                 <!-- dark Logo text -->
                                 <img src="~/images/Asset3.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
-                                <img src="~/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="~/images/Asset.png" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -192,7 +194,6 @@
                                 <span><i data-feather="mail" class="svg-icon"></i></span>
                                 <span class="badge badge-primary notify-no rounded-circle">8</span>
                             </a>
-<<<<<<< Updated upstream
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
@@ -265,21 +266,6 @@
                                         </a>
                                     </li>
                                 </ul>
-=======
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i data-feather="user"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Your Account
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i data-feather="lock"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Security
-                                </a>
-                                @*<div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>*@
->>>>>>> Stashed changes
                             </div>
                         </li>
                         <!--End Messages-->
@@ -437,9 +423,9 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        @*<footer class="footer fixed-bottom text-center text-muted">
+        <footer class="footer text-center text-muted">
             All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>*@
+        </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
@@ -451,7 +437,6 @@
     <script src="~/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
@@ -463,6 +448,8 @@
     <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
     <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <!-- apps -->
     <script src="~/dist/js/app-style-switcher.js"></script>
     <script src="~/dist/js/feather.min.js"></script>
@@ -478,11 +465,6 @@
     <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
-
-
-    <script src="~/AssetManagement/js/userRequest.js" asp-append-version="true"></script>
-    <script src="~/AssetManagement/js/site.js" asp-append-version="true"></script>
-    <script src="~/AssetManagement/js/item.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
