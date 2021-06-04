@@ -16,6 +16,7 @@ namespace AssetManagementAPI.Context
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Gender> Genders { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<RequestItem> RequestItems { get; set; }
         public DbSet<ReturnItem> ReturnItems { get; set; }
