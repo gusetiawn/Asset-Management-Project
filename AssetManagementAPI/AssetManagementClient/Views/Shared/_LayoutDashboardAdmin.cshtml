@@ -176,28 +176,91 @@
                         </li>
                         <!-- End Notification -->
                         <!-- ============================================================== -->
-                        <!-- create new -->
+                        <!-- Start Messages -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i data-feather="settings" class="svg-icon"></i>
+                            <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
+                               id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span><i data-feather="mail" class="svg-icon"></i></span>
+                                <span class="badge badge-primary notify-no rounded-circle">8</span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i data-feather="user"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Your Account
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i data-feather="lock"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Security
-                                </a>
-                                @*<div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>*@
+                            <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="message-center notifications position-relative">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-danger text-white rounded-circle btn-circle"><img class="rounded-circle" src="~/img/undraw_profile_1.svg" alt=""></span>
+                                                @*<i data-feather="airplay" class="text-white"></i>*@
+
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Emily Fowler</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted text-truncate">
+                                                        Hi there! I am wondering if you can help me with a
+                                                        problem I've been having.
+                                                    </span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">1:30 PM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-success text-white rounded-circle btn-circle">
+                                                    <img class="rounded-circle" src="~/img/undraw_profile_2.svg" alt="">
+                                                </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Jae Chun</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted text-truncate">
+                                                        I have the photos that you ordered last month, how
+                                                        would you like them sent to you?
+                                                    </span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">7:10 PM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-warning rounded-circle btn-circle">
+                                                    <img class="rounded-circle" src="~/img/undraw_profile_3.svg" alt="">
+                                                </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Morgan Alvarez</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted text-truncate">
+                                                        Last month's report looks great, I am very happy with
+                                                        the progress so far, keep up the good work!
+                                                    </span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">12:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-primary rounded-circle btn-circle">
+                                                    <img class="rounded-circle" src="~/img/undraw_profile.svg" alt="">
+                                                </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Pavan Kumar</h6> <span class="font-12 text-nowrap d-block text-muted text-truncate">
+                                                        Am I a good boy? The reason I ask is because someone
+                                                        told me that people say this to all dogs, even if they aren't good...
+                                                    </span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">10:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
+                                            <strong>Read More Messages</strong>
+
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </li>
+                        <!--End Messages-->
+                        <!-- ============================================================== -->
                         <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <div class="customize-input">
@@ -246,11 +309,6 @@
                                        class="svg-icon mr-2 ml-1"></i>
                                     My Profile
                                 </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="mail"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Inbox
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i data-feather="settings"
@@ -284,12 +342,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
+                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link active" href="index.html" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home feather-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
 
@@ -314,7 +367,29 @@
                             </a>
                         </li>
                         <li class="list-divider"></li>
-
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <i data-feather="settings" class="feather-icon"></i><span class="hide-menu">
+                                    Settings
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item">
+                                    <a href="icon-fontawesome.html" class="sidebar-link">
+                                        <i data-feather="user" class="feather-icon"></i><span class="hide-menu">
+                                            Your Account
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="icon-simple-lineicon.html" class="sidebar-link">
+                                        <i data-feather="lock" class="feather-icon"></i><span class="hide-menu">
+                                            Security
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link" href="https://localhost:44389/Login"
                                aria-expanded="false">
