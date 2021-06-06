@@ -211,7 +211,8 @@ namespace AssetManagementAPI.Controllers
         [HttpGet("UserRequest")]
         public ActionResult UserRequest()
         {
-            var userRequest = from A in myContext.Accounts
+            var userRequest = from U in myContext.Users
+                           join A in myContext.Accounts on U.Id equals A.Id
                            join R in myContext.RequestItems on A.Id equals R.AccountId
                            join I in myContext.Items on R.ItemId equals I.Id
                            join C in myContext.Categories on I.CategoryId equals C.Id
@@ -219,8 +220,9 @@ namespace AssetManagementAPI.Controllers
                            select new
                            {
                                Id = R.Id,
-                               Item = I.Name,
+                               Name = U.FirstName + " " + U.LastName,
                                AccountId = R.AccountId,
+                               Item = I.Name,
                                StartDate = R.StartDate,
                                EndDate = R.EndDate,
                                Notes = R.Notes,
@@ -228,6 +230,59 @@ namespace AssetManagementAPI.Controllers
                                Status = S.Name,
                                Category = C.Name
                            };
+            return Ok(userRequest);
+
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult RequestedItems(string id)
+        {
+            var user = myContext.Users.Find(id);
+            if (user != null)
+            {
+                var reqItems = from A in myContext.Accounts
+                               join R in myContext.RequestItems on A.Id equals R.AccountId
+                               join I in myContext.Items on R.ItemId equals I.Id
+                               join C in myContext.Categories on I.CategoryId equals C.Id
+                               join S in myContext.Statuses on R.StatusId equals S.Id
+                               where A.Id == id
+                               select new
+                               {
+                                   Item = I.Name,
+                                   StartDate = R.StartDate,
+                                   EndDate = R.EndDate,
+                                   Quantity = R.Quantity,
+                                   Notes = R.Notes,
+                                   Status = S.Name
+                               };
+                return Ok(reqItems);
+            }
+            else
+            {
+                return NotFound("Id Not Registered");
+            }
+        }
+
+        [HttpGet("Id={id}")]
+        public ActionResult GetRequestById(int id)
+        {
+            var userRequest = from U in myContext.Users
+                              join A in myContext.Accounts on U.Id equals A.Id
+                              join R in myContext.RequestItems on A.Id equals R.AccountId
+                              join I in myContext.Items on R.ItemId equals I.Id
+                              join C in myContext.Categories on I.CategoryId equals C.Id
+                              join S in myContext.Statuses on R.StatusId equals S.Id
+                              where R.Id == id
+                              select new
+                              {
+                                  Id = R.Id,
+                                  AccountId = R.AccountId,
+                                  ItemId = R.ItemId,
+                                  StartDate = R.StartDate,
+                                  EndDate = R.EndDate,
+                                  Quantity = R.Quantity,
+                                  Notes = R.Notes
+                              };
             return Ok(userRequest);
 
         }
