@@ -30,6 +30,7 @@ namespace AssetManagementAPI.Models
         public string Email { get; set; }
         [Required]
         public int DepartmentId { get; set; }
+        public int IsDeleted { get; set; }
         [JsonIgnore]
         public virtual Account Account { get; set; }
         public virtual Department Department { get; set; }
