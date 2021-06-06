@@ -1,9 +1,5 @@
 ﻿$(document).ready(function () {
     var data = $('#tabledataitem').DataTable({
-        //"dom": 'Bfrtip',
-        //"buttons": [
-        //    'copy', 'csv', 'excel', 'pdf', 'print'
-        //],
         "ajax": {
             "url": "https://localhost:44395/API/Items",
             "type": "get",
@@ -19,8 +15,7 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return '<a href="javascript:void(0)" class="far fa-check-circle table-action text-dark" data-toggle="tooltip" data-placement="top" title="Approve" onclick="Get(\'' + row['id'] + '\')"></a> ' +
-                        '<a href="javascript:void(0)" class="far fa-times-circle table-action text-danger" data-toggle="tooltip" data-placement="top" title="Reject" onclick="Reject(\'' + row['id'] + '\')"></a>'
+                    return '<button id="buttonUpdate" type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button> '
 
                 },
                 'searchable': false,
@@ -58,7 +53,6 @@
 })()
 
 function AddNewItem() {
-    console.log("ok");
     var Item = new Object();
     Item.name = $('#name').val();
     Item.quantity = $('#quantity').val();
@@ -76,7 +70,7 @@ function AddNewItem() {
                 'success'
             );
             $('#addNewItem').modal('hide');
-            $("#id").val(null);
+            $("#name").val(null);
             $("#quantity").val(null);
             $("#categoryId").val(null);
             $('#tabledata').DataTable().ajax.reload();
@@ -85,3 +79,43 @@ function AddNewItem() {
         Swal.fire('Error', 'Something Went Wrong', 'error');
     });
 }
+
+//UPDATE
+$("#tabledataitem").on('click', '#buttonUpdate', function () {
+    var data = $("#tabledataitem").DataTable().row($(this).parents('tr')).data();
+    console.log(data);
+    $('#idE').val(data.id);
+    $('#nameE').val(data.name);
+    $('#quantityE').val(data.quantity);
+    $('#categoryIdE').val(data.categoryId);
+
+    $("#editModalItem").modal("show");
+    $("#editModalItem").on('click', '#editUser', function () {
+
+        var edit = new Object();
+        console.log(edit);
+        edit.id = $('#idE').val();
+        edit.name = $('#nameE').val();
+        edit.quantity = $('#quantityE').val();
+        edit.categoryId = $('#categoryIdE').val();
+        
+        $.ajax({
+            url: 'https://localhost:44395/API/Items',
+            type: "PUT",
+            data: JSON.stringify(edit),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json"
+        }).done((result) => {
+            Swal.fire(
+                'Success',
+                'Item Has Been Added, Cek Your Email',
+                'success'
+            );
+            $('#tabledataitem').DataTable().ajax.reload();
+
+        }).fail((error) => {
+            Swal.fire('Error', 'Something Went Wrong', 'error');
+        });
+    })
+
+})

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    var data = $('#tabledata').DataTable({
+    var data = $('#tabledataUser').DataTable({
         //"dom": 'Bfrtip',
         //"buttons": [
         //    'copy', 'csv', 'excel', 'pdf', 'print'
@@ -34,8 +34,9 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return ' <button class="btn btn-primary" type="button" onclick="GetData(' + "'" + row.nik + "'" + ')"><i class="fas fa-info-circle"></i></button> ' + ' <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" type="button" onclick="GetData(' + "'" + row.nik + "'" + ')"><i class="fas fa-user-edit"></i></button> ' +
-                        ' <button class="btn btn-danger" type="button" onclick="Delete(' + "'" + row.nik + "'" + ',' + "'" + row.educationId + "'" + ')"><i class="fas fa-trash"></i></button>'
+                    return ' <button id="buttonDetail" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetailUser"><i class="fas fa-info-circle"></i></button> ' +
+                        ' <button id="buttonUpdate" type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button> '
+
 
                 },
                 'searchable': false,
@@ -56,38 +57,6 @@
         });
     }).draw();
 });
-
-function Insert() {
-    var obj = new Object();
-    obj.NIK = $("#nik").val();
-    obj.FirstName = $("#firstName").val();
-    obj.LastName = $("#lastName").val();
-    obj.Phone = $("#phone").val();
-    obj.BirthDate = $("#birthDate").val();
-    obj.Salary = $("#salary").val();
-    obj.Email = $("#email").val();
-    obj.Password = $("#password").val();
-    obj.Degree = $("#degree").val();
-    obj.GPA = $("#gpa").val();
-    obj.UniversityId = $("#universityId").val();
-    var passw = /^[A-Za-z]\w{8,}$/;
-
-    $.ajax({
-        type: "POST",
-        url: 'https://localhost:44320/API/Accounts/Register/',
-        data: JSON.stringify(obj),
-        contentType: "application/json; charset=utf-8",
-        datatype: "json"
-
-    }).done((result) => {
-        alert("Register Berhasil");
-        $('#tabledata').DataTable().ajax.reload();
-    }).fail((error) => {
-        alert("Register Gagal");
-    });
-
-}
-
 (function () {
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
@@ -104,69 +73,104 @@ function Insert() {
         })
 })()
 
-function Delete(nik, educationId) {
-    console.log(nik)
-    console.log(educationId)
+function AddNewUser() {
+    var user = new Object();
+    user.Id = $('#id').val();
+    user.FirstName = $('#firstName').val();
+    user.LastName = $('#lastName').val();
+    user.GenderId = $('#genderId').val();
+    user.BirthDate = $('#birthDate').val();
+    user.Address = $('#address').val();
+    user.Contact = $('#contact').val();
+    user.DepartmentId = $('#departmentId').val();
+    user.Email = $('#email').val();
+    user.Password = $('#password').val();
+    user.RoleId = $('#roleId').val();
     $.ajax({
-        url: "https://localhost:44320/API/Persons/" + nik + "/",
-        type: 'DELETE'
-
-    }).done((result) => {
-    }).fail((error) => {
-        alert("Delete Gagal");
-    })
-    $.ajax({
-        url: "https://localhost:44320/API/Educations/" + educationId + "/",
-        type: 'DELETE'
-
-    }).done((result) => {
-        alert("Delete Berhasil");
-        $('#tabledata').DataTable().ajax.reload();
-    }).fail((error) => {
-        alert("Delete Gagal");
-    })
-}
-
-function Edit() {
-    var obj = new Object();
-    obj.NIK = $("#nikEdit").val();
-    obj.FirstName = $("#firstNameEdit").val();
-    obj.LastName = $("#lastNameEdit").val();
-    obj.Phone = $("#phoneEdit").val();
-    obj.BirthDate = $("#birthDateEdit").val();
-    obj.Salary = $("#salaryEdit").val();
-    $.ajax({
-        type: "PUT",
-        url: 'https://localhost:44320/API/Persons/',
-        data: JSON.stringify(obj),
+        type: "POST",
+        url: 'https://localhost:44395/API/Users/Register',
+        data: JSON.stringify(user),
         contentType: "application/json; charset=utf-8",
         datatype: "json"
-
     }).done((result) => {
-        alert("Update Data Berhasil");
-        $('#tabledata').DataTable().ajax.reload();
+        $('#addNewUser').modal('hide');
+        $('#tabledataUser').DataTable().ajax.reload();
+        Swal.fire(
+            'Success',
+            'Item Has Been Added, Cek Your Email',
+            'success'
+        )
+
     }).fail((error) => {
-        alert("Update Data Gagal");
+        Swal.fire('Error', 'Something Went Wrong', 'error');
     });
 }
 
-function GetData(nik) {
-    $.ajax({
-        url: "https://localhost:44320/API/Accounts/Profile/" + nik + "/"
-    }).done((result) => {
-        console.log(result);
-        nik = `<label for="nik">NIK</label><input type="text" class="form-control" id="nikEdit" placeholder="Your NIK" value="${result[0].nik}" required>`
-        firstName = `<label for="firstName">First Name</label><input type="text" class="form-control" id="firstNameEdit" placeholder="Your NIK" value="${result[0].firstName}" required>`
-        lastName = `<label for="lastName">Last Name</label><input type="text" class="form-control" id="lastNameEdit" placeholder="Your NIK" value="${result[0].lastName}" required>`
-        phone = `<label for="phone">Phone</label><input type="text" class="form-control" id="phoneEdit" placeholder="Your NIK" value="${result[0].phone}" required>`
-        salary = `<label for="salary">Salary</label><input type="text" class="form-control" id="salaryEdit" placeholder="Your NIK" value="${result[0].salary}" required>`
+//detail
+$("#tabledataUser").on('click', '#buttonDetail', function () {
+    var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
+    console.log(data);
+    $("#titleModal").text(data.firstName + " " + data.lastName);
+    $('#modalDetailUser').find(".modal-body").html("<p>Id : " + data.id
+        + "</p> <p>First Name : " + data.firstName
+        + "</p> <p>Last Name  : " + data.lastName
+        + "</p> <p>Gender       : " + data.gender
+        + "</p> <p>Birth Date : " + data.birthDate
+        + "</p> <p>Address     : " + data.address
+        + "</p> <p>Contact     : " + data.contact
+        + "</p> <p>Email      : " + data.email
+        + "</p> <p>Department     : " + data.department
+        + "</p> <p>Role    : " + data.role + "</p>");
+});
 
-        $(".nik").html(nik);
-        $(".firstName").html(firstName);
-        $(".lastName").html(lastName);
-        $(".phone").html(phone);
-        $(".salary").html(salary);
-    }).fail((error) => {
-        console.log(error);
-    });
-}
+//UPDATE
+$("#tabledataUser").on('click', '#buttonUpdate', function () {
+    var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
+    console.log(data);
+    $('#idE').val(data.id);
+    $('#firstNameE').val(data.firstName);
+    $('#lastNameE').val(data.lastName);
+    $('#genderIdE').val(data.genderId);
+    $('#birthDateE').val(data.birthDate.slice(0,10));
+    $('#addressE').val(data.address);
+    $('#contactE').val(data.contact);
+    $('#departmentIdE').val(data.departmentId);
+    $('#emailE').val(data.email);
+    $('#roleIdE').val(data.roleId);
+
+    $("#modalUpdateUser").modal("show");
+    $("#modalUpdateUser").on('click', '#editUser', function () {
+
+        var edit = new Object();
+        edit.id = $('#idE').val();
+        edit.firstName = $('#firstNameE').val();
+        edit.lastName = $('#lastNameE').val();
+        edit.genderId = $('#genderIdE').slice(0,10).val();
+        edit.birthDate = $('#birthDateE').val();
+        edit.address = $('#addressE').val();
+        edit.contact = $('#contactE').val();
+        edit.email = $('#emailE').val();
+        edit.departmentId = $('#departmentIdE').val();
+        edit.isDeleted = 0;
+        console.log(edit);
+        console.log(edit.id);
+        $.ajax({
+            url: 'https://localhost:44395/API/Users',
+            type: "PUT",
+            data: JSON.stringify(edit),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json"
+        }).done((result) => {
+            Swal.fire(
+                'Success',
+                'Item Has Been Added, Cek Your Email',
+                'success'
+            );
+            $('#tabledataUser').DataTable().ajax.reload();
+
+        }).fail((error) => {
+            Swal.fire('Error', 'Something Went Wrong', 'error');
+        });
+    })
+    
+})
