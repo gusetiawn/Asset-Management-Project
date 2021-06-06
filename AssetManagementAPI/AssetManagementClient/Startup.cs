@@ -1,3 +1,5 @@
+using AssetManagementClient.Base;
+using AssetManagementClient.Repository.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace AssetManagementClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<Address>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
