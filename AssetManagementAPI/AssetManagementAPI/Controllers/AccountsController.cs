@@ -132,17 +132,21 @@ namespace AssetManagementAPI.Controllers
                            join a in myContext.Accounts on u.Id equals a.Id
                            join ra in myContext.RoleAccounts on a.Id equals ra.AccountId
                            join r in myContext.Roles on ra.RoleId equals r.Id
+                           where u.IsDeleted == 0
                            select new
                            {
                                Id = u.Id,
                                FirstName = u.FirstName,
                                LastName = u.LastName,
+                               GenderId = u.GenderId,
                                Gender = g.Name,
                                BirthDate = u.BirthDate,
                                Address = u.Address,
                                Contact = u.Contact,
                                Email = u.Email,
+                               DepartmentId = u.DepartmentId,
                                Department = d.Name,
+                               RoleId = ra.RoleId,
                                Role = r.Name
                            };
             return Ok(userData);

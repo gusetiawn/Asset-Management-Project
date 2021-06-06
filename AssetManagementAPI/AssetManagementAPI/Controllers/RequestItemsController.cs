@@ -72,7 +72,7 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        
+
 
         [HttpPut("Approve")]
         public ActionResult ApproveRequest(RequestItem requestItem)
@@ -108,6 +108,43 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+
+        //[HttpPut("Approve")]
+        //public ActionResult ApproveRequest(int Id)
+        //{
+        //    try
+        //    {
+        //        var naon = myContext.RequestItems.Find(Id);
+        //        naon.StatusId = 2;
+        //        /*var request = new RequestItem
+        //        {
+        //            Id = requestItem.Id,
+        //            AccountId = requestItem.AccountId,
+        //            ItemId = requestItem.ItemId,
+        //            StartDate = requestItem.StartDate,
+        //            EndDate = requestItem.EndDate,
+        //            Quantity = requestItem.Quantity,
+        //            Notes = requestItem.Notes,
+        //            StatusId = 2 //Already Approved
+        //        };*/
+        //        myContext.Entry(naon).State = EntityState.Modified;
+        //        myContext.SaveChanges();
+
+        //        var user = myContext.Users.Where(u => u.Id == naon.AccountId).FirstOrDefault();
+        //        var subject = "Request for An Asset";
+        //        var body = $"Hai {user.FirstName},\nRequest anda telah disetujui oleh Manager, Request Anda sedang kami Proses. Silahkan anda datang ke ruangan Admin untuk tahap selanjutnya.\n Terima kasih dan Selamat Bekerja.";
+        //        sendMail.SendEmail(user.Email, body, subject);
+
+        //        return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Setujui Manager" });
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Proses Persetujuan Gagal" });
+        //    }
+
+        //}
         [HttpPut("Reject")]
         public ActionResult RejectRequest(RequestItem requestItem)
         {
@@ -221,8 +258,9 @@ namespace AssetManagementAPI.Controllers
                            {
                                Id = R.Id,
                                Name = U.FirstName + " " + U.LastName,
-                               AccountId = R.AccountId,
                                Item = I.Name,
+                               ItemId = R.ItemId,
+                               AccountId = R.AccountId,
                                StartDate = R.StartDate,
                                EndDate = R.EndDate,
                                Notes = R.Notes,
@@ -263,6 +301,57 @@ namespace AssetManagementAPI.Controllers
             }
         }
 
+        [HttpGet("UserRequestTake")]
+        public ActionResult UserRequestTake()
+        {
+            var userRequest = from A in myContext.Accounts
+                              join R in myContext.RequestItems on A.Id equals R.AccountId
+                              join I in myContext.Items on R.ItemId equals I.Id
+                              join C in myContext.Categories on I.CategoryId equals C.Id
+                              join S in myContext.Statuses on R.StatusId equals S.Id
+                              where R.StatusId == 2
+                              select new
+                              {
+                                  Id = R.Id,
+                                  Item = I.Name,
+                                  ItemId = R.ItemId,
+                                  AccountId = R.AccountId,
+                                  StartDate = R.StartDate,
+                                  EndDate = R.EndDate,
+                                  Notes = R.Notes,
+                                  Quantity = R.Quantity,
+                                  Status = S.Name,
+                                  Category = C.Name
+                              };
+            return Ok(userRequest);
+
+        }
+
+        [HttpGet("UserRequestReturn")]
+        public ActionResult UserRequestReturn()
+        {
+            var userRequest = from A in myContext.Accounts
+                              join R in myContext.RequestItems on A.Id equals R.AccountId
+                              join I in myContext.Items on R.ItemId equals I.Id
+                              join C in myContext.Categories on I.CategoryId equals C.Id
+                              join S in myContext.Statuses on R.StatusId equals S.Id
+                              where R.StatusId == 4
+                              select new
+                              {
+                                  Id = R.Id,
+                                  Item = I.Name,
+                                  ItemId = R.ItemId,
+                                  AccountId = R.AccountId,
+                                  StartDate = R.StartDate,
+                                  EndDate = R.EndDate,
+                                  Notes = R.Notes,
+                                  Quantity = R.Quantity,
+                                  Status = S.Name,
+                                  Category = C.Name
+                              };
+            return Ok(userRequest);
+
+        }
         [HttpGet("Id={id}")]
         public ActionResult GetRequestById(int id)
         {
@@ -287,4 +376,5 @@ namespace AssetManagementAPI.Controllers
 
         }
     }
+
 }
