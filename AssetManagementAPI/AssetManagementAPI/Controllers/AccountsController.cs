@@ -167,11 +167,13 @@ namespace AssetManagementAPI.Controllers
                                    FirstName = u.FirstName,
                                    LastName = u.LastName,
                                    Gender = g.Name,
+                                   GenderId = u.GenderId,
                                    BirthDate = u.BirthDate,
                                    Address = u.Address,
                                    Contact = u.Contact,
                                    Email = u.Email,
                                    Department = d.Name,
+                                   DepartmentId = u.DepartmentId,
                                    Role = r.Name
                                };
                 return Ok(profile);
