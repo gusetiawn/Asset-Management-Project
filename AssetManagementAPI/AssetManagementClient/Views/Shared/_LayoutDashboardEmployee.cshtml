@@ -14,6 +14,14 @@
     <link href="~/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="~/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.0.3/css/dataTables.dateTime.min.css" />
+    <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" />
+    <link rel="stylesheet" href="sweetalert2.min.css" />
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -194,8 +202,8 @@
                                             <a href="javascript:void(0)"
                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                 <span class="btn btn-danger text-white rounded-circle btn-circle"><img class="rounded-circle" src="~/img/undraw_profile_1.svg" alt=""></span>
-                                                    @*<i data-feather="airplay" class="text-white"></i>*@
-                                                    
+                                                @*<i data-feather="airplay" class="text-white"></i>*@
+
                                                 <div class="w-75 d-inline-block v-middle pl-2">
                                                     <h6 class="message-title mb-0 mt-1">Emily Fowler</h6>
                                                     <span class="font-12 text-nowrap d-block text-muted text-truncate">
@@ -243,9 +251,9 @@
                                                 </span>
                                                 <div class="w-75 d-inline-block v-middle pl-2">
                                                     <h6 class="message-title mb-0 mt-1">Pavan Kumar</h6> <span class="font-12 text-nowrap d-block text-muted text-truncate">
-                                                    Am I a good boy? The reason I ask is because someone
-                                                    told me that people say this to all dogs, even if they aren't good...
-                                                </span>
+                                                        Am I a good boy? The reason I ask is because someone
+                                                        told me that people say this to all dogs, even if they aren't good...
+                                                    </span>
                                                     <span class="font-12 text-nowrap d-block text-muted">10:02 AM</span>
                                                 </div>
                                             </a>
@@ -254,7 +262,7 @@
                                     <li>
                                         <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
                                             <strong>Read More Messages</strong>
-                                            
+
                                         </a>
                                     </li>
                                 </ul>
@@ -305,19 +313,19 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="https://localhost:44389/Settings/Profile/Employee">
                                     <i data-feather="user"
                                        class="svg-icon mr-2 ml-1"></i>
                                     My Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="https://localhost:44389/Settings/Employee">
                                     <i data-feather="settings"
                                        class="svg-icon mr-2 ml-1"></i>
                                     Account Setting
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="https://localhost:44389/Login">
                                     <i data-feather="power"
                                        class="svg-icon mr-2 ml-1"></i>
                                     Logout
@@ -343,34 +351,58 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link active" href="index.html" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home feather-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="https://localhost:44389/Dashboard/Employee"
+                               aria-expanded="false">
+                                <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
-
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="ticket-list.html"
-                               aria-expanded="false">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                                 <i data-feather="tag" class="feather-icon"></i><span class="hide-menu">
                                     Request Item
                                 </span>
                             </a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Menu/RequestItem/NewRequest" class="sidebar-link">
+                                        <i data-feather="file-plus" class="feather-icon"></i><span class="hide-menu">
+                                            New Request
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Menu/RequestItem/ListRequestItems" class="sidebar-link">
+                                        <i class="fas fa-list-ul"></i><span class="hide-menu">
+                                            List Request Items
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                            <a class="sidebar-link has-arrow" href="https://localhost:44389/Settings/Employee" aria-expanded="false">
                                 <i data-feather="settings" class="feather-icon"></i><span class="hide-menu">
-                                        Settings
-                                    </span>
+                                    Settings
+                                </span>
                             </a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link">
-                                <i data-feather="user" class="feather-icon"></i><span class="hide-menu"> 
-                                    Your Account 
-                                </span></a>
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Settings/Profile/Employee" class="sidebar-link" onclick="EditProfile()">
+                                        <i data-feather="user" class="feather-icon"></i><span class="hide-menu">
+                                            Your Account
+                                        </span>
+                                    </a>
                                 </li>
-                                <li class="sidebar-item"><a href="icon-simple-lineicon.html" class="sidebar-link">
-                                <i data-feather="lock" class="feather-icon"></i><span class="hide-menu"> 
-                                    Security </span></a>
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Settings/Security/Employee" class="sidebar-link">
+                                        <i data-feather="lock" class="feather-icon"></i><span class="hide-menu">
+                                            Security
+                                        </span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -405,27 +437,45 @@
         <!-- End footer -->
         <!-- ============================================================== -->
     </div>
-        <!-- All Jquery -->
-        <!-- ============================================================== -->
-        <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
-        <script src="~/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-        <script src="~/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- apps -->
-        <!-- apps -->
-        <script src="~/dist/js/app-style-switcher.js"></script>
-        <script src="~/dist/js/feather.min.js"></script>
-        <script src="~/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-        <script src="~/dist/js/sidebarmenu.js"></script>
-        <!--Custom JavaScript -->
-        <script src="~/dist/js/custom.min.js"></script>
-        <!--This page JavaScript -->
-        <script src="~/assets/extra-libs/c3/d3.min.js"></script>
-        <script src="~/assets/extra-libs/c3/c3.min.js"></script>
-        <script src="~/assets/libs/chartist/dist/chartist.min.js"></script>
-        <script src="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-        <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
-        @RenderSection("Scripts", required: false)
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
+    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- apps -->
+    <script src="~/dist/js/app-style-switcher.js"></script>
+    <script src="~/dist/js/feather.min.js"></script>
+    <script src="~/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="~/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <script src="~/AssetManagement/Employee/js/ListRequestItems.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Employee/js/RequestNewItem.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Employee/js/EditProfile.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Employee/js/ChangePass.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
