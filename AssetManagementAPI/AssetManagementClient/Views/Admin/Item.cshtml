@@ -5,6 +5,7 @@
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutDashboardAdmin.cshtml";
 }
+<!-- Halaman-->
 <div class="page-wrapper">
     <div class="p-3">
         <div class="page-breadcrumb">
@@ -26,8 +27,11 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:void(0)" class="btn bg-danger text-success" data-toggle="modal" data-target="#addNewItem">Add New Item</a>
+        <!-- Button Add Item -->
+        <!-- Data Table-->
         <div class="container-fluid mt-5">
+            <a href="javascript:void(0)" class="btn btn-outline-primary" data-toggle="modal" data-target="#addNewItem"><i class="fas fa-plus"></i></a>
+            <p></p>
             <table id="tabledataitem" class="table table-striped table-bordered dataTable" style="width:100%">
                 <thead class="thead-light">
                     <tr>
@@ -85,7 +89,7 @@
                             Wajib diisi!
                         </div>
                     </div>
-                    
+
                     <div>
                         <div class="form-group">
                             <label for="categoryId">Category</label>
@@ -116,60 +120,42 @@
     </div>
 </div>
 <!-- Modal Add Item -->
+
 <!-- Modal Edit -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModalItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
             </div>
             <div class="modal-body">
-                <form onsubmit="return false" name="formEdit" class="needs-validation" novalidate>
+                <form name="formEditItem" class="needs-validation" novalidate>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-4 nik">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Wajib diisi!
-                            </div>
+                    <div class="form-group" hidden>
+                        <label for="idE">Name Item</label>
+                        <input type="text" class="form-control" id="idE" required>
+                        <div class="valid-feedback">
+                            Looks good!
                         </div>
+                        <div class="invalid-feedback">
+                            Wajib diisi!
+                        </div>
+
                     </div>
+                    <div class="form-group">
+                        <label for="nameE">Name Item</label>
+                        <input type="text" class="form-control" id="nameE" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Wajib diisi!
+                        </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-4 firstName">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Wajib diisi!
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4 lastName">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Wajib diisi!
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6 phone">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Wajib diisi!
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group salary">
+                    <div class="form-group">
+                        <label for="quantityE">Quantity</label>
+                        <input type="text" class="form-control" id="quantityE" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -178,9 +164,25 @@
                         </div>
                     </div>
 
+                    <div>
+                        <div class="form-group">
+                            <label for="categoryIdE">Category</label>
+                            <select class="form-control" id="categoryIdE">
+                                <option selected>Choose...</option>
+                                <option value="1">Elektronik</option>
+                                <option value="2">Alat Tulis Kerja</option>
+                                <option value="3">Kendaraan</option>
+                                <option value="4">Gedung & Bangunan</option>
+                            </select>
+                        </div>
+                        <div class="invalid-feedback">
+                            Wajib dipilih!
+                        </div>
+                    </div>
+
 
                     <div class="col-12">
-                        <button class="btn btn-primary" onclick="AddNewItem()">Submit form</button>
+                        <button class="btn btn-primary" id="editUser">Submit form</button>
                     </div>
 
                 </form>
