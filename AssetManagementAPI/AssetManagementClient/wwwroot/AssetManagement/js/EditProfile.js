@@ -1,7 +1,6 @@
-﻿var Id = sessionStorage.getItem("id");
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $.ajax({
-        url: "https://localhost:44395/API/Accounts/Profile/" + Id
+        url: "https://localhost:44395/API/Accounts/Profile/E001"
     }).done((result) => {
         userId = `<label class="form-control-label" for="input-id">User Id</label>
                   <input id="input-userId" class="form-control form-control-alternative" placeholder="Your Id" value="${result[0].id}" type="text" readonly>`

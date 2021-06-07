@@ -47,14 +47,14 @@
 
                 <form class="login100-form validate-form">
                     <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                        <span class="label-input100">Username</span>
-                        <input class="input100" type="text" name="username" placeholder="Enter username">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="username" id="emailLogin" placeholder="Enter Email">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="pass" placeholder="Enter password">
+                        <input class="input100" type="password" name="pass" id="passwordLogin" placeholder="Enter password">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <a href="https://localhost:44389/Dashboard/Employee" class="login100-form-btn"> 
+                        <a href="#" class="login100-form-btn" onclick="Login()">
                             login
                         </a>
                     </div>
@@ -99,6 +99,7 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+    <script src="~/AssetManagement/Login.js" asp-append-version="true"></script>
 
 </body>
 </html>

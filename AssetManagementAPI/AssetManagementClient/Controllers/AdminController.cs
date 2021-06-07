@@ -12,8 +12,23 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
-        [Route("Menu/Admin/RequestItem")]
+        [Route("Menu/Admin/UserRegister")]
+        public IActionResult UserRegister()
+        {
+            return View();
+        }
+        [Route("Menu/Admin/RequestItem/RequestList")]
         public IActionResult RequestItem()
+        {
+            return View();
+        }
+        [Route("Menu/Admin/RequestItem/TakeAsset")]
+        public IActionResult TakeAsset()
+        {
+            return View();
+        }
+        [Route("Menu/Admin/RequestItem/ReturnAsset")]
+        public IActionResult ReturnAsset()
         {
             return View();
         }
@@ -22,8 +37,20 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
-        [Route("Menu/Admin/UserRegister")]
-        public IActionResult UserRegister()
+        [Route("Settings/Profile/Admin")]
+        public IActionResult YourAccount()
+        {
+            return View();
+        }
+
+        [Route("Settings/Security/Admin")]
+        public IActionResult Security()
+        {
+            return View();
+        }
+
+        [Route("Settings/Admin")]
+        public IActionResult Settings()
         {
             return View();
         }

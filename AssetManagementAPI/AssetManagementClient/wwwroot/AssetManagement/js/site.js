@@ -11,31 +11,21 @@
         },
         "columns": [
             { 'data': null },
-            //{ 'data': 'id' },
             { 'data': 'firstName' },
             { 'data': 'lastName' },
-            //{ 'data': 'gender' },
-            //{
-            //    'data': 'birthDate',
-            //    render: function (data, type, row) {
-            //        return data.slice(0, 10)
-            //    }
-            //},
-            //{ 'data': 'address' },
             {
                 'data': 'contact',
                 render: function (data, type, row) {
                     return "+62" + data.slice(1)
                 }
             },
-            //{ 'data': 'email' },
             { 'data': 'department' },
             { 'data': 'role' },
             {
                 'data': null,
                 render: function (data, type, row, meta) {
                     return ' <button id="buttonDetail" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetailUser"><i class="fas fa-info-circle"></i></button> ' +
-                        ' <button id="buttonUpdate" type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button> '
+                        ' <button id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-user-edit"></i></button> '
 
 
                 },
@@ -73,7 +63,7 @@
         })
 })()
 
-function AddNewUser() {
+function AddNewUser(inputtxt,inputEmail) {
     var user = new Object();
     user.Id = $('#id').val();
     user.FirstName = $('#firstName').val();
@@ -86,24 +76,39 @@ function AddNewUser() {
     user.Email = $('#email').val();
     user.Password = $('#password').val();
     user.RoleId = $('#roleId').val();
-    $.ajax({
-        type: "POST",
-        url: 'https://localhost:44395/API/Users/Register',
-        data: JSON.stringify(user),
-        contentType: "application/json; charset=utf-8",
-        datatype: "json"
-    }).done((result) => {
-        $('#addNewUser').modal('hide');
-        $('#tabledataUser').DataTable().ajax.reload();
-        Swal.fire(
-            'Success',
-            'Item Has Been Added, Cek Your Email',
-            'success'
-        )
+    var email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var passw = /^[A-Za-z\d]\w{8,}$/;
+    if (inputEmail.value.match(email)) {
+        if (inputtxt.value.match(passw)) {
+            if (user.Id == "" || user.FirstName == "" || user.LastName == "" || user.GenderId == "" || user.BirthDate == "" || user.Address == "" || user.Contact == "" || user.DepartmentId == "" || user.Email == "" || user.Password == "" || user.RoleId == "") {
+                return false;
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: 'https://localhost:44395/API/Users/Register',
+                    data: JSON.stringify(user),
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "json"
+                }).done((result) => {
+                    Swal.fire(
+                        'Success',
+                        'Request Has been Sent, Cek Your Email',
+                        'success'
+                    );
+                    $('#addNewUser').modal('hide');
+                    $('#tabledataUser').DataTable().ajax.reload();
 
-    }).fail((error) => {
-        Swal.fire('Error', 'Something Went Wrong', 'error');
-    });
+                }).fail((error) => {
+                    Swal.fire('Error', 'Something Went Wrong', 'error');
+                });
+
+            }
+            //alert('Correct, try another...')
+            //return true;
+        }
+    }
+    
 }
 
 //detail

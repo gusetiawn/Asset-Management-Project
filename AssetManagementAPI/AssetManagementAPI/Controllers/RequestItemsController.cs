@@ -73,7 +73,6 @@ namespace AssetManagementAPI.Controllers
 
         }
 
-
         [HttpPut("Approve")]
         public ActionResult ApproveRequest(RequestItem requestItem)
         {
@@ -109,42 +108,6 @@ namespace AssetManagementAPI.Controllers
 
         }
 
-        //[HttpPut("Approve")]
-        //public ActionResult ApproveRequest(int Id)
-        //{
-        //    try
-        //    {
-        //        var naon = myContext.RequestItems.Find(Id);
-        //        naon.StatusId = 2;
-        //        /*var request = new RequestItem
-        //        {
-        //            Id = requestItem.Id,
-        //            AccountId = requestItem.AccountId,
-        //            ItemId = requestItem.ItemId,
-        //            StartDate = requestItem.StartDate,
-        //            EndDate = requestItem.EndDate,
-        //            Quantity = requestItem.Quantity,
-        //            Notes = requestItem.Notes,
-        //            StatusId = 2 //Already Approved
-        //        };*/
-        //        myContext.Entry(naon).State = EntityState.Modified;
-        //        myContext.SaveChanges();
-
-        //        var user = myContext.Users.Where(u => u.Id == naon.AccountId).FirstOrDefault();
-        //        var subject = "Request for An Asset";
-        //        var body = $"Hai {user.FirstName},\nRequest anda telah disetujui oleh Manager, Request Anda sedang kami Proses. Silahkan anda datang ke ruangan Admin untuk tahap selanjutnya.\n Terima kasih dan Selamat Bekerja.";
-        //        sendMail.SendEmail(user.Email, body, subject);
-
-        //        return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Setujui Manager" });
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Proses Persetujuan Gagal" });
-        //    }
-
-        //}
         [HttpPut("Reject")]
         public ActionResult RejectRequest(RequestItem requestItem)
         {
@@ -185,6 +148,7 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
+
         [HttpPut("TakeAnAsset")]
         public ActionResult TakeAnAsset(RequestItem requestItem)
         {

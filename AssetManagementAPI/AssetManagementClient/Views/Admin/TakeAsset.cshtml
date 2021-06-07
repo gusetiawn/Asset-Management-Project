@@ -1,0 +1,167 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutDashboardAdmin.cshtml";
+}
+<div class="page-wrapper">
+    <div class="p-3">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Management Asset</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="#">Menu</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="#">Item</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mt-5">
+            <p></p>
+            <table id="tabledatauserrequesttaken" class="table table-striped table-bordered dataTable" style="width:100%">
+                <thead class="thead-light">
+                    <tr>
+                        <th>No</th>
+                        <th>Item</th>
+                        <th>User Id</th>
+                        <th>Start Date</th>
+                        <th>End date</th>
+                        <th>Notes</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Item</th>
+                        <th>User Id</th>
+                        <th>Start Date</th>
+                        <th>End date</th>
+                        <th>Notes</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Take An Asset-->
+<div class="modal fade" id="takeAnAsset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAddNewRequest">Add New An Asset Detail</h5>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false" name="formAddNewRequest" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="accountIdE">AccountId</label>
+                            <input type="text" class="form-control" id="accountIdE" placeholder="Account Id" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="itemIdE">Item Id</label>
+                            <input type="number" class="form-control" id="itemIdE" placeholder="Item Id" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="startDateE">Start Date</label>
+                            <input type="date" class="form-control" id="startDateE" placeholder="Start Date" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="endDateE">End Date</label>
+                            <input type="date" class="form-control" id="endDateE" placeholder="End Date" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="quantityE">Quantity</label>
+                            <input type="number" class="form-control" id="quantityE" placeholder="Quantity" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="notesE">Notes</label>
+                            <input type="text" class="form-control" id="notesE" placeholder="Notes" required disabled>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Wajib diisi!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" hidden>
+                        <label for="idE">Id</label>
+                        <input type="number" class="form-control" id="idE" required disabled>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Wajib diisi!
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="taken">Taken</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Take An Asset -->

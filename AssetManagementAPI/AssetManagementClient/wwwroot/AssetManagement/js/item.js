@@ -15,7 +15,7 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return '<button id="buttonUpdate" type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button> '
+                    return '<a href="javascript:void(0)" id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-edit"></i></a>'
 
                 },
                 'searchable': false,

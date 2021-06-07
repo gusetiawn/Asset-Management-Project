@@ -27,22 +27,15 @@
             </div>
         </div>
         <div class="container-fluid mt-5">
-
             <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addNewUser"><i class="fas fa-user-plus"></i></a>
             <p></p>
-
             <table id="tabledataUser" class="table table-striped table-bordered dataTable" style="width:100%">
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
-                        @*<th>Id</th>*@
                         <th>First Name</th>
                         <th>Last Name</th>
-                        @*<th>gender</th>
-                            <th>birtdate</th>*@
-                        @*<th>Address</th>*@
                         <th>Contact</th>
-                        @*<th>Email</th>*@
                         <th>Department</th>
                         <th>Role</th>
                         <th>Action</th>
@@ -51,14 +44,9 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        @*<th>Id</th>*@
                         <th>First Name</th>
                         <th>Last Name</th>
-                        @*<th>Gender</th>
-                            <th>BirtDate</th>*@
-                        @*<th>Address</th>*@
                         <th>Contact</th>
-                        @*<th>Email</th>*@
                         <th>Department</th>
                         <th>Role</th>
                         <th>Action</th>
@@ -78,7 +66,7 @@
                 <h5 class="modal-title" id="modalAddNewUser">Add New User Detail</h5>
             </div>
             <div class="modal-body">
-                <form id="formAddNewUser" name="formAddNewUser" class="needs-validation" novalidate>
+                <form id="formAddNewUser" name="formAdd" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id">Id</label>
@@ -166,7 +154,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Mail" required>
+                            <input name="emailReg" type="email" class="form-control" id="email" placeholder="Your Mail" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -177,12 +165,12 @@
 
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
-                            <input name="passReg" type="password" class="form-control" id="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Use Strong Password!" required>
+                            <input name="passReg" type="password" class="form-control" id="password" pattern="(?=.*[A-Za-z\d]).{8,}" placeholder="Use Strong Password!" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi, Minimum 8 Character!
+                                Minimum 8 Character!
                             </div>
                         </div>
                     </div>
@@ -223,7 +211,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-primary" onclick="AddNewUser()">Submit</button>
+                        <a href="#" class="btn btn-primary" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
