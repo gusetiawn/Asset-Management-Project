@@ -324,7 +324,6 @@ namespace AssetManagementAPI.Controllers
                                   Category = C.Name
                               };
             return Ok(userRequest);
-
         }
 
         [HttpGet("UserRequestReturn")]

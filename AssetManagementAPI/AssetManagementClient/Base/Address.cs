@@ -7,6 +7,6 @@ namespace AssetManagementClient.Base
 {
     public class Address
     {
-        public string link = "https://localhost:44395/API/";
+        public string link = "https://localhost:44395/api/";
     }
 }

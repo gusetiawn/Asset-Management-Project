@@ -3,45 +3,248 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AssetManagementClient</title>
+    <title>@ViewData["Title"] - Asset Management System</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- lib CSS Files -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/lib/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/lib/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/lib/venobox/venobox.css" rel="stylesheet">
+    <link href="~/lib/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/main/main.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AssetManagementClient</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo mr-auto"><a href="https://localhost:44389/">Asset Management System</a></h1>
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+            </nav><!-- .nav-menu -->
+
+            <a asp-controller="Auth" asp-action="Login" class="get-started-btn scrollto">Login</a>
+
+        </div>
+    </header>
+    <!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                     data-aos="fade-up" data-aos-delay="200">
+                    <h1>Better Solutions For Request An Asset</h1>
+                    <div class="d-lg-flex">
+                        <a asp-controller="Auth" asp-action="Login" class="btn-get-started scrollto">Get Started</a>
+                        @*<a href="https://www.youtube.com/watch?v=ZG__w1ppRGI" class="venobox btn-watch-video" data-vbtype="video" target="_blank"
+                           data-autoplay="true"> Watch Demo <i class="icofont-play-alt-2"></i></a>*@
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="~/img/Vector-Smart-Object_Convert.png" class="img-fluid animated" alt="">
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - AssetManagementClient - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </section>
+    <!-- End Hero -->
+    <main id="main">
+
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>About Us</h2>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <p>
+                            We Provide a system for an employee to request office asset by a flexible systems that makes all employees effectively for request an asset and reduce time with workforce productivity.
+                        </p>
+                        <p>
+                            Features available with the Asset Management System:
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Dashboard</li>
+                            <li><i class="ri-check-double-line"></i> User's Profile</li>
+                            <li><i class="ri-check-double-line"></i> Request Item</li>
+                            <li><i class="ri-check-double-line"></i> Request History</li>
+                            <li><i class="ri-check-double-line"></i> Request Approval</li>
+                            <li><i class="ri-check-double-line"></i> Change Request Status</li>
+                            <li><i class="ri-check-double-line"></i> Add New Item</li>
+                            <li><i class="ri-check-double-line"></i> Register New User</li>
+                            <li><i class="ri-check-double-line"></i> Edit Profile</li>
+                            <li><i class="ri-check-double-line"></i> Change Password</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <p style="font-weight:bold">
+                            What Asset Management System can do?
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Profile page to see detailed information about yourself and edit your profile.</li>
+                            <li><i class="ri-check-double-line"></i> Access the dashboard to view leave data in a beautiful form to help you make better business decisions.</li>
+                            <li><i class="ri-check-double-line"></i> Your people can access their portal for leave request by leave type.</li>
+                            <li><i class="ri-check-double-line"></i> Helps you see the status of recent requests and provides a history of leave requests.</li>
+                            <li><i class="ri-check-double-line"></i> The leave quota can be reset every year by the admin automatically.</li>
+                            <li><i class="ri-check-double-line"></i> Provide notes for refusal of leave requests to avoid misunderstandings.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End About Us Section -->
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Team</h2>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="pic"><img src="~/img/team/Asep Saputra.png" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Agus Setiawan</h4>
+                                <span>Junior Application Developer</span>
+                                <p>PT. Mitra Integrasi Informatika</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pic"><img src="~/img/Marie.jpeg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Mar'ie Muhammad</h4>
+                                <span>Junior Application Developer</span>
+                                <p>PT. Mitra Integrasi Informatika</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href="https://www.instagram.com/ibnuua_/" target="_blank"><i class="ri-instagram-fill"></i></a>
+                                    <a href="https://www.linkedin.com/in/ibnu-arseno-989151171/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact" style="padding: 40px 0;">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contact</h2>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-5 d-flex align-items-stretch">
+                        <div class="info">
+                            <div class="address">
+                                <i class="icofont-google-map"></i>
+                                <h4>Location:</h4>
+                                <p>APL Tower Lantai 37 Jl. Letjen S. Parman Kav. 28 Jakarta 11470</p>
+                            </div>
+
+                            <div class="email">
+                                <i class="icofont-envelope"></i>
+                                <h4>Email:</h4>
+                                <p>contact@mii.co.id</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="icofont-phone"></i>
+                                <h4>Call:</h4>
+                                <p>+62 21 29345 777 / Fax: +62 21 29345 700</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6585499598395!2d106.78967721430972!3d-6.176443862241694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f6f57e3ddf7f%3A0xe62a21d1026c1635!2sPT.%20Mitra%20Integrasi%20Informatika!5e0!3m2!1sid!2sid!4v1618227667469!5m2!1sid!2sid"
+                                frameborder="0" style="border:0; width: 100%; height: 335px;" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main>
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                &copy; Copyright <strong><span>PT. Mitra Integrasi Informatika</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Developed by <a href="https://mestitahu.com/">Kuproy!</a>
+            </div>
         </div>
     </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+    <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    <!-- lib JS Files -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/lib/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/lib/venobox/venobox.min.js"></script>
+    <script src="~/lib/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/lib/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/main/main.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

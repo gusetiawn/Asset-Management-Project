@@ -1258,6 +1258,24 @@
     <None Include="wwwroot\img\undraw_profile_2.svg" />
     <None Include="wwwroot\img\undraw_profile_3.svg" />
     <None Include="wwwroot\img\undraw_rocket.svg" />
+    <None Include="wwwroot\lib\aos\aos.js" />
+    <None Include="wwwroot\lib\boxicons\fonts\boxicons.svg" />
+    <None Include="wwwroot\lib\boxicons\fonts\boxicons.woff2" />
+    <None Include="wwwroot\lib\icofont\fonts\icofont.woff2" />
+    <None Include="wwwroot\lib\isotope-layout\isotope.pkgd.js" />
+    <None Include="wwwroot\lib\isotope-layout\isotope.pkgd.min.js" />
+    <None Include="wwwroot\lib\jquery.easing\jquery.easing.min.js" />
+    <None Include="wwwroot\lib\owl.carousel\LICENSE" />
+    <None Include="wwwroot\lib\owl.carousel\owl.carousel.js" />
+    <None Include="wwwroot\lib\owl.carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\lib\owl.carousel\README.md" />
+    <None Include="wwwroot\lib\remixicon\remixicon.less" />
+    <None Include="wwwroot\lib\remixicon\remixicon.svg" />
+    <None Include="wwwroot\lib\remixicon\remixicon.symbol.svg" />
+    <None Include="wwwroot\lib\remixicon\remixicon.woff2" />
+    <None Include="wwwroot\lib\venobox\venobox.js" />
+    <None Include="wwwroot\lib\venobox\venobox.min.js" />
+    <None Include="wwwroot\lib\waypoints\jquery.waypoints.min.js" />
   </ItemGroup>
 
   <ItemGroup>
