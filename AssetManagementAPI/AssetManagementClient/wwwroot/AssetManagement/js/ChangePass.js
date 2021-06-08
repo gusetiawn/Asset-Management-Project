@@ -1,6 +1,6 @@
 ﻿function ChangePassword() {
     $.ajax({
-        url: "https://localhost:44395/API/Accounts/Profile/E001"
+        url: "https://localhost:44395/API/Accounts/Profile/123452"
     }).done((result) => {
         var pass = new Object();
         pass.email = `${result[0].email}`

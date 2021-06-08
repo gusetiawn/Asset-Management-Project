@@ -40,30 +40,39 @@ namespace AssetManagementAPI.Controllers
         {
             try
             {
-                var request = new RequestItem
+                var checkItem = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
+                if (requestItem.Quantity > checkItem.Quantity)
                 {
-                    AccountId = requestItem.AccountId,
-                    ItemId = requestItem.ItemId,
-                    StartDate = requestItem.StartDate,
-                    EndDate = requestItem.EndDate,
-                    Quantity = requestItem.Quantity,
-                    Notes = requestItem.Notes,
-                    StatusId = 1 //Waiting for Approval"
-                };
-                myContext.RequestItems.Add(request);
-                myContext.SaveChanges();
+                    return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Request Item Gagal" });
+                }
+                else
+                {
+                    var request = new RequestItem
+                    {
+                        AccountId = requestItem.AccountId,
+                        ItemId = requestItem.ItemId,
+                        StartDate = requestItem.StartDate,
+                        EndDate = requestItem.EndDate,
+                        Quantity = requestItem.Quantity,
+                        Notes = requestItem.Notes,
+                        StatusId = 1 //Waiting for Approval"
+                    };
+                    myContext.RequestItems.Add(request);
+                    myContext.SaveChanges();
 
-                var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
-                data.Quantity -= requestItem.Quantity;
-                myContext.Entry(data).State = EntityState.Modified;
-                myContext.SaveChanges();
+                    var data = myContext.Items.Include(a => a.RequestItems).Where(e => e.Id == request.ItemId).FirstOrDefault();
+                    data.Quantity -= requestItem.Quantity;
+                    myContext.Entry(data).State = EntityState.Modified;
+                    myContext.SaveChanges();
 
-                var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Request for An Asset";
-                var body = $"Hai {user.FirstName},\nRequest anda telah kami terima, Request Anda akan kami Proses Setelah mendapatkan Persetujuan dari Manager. Kami akan informasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
-                sendMail.SendEmail(user.Email, body, subject);
+                    var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                    var subject = "Request for An Asset";
+                    var body = $"Hai {user.FirstName},\nRequest Anda telah kami terima. Request Anda akan kami proses setelah mendapatkan persetujuan dari Manager. Kami akan menginformasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
+                    sendMail.SendEmail(user.Email, body, subject);
 
-                return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
+                    return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
+                    
+                }
 
             }
             catch (Exception)

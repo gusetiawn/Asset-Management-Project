@@ -11,8 +11,10 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicons -->
+    <!--<link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">-->
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--<link rel="icon" type="image/png" href="images/icons/favicon.ico" />-->
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -46,9 +48,9 @@
                 </div>
 
                 <form class="login100-form validate-form">
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
                         <span class="label-input100">Email</span>
-                        <input class="input100" type="text" name="username" id="emailLogin" placeholder="Enter Email">
+                        <input class="input100" type="text" name="email" id="emailLogin" placeholder="Enter Email">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -67,7 +69,7 @@
                         </div>
 
                         <div>
-                            <a href="#" class="txt1">
+                            <a asp-controller="Auth" asp-action="ForgotPassword" class="txt1">
                                 Forgot Password?
                             </a>
                         </div>

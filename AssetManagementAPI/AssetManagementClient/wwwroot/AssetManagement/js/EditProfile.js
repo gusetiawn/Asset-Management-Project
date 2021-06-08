@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: "https://localhost:44395/API/Accounts/Profile/E001"
+        url: "https://localhost:44395/API/Accounts/Profile/123452"
     }).done((result) => {
         userId = `<label class="form-control-label" for="input-id">User Id</label>
                   <input id="input-userId" class="form-control form-control-alternative" placeholder="Your Id" value="${result[0].id}" type="text" readonly>`
@@ -36,7 +36,7 @@
 
 function EditProfile() {
     $.ajax({
-        url: "https://localhost:44395/API/Accounts/Profile/E001"
+        url: "https://localhost:44395/API/Accounts/Profile/123452"
     }).done((result) => {
         fname = `<label class="form-control-label" for="input-first-name">First name</label>
              <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="${result[0].firstName}">`
@@ -102,7 +102,7 @@ function SubmitEdit() {
             'success'
         );
         $.ajax({
-            url: "https://localhost:44395/API/Accounts/Profile/E001"
+            url: "https://localhost:44395/API/Accounts/Profile/123452"
         }).done((result) => {
             fname = `<label class="form-control-label" for="input-first-name">First name</label>
              <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="${result[0].firstName}" readonly>`

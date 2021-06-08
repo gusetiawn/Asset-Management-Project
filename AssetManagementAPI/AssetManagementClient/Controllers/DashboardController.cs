@@ -12,7 +12,7 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
-
+ 
         [Route("Dashboard/Employee")]
         public IActionResult Employee()
         {

@@ -1310,4 +1310,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handler\" />
+  </ItemGroup>
+
 </Project>

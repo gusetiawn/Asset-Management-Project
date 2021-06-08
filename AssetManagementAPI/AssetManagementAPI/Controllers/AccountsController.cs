@@ -76,7 +76,7 @@ namespace AssetManagementAPI.Controllers
 
 
         }
-        [Authorize]
+        //[Authorize]
         [HttpPut("ChangePassword")]
         public ActionResult ChangePassword(ChangePasswordVM changePasswordVM)
         {
@@ -99,27 +99,29 @@ namespace AssetManagementAPI.Controllers
             }
 
         }
-        [Authorize]
+        //[Authorize]
         [HttpPost("ForgotPassword")]
         public ActionResult ForgotPassword(ForgotPasswordVM forgotPasswordVM)
         {
             var resetPass = Guid.NewGuid().ToString();
-            var check = myContext.Users.Include(u => u.Account).Where(user => user.Email == forgotPasswordVM.Email).FirstOrDefault();
-            Account account = myContext.Accounts.Where(accountRepository => accountRepository.Id == check.Id).FirstOrDefault();
-            if (check != null)
+            //var check = myContext.Users.Include(u => u.Account).Where(user => user.Email == forgotPasswordVM.Email).FirstOrDefault();
+            //Account account = myContext.Accounts.Where(accountRepository => accountRepository.Id == check.Id).FirstOrDefault();
+            User user = myContext.Users.Where(user => user.Email == forgotPasswordVM.Email).FirstOrDefault();
+            if (user != null)
             {
+                Account account = myContext.Accounts.Find(user.Id);
                 account.Password = Hashing.HashPassword(resetPass);
                 myContext.Entry(account).State = EntityState.Modified;
-                var result = myContext.SaveChanges();
+                myContext.SaveChanges();
 
                 var subject = "Request Reset Password";
-                var body = $"Hai {check.FirstName},\nAnda baru saja melakukan  request lupa password, Gunakan password berikut untuk melakukan login, dan segera lakukan perubahan password.\nPassword Baru : {resetPass}\n Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password kembali pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
+                var body = $"Hai {user.FirstName},\nAnda baru saja melakukan  request lupa password, Gunakan password berikut untuk melakukan login, dan segera lakukan perubahan password.\nPassword Baru : {resetPass}\n Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password kembali pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
                 sendMail.SendEmail(forgotPasswordVM.Email, body, subject);
-                return StatusCode(result, new { Status = "200", message = "Request Password baru anda berhasil, Silahkan Cek Email Anda" });
+                return StatusCode(200, new { Status = "200", message = "Request Password baru anda berhasil, Silahkan Cek Email Anda" });
             }
             else
             {
-                return StatusCode(404, new { Status = "404", message = "Email Tersebut Tidak Terdaftar" });
+                return StatusCode(404, new { Status = "404", message = "Email Not Found" });
             }
 
         }

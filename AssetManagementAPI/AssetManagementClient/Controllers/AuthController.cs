@@ -19,6 +19,19 @@ namespace AssetManagementClient.Controllers
         {
             return View();
         }
+
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [Route("ForgotPassword")]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
         [HttpPost]
         public HttpStatusCode Register(RegisterVM registerVM)
         {
