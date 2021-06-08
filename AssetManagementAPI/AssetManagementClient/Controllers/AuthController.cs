@@ -60,15 +60,16 @@ namespace AssetManagementClient.Controllers
             
             var token = result.Content.ReadAsStringAsync().Result;
             HttpContext.Session.SetString("token", token);
-            
-
 
             if (result.IsSuccessStatusCode)
             {
                 var jwtReader = new JwtSecurityTokenHandler();
                 var jwt = jwtReader.ReadJwtToken(token);
                 var id = jwt.Claims.First(c => c.Type == "Id").Value;
+                //var name = jwt.Claims.First(c => c.Type == "FirstName").Value;
                 HttpContext.Session.SetString("id", id);
+                ViewData["id"] = HttpContext.Session.GetString("id");
+                //HttpContext.Session.SetString("firstName", name);
                 var role = jwt.Claims.First(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value;
                 if (role == "Manager")
                 {
@@ -90,7 +91,6 @@ namespace AssetManagementClient.Controllers
             else
             {
                 return Url.Action("Error", "Home");
-                //return BadRequest(new { result });
             }
         }
     }

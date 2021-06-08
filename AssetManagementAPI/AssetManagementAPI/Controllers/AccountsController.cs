@@ -48,7 +48,6 @@ namespace AssetManagementAPI.Controllers
                     var claims = new List<Claim> {
                     new Claim("Email", user.Email),
                     new Claim("Name", user.FirstName),
-                    new Claim("Name", user.LastName),
                     new Claim("Id", user.Id)
                     };
                     foreach (var item in roles)

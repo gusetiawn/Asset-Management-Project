@@ -49,6 +49,7 @@
     }).draw();
 });
 
+// Ini Confirm Picked Up
 $("#tabledatauserrequesttaken").on('click', '#buttonTakeAnAsset', function () {
     var data = $("#tabledatauserrequesttaken").DataTable().row($(this).parents('tr')).data();
     console.log(data);
@@ -82,7 +83,7 @@ $("#tabledatauserrequesttaken").on('click', '#buttonTakeAnAsset', function () {
         }).done((result) => {
             Swal.fire(
                 'Success',
-                'Item Has Been Added, Cek Your Email',
+                'Item Already Picked Up',
                 'success'
             );
             $('#tabledatauserrequesttaken').DataTable().ajax.reload();

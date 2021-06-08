@@ -2,11 +2,15 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutDashboardEmployee.cshtml";
+    var id = ViewData["token"];
+    var id2 = ViewData["id"];
 }
+
+
 <div class="page-wrapper">
-    @*<div class="p-3">*@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-7 align-self-center">
@@ -37,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -69,5 +72,4 @@
             </div>
         </div>
     </div>
-    @*</div>*@
 </div>

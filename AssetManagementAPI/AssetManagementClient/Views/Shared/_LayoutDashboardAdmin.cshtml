@@ -430,7 +430,7 @@
                             </ul>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="https://localhost:44389/Login"
+                            <a class="sidebar-link sidebar-link" onclick="logout()"
                                aria-expanded="false">
                                 <i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span>
                             </a>
@@ -505,6 +505,13 @@
     <script src="~/AssetManagement/js/RequestUserTaken.js" asp-append-version="true"></script>
     <script src="~/AssetManagement/js/ChangePass.js" asp-append-version="true"></script>
     <script src="~/AssetManagement/js/EditProfile.js" asp-append-version="true"></script>
+    <script>
+        function logout() {
+            console.log('abc')
+            localStorage.clear()
+            window.location.replace('https://localhost:44389/Login')
+        }
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

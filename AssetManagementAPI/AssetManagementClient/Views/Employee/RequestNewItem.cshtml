@@ -4,6 +4,8 @@
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutDashboardEmployee.cshtml";
+    var token = ViewData["token"];
+    var id = ViewData["id"];
 }
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
@@ -60,7 +62,7 @@
                             <div class="col-md-12">
                                 <div class="form-group focused">
                                     <label for="input-userId" class="form-control-label">User Id</label>
-                                    <input type="text" id="input-userId" class="form-control form-control-alternative" placeholder="Your Id"/>
+                                    <input type="text" id="input-userId" class="form-control form-control-alternative" value="@id"/>
                                 </div>
                             </div>
                         </div>

@@ -25,8 +25,7 @@
                 'data': null,
                 render: function (data, type, row, meta) {
                     return ' <button id="buttonDetail" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetailUser"><i class="fas fa-info-circle"></i></button> ' +
-                        ' <button id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-user-edit"></i></button> '
-
+                        ' <button id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-user-edit"></i></button> ' + ' <button id="buttonDelete" type="button" class="btn btn-danger" data-toggle="modal" ><i class="fas fa-trash-alt"></i></button> '
 
                 },
                 'searchable': false,
@@ -93,10 +92,9 @@ function AddNewUser(inputtxt,inputEmail) {
                 }).done((result) => {
                     Swal.fire(
                         'Success',
-                        'Request Has been Sent, Cek Your Email',
+                        'User Has been Added',
                         'success'
-                    );
-                    $('#addNewUser').modal('hide');
+                    )
                     $('#tabledataUser').DataTable().ajax.reload();
 
                 }).fail((error) => {
@@ -111,7 +109,7 @@ function AddNewUser(inputtxt,inputEmail) {
     
 }
 
-//detail
+// Ini Detail User
 $("#tabledataUser").on('click', '#buttonDetail', function () {
     var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
     console.log(data);
@@ -128,7 +126,7 @@ $("#tabledataUser").on('click', '#buttonDetail', function () {
         + "</p> <p>Role    : " + data.role + "</p>");
 });
 
-//UPDATE
+// Ini Update User
 $("#tabledataUser").on('click', '#buttonUpdate', function () {
     var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
     console.log(data);
@@ -136,7 +134,7 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
     $('#firstNameE').val(data.firstName);
     $('#lastNameE').val(data.lastName);
     $('#genderIdE').val(data.genderId);
-    $('#birthDateE').val(data.birthDate.slice(0,10));
+    $('#birthDateE').val(data.birthDate.slice(0, 10));
     $('#addressE').val(data.address);
     $('#contactE').val(data.contact);
     $('#departmentIdE').val(data.departmentId);
@@ -150,7 +148,7 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
         edit.id = $('#idE').val();
         edit.firstName = $('#firstNameE').val();
         edit.lastName = $('#lastNameE').val();
-        edit.genderId = $('#genderIdE').slice(0,10).val();
+        edit.genderId = $('#genderIdE').slice(0, 10).val();
         edit.birthDate = $('#birthDateE').val();
         edit.address = $('#addressE').val();
         edit.contact = $('#contactE').val();
@@ -168,14 +166,71 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
         }).done((result) => {
             Swal.fire(
                 'Success',
-                'Item Has Been Added, Cek Your Email',
+                'User Has been Updated',
                 'success'
-            );
+            )
             $('#tabledataUser').DataTable().ajax.reload();
 
         }).fail((error) => {
             Swal.fire('Error', 'Something Went Wrong', 'error');
         });
     })
-    
-})
+
+});
+
+// Ini Soft Delete User
+$("#tabledataUser").on('click', '#buttonDelete', function () {
+    var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
+    console.log(data);
+    $('#idE').val(data.id);
+    $('#firstNameE').val(data.firstName);
+    $('#lastNameE').val(data.lastName);
+    $('#genderIdE').val(data.genderId);
+    $('#birthDateE').val(data.birthDate.slice(0, 10));
+    $('#addressE').val(data.address);
+    $('#contactE').val(data.contact);
+    $('#departmentIdE').val(data.departmentId);
+    $('#emailE').val(data.email);
+    $('#roleIdE').val(data.roleId);
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var edit = new Object();
+            edit.id = $('#idE').val();
+            edit.firstName = $('#firstNameE').val();
+            edit.lastName = $('#lastNameE').val();
+            edit.genderId = $('#genderIdE').slice(0, 10).val();
+            edit.birthDate = $('#birthDateE').val();
+            edit.address = $('#addressE').val();
+            edit.contact = $('#contactE').val();
+            edit.email = $('#emailE').val();
+            edit.departmentId = $('#departmentIdE').val();
+            edit.isDeleted = 1;
+            $.ajax({
+                url: 'https://localhost:44395/API/Users',
+                type: "PUT",
+                data: JSON.stringify(edit),
+                contentType: "application/json; charset=utf-8",
+                datatype: "json"
+            }).done((result) => {
+                $('#tabledataUser').DataTable().ajax.reload();
+
+            }).fail((error) => {
+                Swal.fire('Error', 'Something Went Wrong', 'error')
+            });
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    })
+
+});
