@@ -33,8 +33,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>Contact</th>
                         <th>Department</th>
                         <th>Role</th>
@@ -44,8 +43,7 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>Contact</th>
                         <th>Department</th>
                         <th>Role</th>
@@ -63,19 +61,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAddNewUser">Add New User Detail</h5>
+                <h5 class="modal-title" id="modalAddNewUser">New User</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="formAddNewUser" name="formAdd" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id">Id</label>
-                            <input type="text" class="form-control" id="id" placeholder="EXXX" required>
+                            <input type="text" class="form-control" id="id" placeholder="Id" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
 
                         </div>
@@ -87,7 +86,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -109,7 +108,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -125,7 +124,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -135,7 +134,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -147,7 +146,7 @@
                             Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Wajib diisi!
+                            Required!
                         </div>
                     </div>
 
@@ -189,14 +188,14 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="roleId">Role</label>
                             <select class="form-control" id="roleId">
-                                <option hidden>Choose...</option>
+                                <option hidden>Choose</option>
                                 <option value="1">Employee</option>
                                 <option value="2">Admin</option>
                                 <option value="3">Manager</option>
@@ -205,14 +204,13 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
 
-                    <div class="modal-footer">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="#" class="btn btn-primary" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</a>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
                 </form>
@@ -232,21 +230,19 @@
             <div class="modal-body">
                 ...
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
         </div>
     </div>
 </div>
 <!-- Modal Update Employee-->
-<div class="modal fade" onsubmit="return false" id="modalUpdateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalUpdateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titleModalUpdateUser"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formUpdateUser" name="formUpdateUser" class="needs-validation" novalidate>
+                <form onsubmit="return false" id="formUpdateUser" name="formUpdateUser" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="idE">Id</label>
@@ -255,7 +251,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
 
                         </div>
@@ -267,7 +263,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -279,7 +275,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -289,7 +285,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -297,7 +293,7 @@
                         <div class="form-group col-md-6">
                             <label for="genderIdE">Gender</label>
                             <select class="form-control" id="genderIdE" disabled>
-                                <option hidden>Choose...</option>
+                                <option hidden>Choose</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select>
@@ -305,7 +301,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -315,7 +311,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
@@ -327,7 +323,7 @@
                             Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Wajib diisi!
+                            Required!
                         </div>
                     </div>
                     <div class="form-group">
@@ -345,7 +341,7 @@
                         <div class="form-group col-md-6">
                             <label for="departmentIdE">Department</label>
                             <select class="form-control" id="departmentIdE" disabled>
-                                <option hidden>Choose...</option>
+                                <option hidden>Choose</option>
                                 <option value="1">Commercial</option>
                                 <option value="2">Human Resources</option>
                                 <option value="3">Finance</option>
@@ -355,7 +351,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
 
@@ -371,17 +367,15 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Wajib diisi!
+                                Required!
                             </div>
                         </div>
                     </div>
 
-
-                </form>
-                    <div class="modal-footer">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button class="btn btn-primary" id="editUser">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>

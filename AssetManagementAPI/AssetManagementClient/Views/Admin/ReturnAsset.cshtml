@@ -32,8 +32,9 @@
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
+                        <th>Id</th>
                         <th>Item</th>
-                        <th>User Id</th>
+                        <th>Name</th>
                         <th>Start Date</th>
                         <th>End date</th>
                         <th>Notes</th>
@@ -45,8 +46,9 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Id</th>
                         <th>Item</th>
-                        <th>User Id</th>
+                        <th>Name</th>
                         <th>Start Date</th>
                         <th>End date</th>
                         <th>Notes</th>
@@ -67,13 +69,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalReturnAsset">Return Asset Condition</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form onsubmit="return false" name="formReturnAsset" class="needs-validation" novalidate>
 
                     <div class="form-group">
                         <label for="requestItemId">Request Item Id</label>
-                        <input type="number" class="form-control" id="requestItemId" placeholder="Request Id" required>
+                        <input type="number" class="form-control" id="requestItemId" placeholder="Request Id" required disabled>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -103,9 +106,8 @@
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" onclick="ReturnAnAsset()">Send</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" onclick="ReturnAnAsset()">Submit</button>
                     </div>
 
                 </form>

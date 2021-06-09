@@ -11,7 +11,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Management Asset</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Asset Management</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -30,26 +30,22 @@
         <!-- Button Add Item -->
         <!-- Data Table-->
         <div class="container-fluid mt-5">
-            <a href="javascript:void(0)" class="btn btn-outline-primary" data-toggle="modal" data-target="#addNewItem"><i class="fas fa-plus"></i></a>
+            <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addNewItem"><i class="fas fa-plus"></i></a>
             <p></p>
             <table id="tabledataitem" class="table table-striped table-bordered dataTable" style="width:100%">
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
-                        <th>Kode Item</th>
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Category Id</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Id</th>
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Category Id</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -64,29 +60,30 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAddNewItem">Add New An Asset Detail</h5>
+                <h5 class="modal-title" id="modalAddNewItem">New Item</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form onsubmit="return false" name="formAddNewItem" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label for="name">Name Item</label>
-                        <input type="text" class="form-control" id="name" placeholder="New Item Name" required>
+                        <input type="text" class="form-control" id="name" placeholder="Name" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Wajib diisi!
+                            Required!
                         </div>
 
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" id="quantity" placeholder="Quantity Items" required>
+                        <input type="text" class="form-control" id="quantity" placeholder="Quantity" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Wajib diisi!
+                            Required!
                         </div>
                     </div>
 
@@ -94,11 +91,11 @@
                         <div class="form-group">
                             <label for="categoryId">Category</label>
                             <select class="form-control" id="categoryId">
-                                <option selected>Choose...</option>
-                                <option value="1">Elektronik</option>
-                                <option value="2">Alat Tulis Kerja</option>
-                                <option value="3">Kendaraan</option>
-                                <option value="4">Gedung & Bangunan</option>
+                                <option hidden>Choose</option>
+                                <option value="1">Electronic</option>
+                                <option value="2">Stationary</option>
+                                <option value="3">Vehicle</option>
+                                <option value="4">Building</option>
                             </select>
                         </div>
                         <div class="invalid-feedback">
@@ -107,14 +104,11 @@
                     </div>
 
 
-                    <div class="col-12">
-                        <button class="btn btn-primary" onclick="AddNewItem()">Submit form</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" onclick="AddNewItem()">Submit</button>
                     </div>
 
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -127,9 +121,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form name="formEditItem" class="needs-validation" novalidate>
+                <form  onsubmit="return false" name="formEditItem" class="needs-validation" novalidate>
 
                     <div class="form-group" hidden>
                         <label for="idE">Name Item</label>
@@ -168,11 +163,11 @@
                         <div class="form-group">
                             <label for="categoryIdE">Category</label>
                             <select class="form-control" id="categoryIdE">
-                                <option selected>Choose...</option>
-                                <option value="1">Elektronik</option>
-                                <option value="2">Alat Tulis Kerja</option>
-                                <option value="3">Kendaraan</option>
-                                <option value="4">Gedung & Bangunan</option>
+                                <option hidden>Choose</option>
+                                <option value="1">Electronic</option>
+                                <option value="2">Stationary</option>
+                                <option value="3">Vehicle</option>
+                                <option value="4">Building</option>
                             </select>
                         </div>
                         <div class="invalid-feedback">
@@ -181,15 +176,15 @@
                     </div>
 
 
-                    <div class="col-12">
-                        <button class="btn btn-primary" id="editUser">Submit form</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" id="editUser">Submit</button>
                     </div>
 
                 </form>
             </div>
-            <div class="modal-footer">
+            @*<div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>

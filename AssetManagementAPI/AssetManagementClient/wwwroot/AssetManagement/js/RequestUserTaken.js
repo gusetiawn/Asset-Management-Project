@@ -7,8 +7,9 @@
         },
         "columns": [
             { 'data': null },
+            { 'data': 'id' },
             { 'data': 'item' },
-            { 'data': 'accountId' },
+            { 'data': 'name' },
             {
                 'data': 'startDate',
                 render: function (data, type, row) {
@@ -34,12 +35,18 @@
                 'orderable': false
             }
         ],
-        "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": 0
-        }],
-        "order": [[1, 'asc']]
+        "columnDefs": [
+            {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            },
+            {
+                "visible": false,
+                "targets": 1
+            }
+        ],
+        "order": [[1, 'desc']]
 
     });
     data.on('order.dt search.dt', function () {
@@ -81,10 +88,7 @@ $("#tabledatauserrequesttaken").on('click', '#buttonTakeAnAsset', function () {
             contentType: "application/json; charset=utf-8",
             datatype: "json"
         }).done((result) => {
-            Swal.fire(
-                'Success',
-                'Item Already Picked Up',
-                'success'
+            Swal.fire('Success','Item Already Picked Up','success'
             );
             $('#tabledatauserrequesttaken').DataTable().ajax.reload();
 

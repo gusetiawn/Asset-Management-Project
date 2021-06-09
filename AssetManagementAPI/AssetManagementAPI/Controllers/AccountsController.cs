@@ -140,6 +140,7 @@ namespace AssetManagementAPI.Controllers
                                Id = u.Id,
                                FirstName = u.FirstName,
                                LastName = u.LastName,
+                               Name = u.FirstName +" "+ u.LastName,
                                GenderId = u.GenderId,
                                Gender = g.Name,
                                BirthDate = u.BirthDate,

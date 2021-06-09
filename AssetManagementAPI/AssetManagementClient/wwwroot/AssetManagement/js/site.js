@@ -11,8 +11,7 @@
         },
         "columns": [
             { 'data': null },
-            { 'data': 'firstName' },
-            { 'data': 'lastName' },
+            { 'data': 'name' },
             {
                 'data': 'contact',
                 render: function (data, type, row) {

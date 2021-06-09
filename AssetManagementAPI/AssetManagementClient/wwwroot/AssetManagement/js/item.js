@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿// TABLE DATA ITEM
+$(document).ready(function () {
     var data = $('#tabledataitem').DataTable({
         "ajax": {
             "url": "https://localhost:44395/API/Items",
@@ -8,10 +9,8 @@
         },
         "columns": [
             { 'data': null },
-            { 'data': 'id' },
             { 'data': 'name' },
             { 'data': 'quantity' },
-            { 'data': 'categoryId' },
             {
                 'data': null,
                 render: function (data, type, row, meta) {
@@ -36,22 +35,8 @@
         });
     }).draw();
 });
-(function () {
-    'use strict'
-    var forms = document.querySelectorAll('.needs-validation')
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
 
-                form.classList.add('was-validated')
-            }, false)
-        })
-})()
-
+// ADD ITEM
 function AddNewItem() {
     var Item = new Object();
     Item.name = $('#name').val();
@@ -64,23 +49,19 @@ function AddNewItem() {
         contentType: "application/json; charset=utf-8",
         datatype: "json"
     }).done((result) => {
-            Swal.fire(
-                'Success',
-                'Item Has Been Added, Cek Your Email',
-                'success'
-            );
-            $('#addNewItem').modal('hide');
-            $("#name").val(null);
-            $("#quantity").val(null);
-            $("#categoryId").val(null);
-            $('#tabledata').DataTable().ajax.reload();
+        Swal.fire('Success', 'Item Has Been Added', 'success');
+        $('#addNewItem').hide;
+        $("#name").val(null);
+        $("#quantity").val(null);
+        $("#categoryId").val(null);
+        $('#tabledataitem').DataTable().ajax.reload();
             
     }).fail((error) => {
         Swal.fire('Error', 'Something Went Wrong', 'error');
     });
 }
 
-//UPDATE
+// UPDATE ITEM
 $("#tabledataitem").on('click', '#buttonUpdate', function () {
     var data = $("#tabledataitem").DataTable().row($(this).parents('tr')).data();
     console.log(data);
@@ -106,11 +87,7 @@ $("#tabledataitem").on('click', '#buttonUpdate', function () {
             contentType: "application/json; charset=utf-8",
             datatype: "json"
         }).done((result) => {
-            Swal.fire(
-                'Success',
-                'Item Has Been Added, Cek Your Email',
-                'success'
-            );
+            Swal.fire('Success','Item Has Been Updated','success');
             $('#tabledataitem').DataTable().ajax.reload();
 
         }).fail((error) => {
@@ -119,3 +96,19 @@ $("#tabledataitem").on('click', '#buttonUpdate', function () {
     })
 
 })
+
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()

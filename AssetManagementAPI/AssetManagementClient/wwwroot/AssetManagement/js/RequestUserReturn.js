@@ -7,8 +7,9 @@
         },
         "columns": [
             { 'data': null },
+            { 'data': 'id' },
             { 'data': 'item' },
-            { 'data': 'accountId' },
+            { 'data': 'name' },
             {
                 'data': 'startDate',
                 render: function (data, type, row) {
@@ -34,12 +35,18 @@
                 'orderable': false
             }
         ],
-        "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": 0
-        }],
-        "order": [[1, 'asc']]
+        "columnDefs": [
+            {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            },
+            {
+                "visible": false,
+                "targets": 1
+            }
+        ],
+        "order": [[1, 'desc']]
 
     });
     data.on('order.dt search.dt', function () {
@@ -68,11 +75,7 @@ function ReturnAnAsset() {
         contentType: "application/json; charset=utf-8",
         datatype: "json"
     }).done((result) => {
-        Swal.fire(
-            'Success',
-            'Item Has Been Added, Cek Your Email',
-            'success'
-        );
+        Swal.fire('Success','Item Has Been Returned','success');
         $('#tabledatauserrequestreturn').DataTable().ajax.reload();
 
     }).fail((error) => {

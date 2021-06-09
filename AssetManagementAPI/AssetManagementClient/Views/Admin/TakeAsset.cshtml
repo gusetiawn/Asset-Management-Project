@@ -32,8 +32,9 @@
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
+                        <th>Id</th>
                         <th>Item</th>
-                        <th>User Id</th>
+                        <th>Name</th>
                         <th>Start Date</th>
                         <th>End date</th>
                         <th>Notes</th>
@@ -45,8 +46,9 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Id</th>
                         <th>Item</th>
-                        <th>User Id</th>
+                        <th>Name</th>
                         <th>Start Date</th>
                         <th>End date</th>
                         <th>Notes</th>
@@ -66,7 +68,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAddNewRequest">Add New An Asset Detail</h5>
+                <h5 class="modal-title" id="modalAddNewRequest">Request Detail</h5>
             </div>
             <div class="modal-body">
                 <form onsubmit="return false" name="formAddNewRequest" class="needs-validation" novalidate>
@@ -153,12 +155,9 @@
                             Wajib diisi!
                         </div>
                     </div>
-
-                    <div class="modal-footer">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button class="btn btn-primary" id="taken">Taken</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-
                 </form>
             </div>
         </div>

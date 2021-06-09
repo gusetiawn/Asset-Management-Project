@@ -282,12 +282,14 @@ namespace AssetManagementAPI.Controllers
                               join I in myContext.Items on R.ItemId equals I.Id
                               join C in myContext.Categories on I.CategoryId equals C.Id
                               join S in myContext.Statuses on R.StatusId equals S.Id
+                              join U in myContext.Users on A.Id equals U.Id
                               where R.StatusId == 2
                               select new
                               {
                                   Id = R.Id,
                                   Item = I.Name,
                                   ItemId = R.ItemId,
+                                  Name = U.FirstName + " " + U.LastName,
                                   AccountId = R.AccountId,
                                   StartDate = R.StartDate,
                                   EndDate = R.EndDate,
@@ -307,12 +309,14 @@ namespace AssetManagementAPI.Controllers
                               join I in myContext.Items on R.ItemId equals I.Id
                               join C in myContext.Categories on I.CategoryId equals C.Id
                               join S in myContext.Statuses on R.StatusId equals S.Id
+                              join U in myContext.Users on A.Id equals U.Id
                               where R.StatusId == 4
                               select new
                               {
                                   Id = R.Id,
                                   Item = I.Name,
                                   ItemId = R.ItemId,
+                                  Name = U.FirstName + " " + U.LastName,
                                   AccountId = R.AccountId,
                                   StartDate = R.StartDate,
                                   EndDate = R.EndDate,

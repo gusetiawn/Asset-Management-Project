@@ -5,7 +5,7 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": "https://localhost:44395/API/RequestItems/123452",
+            "url": "https://localhost:44395/API/RequestItems/E0065",
             "datatype": "json",
             "dataSrc": ""
         },
