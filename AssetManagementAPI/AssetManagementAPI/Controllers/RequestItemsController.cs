@@ -66,8 +66,12 @@ namespace AssetManagementAPI.Controllers
                     myContext.SaveChanges();
 
                     var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                    var subject = "Request for An Asset";
-                    var body = $"Hai {user.FirstName},\nRequest Anda telah kami terima. Request Anda akan kami proses setelah mendapatkan persetujuan dari Manager. Kami akan menginformasikan kembali mengenai hal tersebut.\n Terima kasih dan Selamat Bekerja.";
+                    var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+                    
+                    var subject = $"Your Request With Id Number #{request.Id} Has Been Received";
+                    var body = $"Hai {user.FirstName}," +
+                        $"\n\nRequest Anda telah kami terima. Request Anda akan kami proses setelah mendapatkan persetujuan dari Manager. Kami akan menginformasikan kembali mengenai hal tersebut." +
+                        $"\n\nTerima kasih dan Selamat Bekerja.";
                     sendMail.SendEmail(user.Email, body, subject);
 
                     return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
@@ -259,6 +263,7 @@ namespace AssetManagementAPI.Controllers
                                where A.Id == id
                                select new
                                {
+                                   Id = R.Id,
                                    Item = I.Name,
                                    StartDate = R.StartDate,
                                    EndDate = R.EndDate,
@@ -272,6 +277,31 @@ namespace AssetManagementAPI.Controllers
             {
                 return NotFound("Id Not Registered");
             }
+        }
+
+        [HttpGet("RequestNeedsApproval")]
+        public ActionResult RequestNeedsApproval()
+        {
+            var userRequest = from U in myContext.Users
+                              join A in myContext.Accounts on U.Id equals A.Id
+                              join R in myContext.RequestItems on A.Id equals R.AccountId
+                              join I in myContext.Items on R.ItemId equals I.Id
+                              join C in myContext.Categories on I.CategoryId equals C.Id
+                              join S in myContext.Statuses on R.StatusId equals S.Id
+                              where R.StatusId == 1
+                              select new
+                              {
+                                  Id = R.Id,
+                                  AccountId = R.AccountId,
+                                  Name = U.FirstName + " " + U.LastName,
+                                  Item = I.Name,
+                                  StartDate = R.StartDate,
+                                  EndDate = R.EndDate,
+                                  Quantity = R.Quantity,
+                                  Notes = R.Notes,
+                                  Status = S.Name
+                              };
+            return Ok(userRequest);
         }
 
         [HttpGet("UserRequestTake")]

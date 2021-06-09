@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var firstName = ViewData["firstName"];
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -307,7 +311,7 @@
                                 <img src="~/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                      width="40">
                                 <span class="ml-2 d-none d-lg-inline-block">
-                                    <span>Hello,</span> <span class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+                                    <span>Hello,</span> <span class="text-dark"> @firstName</span> <i data-feather="chevron-down"
                                                                                                     class="svg-icon"></i>
                                 </span>
                             </a>
@@ -360,12 +364,27 @@
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="https://localhost:44389/Menu/RequestList"
-                               aria-expanded="false">
-                                <i class="fas fa-list-ul"></i><span class="hide-menu">
-                                    Request List
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <i data-feather="tag" class="feather-icon"></i><span class="hide-menu">
+                                    Request Item
                                 </span>
                             </a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Menu/RequestItem/RequestHistory" class="sidebar-link">
+                                        <i class="icon-clock"></i><span class="hide-menu">
+                                            Request History
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="https://localhost:44389/Menu/RequestItem/NeedsApproval" class="sidebar-link">
+                                        <i class="icon-note"></i><span class="hide-menu">
+                                            Needs Approval
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item">
@@ -457,7 +476,8 @@
     <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
     <script src="~/AssetManagement/Manager/js/EditProfile.js" asp-append-version="true"></script>
     <script src="~/AssetManagement/Manager/js/ChangePass.js" asp-append-version="true"></script>
-    <script src="~/AssetManagement/Manager/js/ListRequestItems.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Manager/js/NeedsApproval.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Manager/js/RequestHistory.js" asp-append-version="true"></script>
     <script>
         function logout() {
             localStorage.clear()

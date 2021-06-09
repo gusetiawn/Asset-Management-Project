@@ -5,7 +5,7 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": "https://localhost:44395/API/RequestItems/UserRequest",
+            "url": "https://localhost:44395/API/RequestItems/RequestNeedsApproval",
             "datatype": "json",
             "dataSrc": ""
         },
@@ -39,7 +39,7 @@
                 'data': "null",
                 'render': function (data, type, row, meta) {
                     if (row.status == "Waiting for Approval") {
-                        return "<button type='button' class='btn' data-toggle='modal' data-target='#approveModal' onclick='findPerson(" + '"' + row.id + '"' + ")'><span style='color: lime;'><i class='far fa-check-circle'></i></span> Approve</button><button type='button' class='btn' data-toggle='modal' data-target='#rejectModal' onclick='findPerson(" + '"' + row.id + '"' + ")'><span style='color: Tomato;'><i class='far fa-times-circle'></i></span> Reject</button>";
+                        return "<button type='button' class='btn' data-toggle='modal' data-target='#approveModal' onclick='findPerson(" + '"' + row.id + '"' + ")' data-toggle='tooltip' data-placement='top' title='Approve'><span style='color: lime;'><i class='far fa-check-circle'></i></span></button><button type='button' class='btn' data-toggle='modal' data-target='#rejectModal' onclick='findPerson(" + '"' + row.id + '"' + ")' data-toggle='tooltip' data-placement='top' title='Reject'><span style='color: Tomato;'><i class='far fa-times-circle'></i></span></button>";
                     }
                     else {
                         return null;
@@ -58,9 +58,9 @@
                 "targets": [1],
                 "visible": false,
                 "searchable": false
-            },
-       
-        ]
+            }
+        ],
+        "order": [[1, "desc"]]
     });
     statusWaiting.on('order.dt search.dt', function () {
         statusWaiting.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {

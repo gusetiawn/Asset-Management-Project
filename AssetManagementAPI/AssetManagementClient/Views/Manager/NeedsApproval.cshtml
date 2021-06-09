@@ -1,0 +1,107 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutDashboardManager.cshtml";
+}
+<div class="page-wrapper">
+    @*<div class="p-3">*@
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-7 align-self-center">
+                <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Approval Request</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb m-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="#">Menu</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Request Item</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="https://localhost:44389/Menu/RequestItem/NeedsApproval">Needs Approval</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        @*<div class="card">
+            <div class="card-body">*@
+        <table id="tableDataListReq" class="table table-striped table-bordered dataTable" style="width:100%">
+            <thead class="thead-light">
+                <tr>
+                    <th>No</th>
+                    <th>Id</th>
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>Requested Item</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Quantity</th>
+                    <th>Notes</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <th>No</th>
+                    <th>Id</th>
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>Requested Item</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Quantity</th>
+                    <th>Notes</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+        @*</div>
+            </div>*@
+    </div>
+    @*</div>*@
+</div>
+
+
+<!-- Modal Approve -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Approval Request Check</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>You will approve the request?</p>
+            </div>
+            <div class="modal-footer approveBtn">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Reject -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Approval Request Check</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are You Sure you will reject the request?</p>
+            </div>
+            <div class="modal-footer rejectBtn">
+            </div>
+        </div>
+    </div>
+</div>

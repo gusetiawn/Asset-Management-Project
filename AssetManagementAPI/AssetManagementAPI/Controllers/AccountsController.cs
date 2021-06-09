@@ -47,7 +47,8 @@ namespace AssetManagementAPI.Controllers
 
                     var claims = new List<Claim> {
                     new Claim("Email", user.Email),
-                    new Claim("Name", user.FirstName),
+                    new Claim("FirstName", user.FirstName),
+                    new Claim("LastName", user.LastName),
                     new Claim("Id", user.Id)
                     };
                     foreach (var item in roles)
@@ -58,7 +59,7 @@ namespace AssetManagementAPI.Controllers
 
                     var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                    var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddMinutes(5), signingCredentials: signIn);
+                    var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
 
                     return Ok(new JwtSecurityTokenHandler().WriteToken(token));
 

@@ -10,7 +10,7 @@
     }).done((result) => {
         console.log("ok", result);
         if (result == '/Dashboard/Employee' || result == '/Dashboard/Manager' || result == '/Dashboard/Admin') {
-            alert("Successed to Login");
+            //alert("Successed to Login");
             localStorage.setItem('LoginRes', JSON.stringify(result));
             window.location.href = result;
         }

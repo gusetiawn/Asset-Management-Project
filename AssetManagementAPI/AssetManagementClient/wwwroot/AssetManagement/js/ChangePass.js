@@ -2,8 +2,9 @@
     $.ajax({
         url: "https://localhost:44389/user/Get"
     }).done((result) => {
+        var obj = JSON.parse(result);
         var pass = new Object();
-        pass.email = `${result[0].email}`
+        pass.email = `${obj[0].email}`
         pass.oldPassword = $('#input-currentPass').val();
         pass.newPassword = $('#input-newPass').val();
         $.ajax({

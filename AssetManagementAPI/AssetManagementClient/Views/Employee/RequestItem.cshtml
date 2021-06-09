@@ -1,0 +1,126 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutDashboardEmployee.cshtml";
+    var id = ViewData["token"];
+    var id2 = ViewData["id"];
+}
+
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-7 align-self-center">
+                <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Requested Items</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb m-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="#">Menu</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="https://localhost:44389/Menu/RequestItem">Request Item</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-7 align-self-center">
+                <button type="button" class='btn btn-primary' data-toggle='modal' data-target='#requestNewItem'><i data-feather="file-plus" class="feather-icon"></i><span>  </span>New Request</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <table id="tableDataReqItem" class="table table-striped table-bordered dataTable" style="width:100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>Requested Item</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Quantity</th>
+                            <th>Notes</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>Requested Item</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Quantity</th>
+                            <th>Notes</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Request New Item -->
+<div class="modal fade" id="requestNewItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Request New Item</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                </div>
+                <form id="requestNewItemForm" method="post" name="form1" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="input-userId" class="form-control-label" hidden>User Id</label>
+                        <input type="text" id="input-userId" class="form-control form-control-alternative" value="@id2" hidden />
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group focused item-available">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-quantity">Quantity</label>
+                                <input type="number" id="input-quantity" class="form-control form-control-alternative" placeholder="Number of item">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-start-date">Start - End Date</label>
+                        <input type="text" id="daterange" name="daterange" class="form-control form-control-alternative">
+                    </div>
+                    <input type="text" id="input-start-date" name="startdate" class="form-control form-control-alternative" hidden>
+                    <input type="text" id="input-end-date" name="enddate" class="form-control form-control-alternative" hidden>
+                    <div class="form-group focused">
+                        <label>Notes</label>
+                        <textarea rows="4" class="form-control form-control-alternative" id="input-notes" placeholder="Type in your purpose for borrowing this item... "></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <a href="#" class="btn btn-primary" onclick="RequestNewItem()">Submit</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

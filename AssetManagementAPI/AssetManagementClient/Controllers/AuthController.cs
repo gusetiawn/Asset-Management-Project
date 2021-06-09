@@ -66,10 +66,14 @@ namespace AssetManagementClient.Controllers
                 var jwtReader = new JwtSecurityTokenHandler();
                 var jwt = jwtReader.ReadJwtToken(token);
                 var id = jwt.Claims.First(c => c.Type == "Id").Value;
-                //var name = jwt.Claims.First(c => c.Type == "FirstName").Value;
                 HttpContext.Session.SetString("id", id);
                 ViewData["id"] = HttpContext.Session.GetString("id");
-                //HttpContext.Session.SetString("firstName", name);
+                var firstName = jwt.Claims.First(c => c.Type == "FirstName").Value;
+                HttpContext.Session.SetString("firstName", firstName);
+                ViewData["firstName"] = HttpContext.Session.GetString("firstName");
+                var lastName = jwt.Claims.First(c => c.Type == "LastName").Value;
+                HttpContext.Session.SetString("lastName", lastName);
+                ViewData["lastName"] = HttpContext.Session.GetString("lastName");
                 var role = jwt.Claims.First(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value;
                 if (role == "Manager")
                 {

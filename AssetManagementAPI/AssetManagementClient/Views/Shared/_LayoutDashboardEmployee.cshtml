@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var firstName = ViewData["firstName"];
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,6 +26,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.0.3/css/dataTables.dateTime.min.css" />
     <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" />
     <link rel="stylesheet" href="sweetalert2.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -308,7 +313,7 @@
                                 <img src="~/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                      width="40">
                                 <span class="ml-2 d-none d-lg-inline-block">
-                                    <span>Hello,</span> <span class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+                                    <span>Hello,</span> <span class="text-dark"> @firstName</span> <i data-feather="chevron-down"
                                                                                                     class="svg-icon"></i>
                                 </span>
                             </a>
@@ -360,27 +365,12 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Menu</span></li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                            <a class="sidebar-link" href="https://localhost:44389/Menu/RequestItem"
+                               aria-expanded="false">
                                 <i data-feather="tag" class="feather-icon"></i><span class="hide-menu">
                                     Request Item
                                 </span>
                             </a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item">
-                                    <a href="https://localhost:44389/Menu/RequestItem/NewRequest" class="sidebar-link">
-                                        <i data-feather="file-plus" class="feather-icon"></i><span class="hide-menu">
-                                            New Request
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="https://localhost:44389/Menu/RequestItem/ListRequestItems" class="sidebar-link">
-                                        <i class="fas fa-list-ul"></i><span class="hide-menu">
-                                            List Request Items
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="list-divider"></li>
                         <li class="sidebar-item">
@@ -445,6 +435,8 @@
     <!-- apps -->
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -472,8 +464,7 @@
     <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <script src="~/AssetManagement/Employee/js/ListRequestItems.js" asp-append-version="true"></script>
-    <script src="~/AssetManagement/Employee/js/RequestNewItem.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/Employee/js/RequestItem.js" asp-append-version="true"></script>
     <script src="~/AssetManagement/Employee/js/EditProfile.js" asp-append-version="true"></script>
     <script src="~/AssetManagement/Employee/js/ChangePass.js" asp-append-version="true"></script>
     <script>

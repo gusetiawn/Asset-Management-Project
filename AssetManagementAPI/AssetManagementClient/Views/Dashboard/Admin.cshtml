@@ -4,6 +4,8 @@
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutDashboardAdmin.cshtml";
+    var firstName = ViewData["firstName"];
+    var lastName = ViewData["lastName"];
 }
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
@@ -15,7 +17,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-7 align-self-center">
-                <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Welcome, <span class="page-title text-truncate text-dark font-weight-lighter mb-1"> Kuproy!</span></h3>
+                <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Welcome, <span class="page-title text-truncate text-dark font-weight-lighter mb-1"> @firstName @lastName!</span></h3>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
