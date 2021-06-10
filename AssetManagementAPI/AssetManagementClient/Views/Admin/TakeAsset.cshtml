@@ -10,15 +10,18 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Management Asset</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Request Has Been Approved</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item">
                                     <a href="#">Menu</a>
                                 </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="#">Request Item</a>
+                                </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="#">Item</a>
+                                    <a href="https://localhost:44389/Menu/Admin/RequestItem/TakeAsset">Approved Request</a>
                                 </li>
                             </ol>
                         </nav>
@@ -69,6 +72,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalAddNewRequest">Request Detail</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="btnTakenClose"></button>
             </div>
             <div class="modal-body">
                 <form onsubmit="return false" name="formAddNewRequest" class="needs-validation" novalidate>

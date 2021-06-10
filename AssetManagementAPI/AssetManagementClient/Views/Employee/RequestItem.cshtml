@@ -78,13 +78,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Request New Item</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
+                <h5 class="modal-title" id="modalNewRequest">Request New Item</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                </div>
                 <form id="requestNewItemForm" method="post" name="form1" onsubmit="return false">
                     <div class="form-group">
                         <label for="input-userId" class="form-control-label" hidden>User Id</label>
@@ -118,8 +115,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
             </div>
         </div>
     </div>

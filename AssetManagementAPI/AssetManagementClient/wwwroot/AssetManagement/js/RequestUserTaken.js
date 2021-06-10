@@ -67,10 +67,12 @@ $("#tabledatauserrequesttaken").on('click', '#buttonTakeAnAsset', function () {
     $('#endDateE').val(data.endDate.slice(0, 10));
     $('#quantityE').val(data.quantity);
     $('#notesE').val(data.notes);
-
     $("#takeAnAsset").modal("show");
+    $("#takeAnAsset").on('click', '#btnTakenClose', function () {
+        $("#takeAnAsset").modal("hide");
+    })
     $("#takeAnAsset").on('click', '#taken', function () {
-
+        $("#takeAnAsset").modal("hide");
         var edit = new Object();
         console.log(edit);
         edit.id = $('#idE').val();

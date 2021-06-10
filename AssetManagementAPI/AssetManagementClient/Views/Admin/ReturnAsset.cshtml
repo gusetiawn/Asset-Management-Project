@@ -10,15 +10,18 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Management Asset</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Asset Has Been Taken</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item">
                                     <a href="#">Menu</a>
                                 </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="#">Request Item</a>
+                                </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="#">Item</a>
+                                    <a href="https://localhost:44389/Menu/Admin/RequestItem/ReturnAsset">Return Asset</a>
                                 </li>
                             </ol>
                         </nav>
@@ -107,7 +110,7 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary" onclick="ReturnAnAsset()">Submit</button>
+                        <button class="btn btn-primary" onclick="ReturnAnAsset()" data-dismiss="modal">Submit</button>
                     </div>
 
                 </form>

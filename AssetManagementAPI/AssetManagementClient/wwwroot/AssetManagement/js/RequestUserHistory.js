@@ -1,5 +1,9 @@
 ﻿$(document).ready(function () {
     var data = $('#tabledatauserrequesthistory').DataTable({
+        "dom": 'Bfrtip',
+        "buttons": [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         "ajax": {
             "url": "https://localhost:44395/API/RequestItems/UserRequest",
             "datatype": "json",
