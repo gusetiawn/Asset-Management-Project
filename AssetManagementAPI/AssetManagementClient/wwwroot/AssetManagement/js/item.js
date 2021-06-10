@@ -69,10 +69,12 @@ $("#tabledataitem").on('click', '#buttonUpdate', function () {
     $('#nameE').val(data.name);
     $('#quantityE').val(data.quantity);
     $('#categoryIdE').val(data.categoryId);
-
     $("#editModalItem").modal("show");
+    $("#editModalItem").on('click', '#btnCloseEditItem', function () {
+        $("#editModalItem").modal("hide");
+    })
     $("#editModalItem").on('click', '#editUser', function () {
-
+        $("#editModalItem").modal("hide");
         var edit = new Object();
         console.log(edit);
         edit.id = $('#idE').val();
