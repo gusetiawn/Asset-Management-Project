@@ -220,15 +220,83 @@
 </div>
 <!-- Modal Add Item -->
 <!--Modal DATA TABLES DETAILS-->
-<div class="modal fade" id="modalDetailUser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalDetailUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titleModal">Modal title</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="titleModalDetailUser">Detail Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <form onsubmit="return false" id="formDetailUser" name="formDetailUser" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="idE">Id</label>
+                            <input type="text" class="form-control" id="idD" required disabled>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="contactE">Contact</label>
+                            <input type="number" class="form-control" id="contactD" required disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstNameE">First Name</label>
+                            <input type="text" class="form-control" id="firstNameD" required disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastNameE">Last Name</label>
+                            <input type="text" class="form-control" id="lastNameD" required disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="genderIdE">Gender</label>
+                            <select class="form-control" id="genderIdD" disabled>
+                                <option hidden>Choose</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="birthDateE">Birth Date</label>
+                            <input type="date" class="form-control" id="birthDateD" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addressE">Address</label>
+                        <input type="text" class="form-control" id="addressD" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailE">Email</label>
+                        <input type="email" class="form-control" id="emailD" required disabled>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="departmentIdE">Department</label>
+                            <select class="form-control" id="departmentIdD" disabled>
+                                <option hidden>Choose</option>
+                                <option value="1">Commercial</option>
+                                <option value="2">Human Resources</option>
+                                <option value="3">Finance</option>
+                                <option value="4">Administration</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="roleIdE">Role</label>
+                            <select class="form-control" id="roleIdD" disabled>
+                                <option hidden>Choose...</option>
+                                <option value="1">Employee</option>
+                                <option value="2">Admin</option>
+                                <option value="3">Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -238,7 +306,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titleModalUpdateUser"></h5>
+                <h5 class="modal-title" id="titleModalUpdateUser">Update Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

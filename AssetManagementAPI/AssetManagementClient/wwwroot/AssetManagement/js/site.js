@@ -112,17 +112,17 @@ function AddNewUser(inputtxt,inputEmail) {
 $("#tabledataUser").on('click', '#buttonDetail', function () {
     var data = $("#tabledataUser").DataTable().row($(this).parents('tr')).data();
     console.log(data);
-    $("#titleModal").text(data.firstName + " " + data.lastName);
-    $('#modalDetailUser').find(".modal-body").html("<p>Id : " + data.id
-        + "</p> <p>First Name : " + data.firstName
-        + "</p> <p>Last Name  : " + data.lastName
-        + "</p> <p>Gender       : " + data.gender
-        + "</p> <p>Birth Date : " + data.birthDate
-        + "</p> <p>Address     : " + data.address
-        + "</p> <p>Contact     : " + data.contact
-        + "</p> <p>Email      : " + data.email
-        + "</p> <p>Department     : " + data.department
-        + "</p> <p>Role    : " + data.role + "</p>");
+    $('#idD').val(data.id);
+    $('#firstNameD').val(data.firstName);
+    $('#lastNameD').val(data.lastName);
+    $('#genderIdD').val(data.genderId);
+    $('#birthDateD').val(data.birthDate.slice(0, 10));
+    $('#addressD').val(data.address);
+    $('#contactD').val(data.contact);
+    $('#departmentIdD').val(data.departmentId);
+    $('#emailD').val(data.email);
+    $('#roleIdD').val(data.roleId);
+
 });
 
 // Ini Update User
@@ -163,11 +163,7 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
             contentType: "application/json; charset=utf-8",
             datatype: "json"
         }).done((result) => {
-            Swal.fire(
-                'Success',
-                'User Has been Updated',
-                'success'
-            )
+            Swal.fire('Success', 'User Has been Updated', 'success');
             $('#tabledataUser').DataTable().ajax.reload();
 
         }).fail((error) => {
