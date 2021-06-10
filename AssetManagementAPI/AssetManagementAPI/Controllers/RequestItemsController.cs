@@ -66,12 +66,56 @@ namespace AssetManagementAPI.Controllers
                     myContext.SaveChanges();
 
                     var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
+                    var dep = myContext.Departments.Where(d => d.Id == user.DepartmentId).FirstOrDefault();
                     var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+                    var item = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
                     
                     var subject = $"Your Request With Id Number #{request.Id} Has Been Received";
-                    var body = $"Hai {user.FirstName}," +
-                        $"\n\nRequest Anda telah kami terima. Request Anda akan kami proses setelah mendapatkan persetujuan dari Manager. Kami akan menginformasikan kembali mengenai hal tersebut." +
-                        $"\n\nTerima kasih dan Selamat Bekerja.";
+                    string mailbody = string.Empty;
+                    mailbody += "<body>";
+                    mailbody += "<div style='margin: 25px;'>";
+                    mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                    mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                    mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                    mailbody += "<div style='margin-left: 35px; margin-right: 35px; padding-bottom: 50px;'>";
+                    mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + " ,</h4>";
+                    mailbody += "<p style='color: black;'>We have received your request,</p>";
+                    mailbody += "<p style='color: black;'>We will process your request after getting approval from the Manager</p>";
+                    mailbody += "<p style='color: black;'>Here are the details:</p>";
+                    mailbody += "<p style='color: black;'>Name: " + user.FirstName + " " + user.LastName + "</p>";
+                    mailbody += "<p style='color: black;'>Department: " + dep.Name + " </p>";
+                    mailbody += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
+                    mailbody += "<p style='color: black;'>Date: " + request.StartDate.ToString().Substring(0,10) + " - " + request.EndDate.ToString().Substring(0,10) + "</p>";
+                    mailbody += "<br>";
+                    mailbody += "<p style='color: black;'>Best Regards,</p>";
+                    mailbody += "<p style='color: black;'>Management System</p>";
+                    mailbody += "</div>";
+
+                    mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                    mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                    mailbody += "<tbody>";
+                    mailbody += "<tr>";
+                    mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                    mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                    mailbody += "<font color='#888888'>";
+                    mailbody += "<p>";
+                    mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                    mailbody += "</p>";
+                    mailbody += "</font>";
+                    mailbody += "</td>";
+                    mailbody += "</tr>";
+                    mailbody += "</tbody>";
+                    mailbody += "</table>";
+                    mailbody += "<div>";
+                    mailbody += "<div>";
+                    mailbody += "<div>";
+
+                    mailbody += "</div>";
+                    mailbody += "</div>";
+                    mailbody += "</div>";
+                    mailbody += "</div>";
+                    mailbody += "</body>";
+                    var body = mailbody;
                     sendMail.SendEmail(user.Email, body, subject);
 
                     return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil" });
@@ -106,8 +150,53 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Request for An Asset";
-                var body = $"Hai {user.FirstName},\nRequest anda telah disetujui oleh Manager, Request Anda sedang kami Proses. Silahkan anda datang ke ruangan Admin untuk tahap selanjutnya.\n Terima kasih dan Selamat Bekerja.";
+                var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+
+                string mailbody = string.Empty;
+                mailbody += "<body>";
+                mailbody += "<div style='margin: 25px;'>";
+                mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
+                mailbody += "<p style='color: black;'>Congratulations!, your request that you submitted was approved Manager.</p>";
+                mailbody += "<p style='color: black;'>Your request is being processed by us.</p>";
+                mailbody += "<p style='color: black;'>Please come to the Admin room for the next step.</p>";
+                mailbody += "<div style='text-align: center;'>";
+                mailbody += "<img src='https://svgsilh.com/png-512/146635-4caf50.png' style='width: 100px; height: 100px;' alt='approved'>";
+                mailbody += "</div>";
+                mailbody += "<br>";
+                mailbody += "<p style='color: black;'>Best Regards,</p>";
+                mailbody += "<p style='color: black;'>Management System</p>";
+                mailbody += "</div>";
+
+                mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbody += "<tbody>";
+                mailbody += "<tr>";
+                mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbody += "<font color='#888888'>";
+                mailbody += "<p>";
+                mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbody += "</p>";
+                mailbody += "</font>";
+                mailbody += "</td>";
+                mailbody += "</tr>";
+                mailbody += "</tbody>";
+                mailbody += "</table>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</body>";
+                var subject = $"Your Request With Id Number #{request.Id} Has Been Approved";
+                var body = mailbody;
                 sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Setujui Manager" });
@@ -147,8 +236,52 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Request for An Asset";
-                var body = $"Hai {user.FirstName},\nMohon maaf Request anda tidak disetujui oleh Manager, Request Anda tidak bisa kami Proses. Untuk Info lebih lanjut anda dapat menghubungi pihak manager.\n Terima kasih dan Selamat Bekerja.";
+                var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+
+                var subject = $"Your Request With Id Number #{request.Id} Has Been Rejected";
+                string mailbody = string.Empty;
+                mailbody += "<body>";
+                mailbody += "<div style='margin: 25px;'>";
+                mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
+                mailbody += "<p style='color: black;'>Sorry, request that you submitted was rejected.</p>";
+                mailbody += "<p style='color: black;'>We can't process your request.</p>";
+                mailbody += "<p style='color: black;'>For more information you can contact the manager.</p>";
+                mailbody += "<div style='text-align: center;'>";
+                mailbody += "<img src='https://cdn4.iconfinder.com/data/icons/toolbar-std-pack/512/delete-512.png' style='width: 100px; height: 100px;' alt='rejected'>";
+                mailbody += "<br>";
+                mailbody += "<p style='color: black;'>Best Regards,</p>";
+                mailbody += "<p style='color: black;'>Management System</p>";
+                mailbody += "</div>";
+
+                mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbody += "<tbody>";
+                mailbody += "<tr>";
+                mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbody += "<font color='#888888'>";
+                mailbody += "<p>";
+                mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbody += "</p>";
+                mailbody += "</font>";
+                mailbody += "</td>";
+                mailbody += "</tr>";
+                mailbody += "</tbody>";
+                mailbody += "</table>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</body>";
+                var body = mailbody;
                 sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item anda tidak disetujui Manager" });
@@ -182,8 +315,48 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = "Request An Asset";
-                var body = $"Hai {user.FirstName},\nTerima kasih telah melakukan request denngan sistem kami, Kami harap Anda dapat menjaga Asset dengan baik dan mengembalikan sesuai dengan jadwal yang ditetapkan, apabila terjadi kerusakan dan kehilangan maka anda akan dikenakan biaya pinalty sesuai dengan kondisi yang terjadi, Mohon Kerjasamanya.\n Terima kasih dan Selamat Bekerja.";
+                var subject = $"Request An Asset With Id Number #{request.Id}";
+                string mailbody = string.Empty;
+                mailbody += "<body>";
+                mailbody += "<div style='margin: 25px;'>";
+                mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
+                mailbody += "<p style='color: black;'>Thank you for making a request with our system,.</p>";
+                mailbody += "<p style='color: black;'>We hope you can keep the Assets well and return them according to the set schedule,</p>";
+                mailbody += "<p style='color: black;'>if there is damage and loss then you will be charged a penalty fee according to the conditions that occur, please cooperate..</p>";
+                mailbody += "<br>";
+                mailbody += "<p style='color: black;'>Best Regards,</p>";
+                mailbody += "<p style='color: black;'>Management System</p>";
+                mailbody += "</div>";
+
+                mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbody += "<tbody>";
+                mailbody += "<tr>";
+                mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbody += "<font color='#888888'>";
+                mailbody += "<p>";
+                mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbody += "</p>";
+                mailbody += "</font>";
+                mailbody += "</td>";
+                mailbody += "</tr>";
+                mailbody += "</tbody>";
+                mailbody += "</table>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</body>";
+                var body = mailbody;
                 sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Item telah berhasil diambil Pemohon" });

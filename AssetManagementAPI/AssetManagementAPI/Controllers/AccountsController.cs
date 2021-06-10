@@ -89,7 +89,43 @@ namespace AssetManagementAPI.Controllers
                 var result = myContext.SaveChanges();
 
                 var subject = "Change Password";
-                var body = $"Hai {user.FirstName},\nAnda baru saja melakukan perubahan password pada akun anda, Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
+                string mailbody = string.Empty;
+                mailbody += "<body>";
+                mailbody += "<div style='margin: 25px;'>";
+                mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + " ,</h4>";
+                mailbody += "<p style='color: black;'>You have just changed the password to your account,</p>";
+                mailbody += "<p style='color: black;'>If you feel you have not done so, immediately make changes by forgetting the password on your account</p>";
+                mailbody += "</div>";
+
+                mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbody += "<tbody>";
+                mailbody += "<tr>";
+                mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbody += "<font color='#888888'>";
+                mailbody += "<p>";
+                mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbody += "</p>";
+                mailbody += "</font>";
+                mailbody += "</td>";
+                mailbody += "</tr>";
+                mailbody += "</tbody>";
+                mailbody += "</table>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</body>";
+                var body = mailbody;
                 sendMail.SendEmail(changePasswordVM.Email, body, subject);
                 return StatusCode(200, new { Status = "200", message = "Perubahan Password Berhasil" });
             }
@@ -115,7 +151,46 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var subject = "Request Reset Password";
-                var body = $"Hai {user.FirstName},\nAnda baru saja melakukan  request lupa password, Gunakan password berikut untuk melakukan login, dan segera lakukan perubahan password.\nPassword Baru : {resetPass}\n Apabila Anda merasa tidak melakukannya maka segera melakukan perubahan dengan cara forgot password kembali pada akun anda.\n Terima kasih dan Selamat Beraktifitas.";
+                string mailbody = string.Empty;
+                mailbody += "<body>";
+                mailbody += "<div style='margin: 25px;'>";
+                mailbody += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbody += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + " ,</h4>";
+                mailbody += "<p style='color: black;'>We have accepted your request to reset password. Here is your new password.</p>";
+                mailbody += "<h4 style='text-align: center; color: black;'>Use that new password to login to your account</h4>";
+                mailbody += "<div style='background-color: white;'>";
+                mailbody += "<p style='text-align: center; padding: 10px;  color: black;'> " + resetPass + " </p>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+
+                mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbody += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbody += "<tbody>";
+                mailbody += "<tr>";
+                mailbody += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbody += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbody += "<font color='#888888'>";
+                mailbody += "<p>";
+                mailbody += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbody += "</p>";
+                mailbody += "</font>";
+                mailbody += "</td>";
+                mailbody += "</tr>";
+                mailbody += "</tbody>";
+                mailbody += "</table>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+                mailbody += "<div>";
+
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</div>";
+                mailbody += "</body>";
+                var body = mailbody;
                 sendMail.SendEmail(forgotPasswordVM.Email, body, subject);
                 return StatusCode(200, new { Status = "200", message = "Request Password baru anda berhasil, Silahkan Cek Email Anda" });
             }

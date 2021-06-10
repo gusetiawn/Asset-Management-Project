@@ -63,23 +63,24 @@
 
 function AddNewUser(inputtxt,inputEmail) {
     var user = new Object();
-    user.Id = $('#id').val();
-    user.FirstName = $('#firstName').val();
-    user.LastName = $('#lastName').val();
-    user.GenderId = $('#genderId').val();
-    user.BirthDate = $('#birthDate').val();
-    user.Address = $('#address').val();
-    user.Contact = $('#contact').val();
-    user.DepartmentId = $('#departmentId').val();
-    user.Email = $('#email').val();
-    user.Password = $('#password').val();
-    user.RoleId = $('#roleId').val();
-    var email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    user.id = $('#id').val();
+    user.firstName = $('#firstName').val();
+    user.lastName = $('#lastName').val();
+    user.genderId = $('#genderId').val();
+    user.birthDate = $('#birthDate').val();
+    user.address = $('#address').val();
+    user.contact = $('#contact').val();
+    user.departmentId = $('#departmentId').val();
+    user.email = $('#email').val();
+    user.password = $('#password').val();
+    user.roleId = $('#roleId').val();
+    var emaill = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     var passw = /^[A-Za-z\d]\w{8,}$/;
-    if (inputEmail.value.match(email)) {
+    if (inputEmail.value.match(emaill)) {
         if (inputtxt.value.match(passw)) {
             if (user.Id == "" || user.FirstName == "" || user.LastName == "" || user.GenderId == "" || user.BirthDate == "" || user.Address == "" || user.Contact == "" || user.DepartmentId == "" || user.Email == "" || user.Password == "" || user.RoleId == "") {
-                return false;
+                return Swal.fire('Error', 'Something Went Wrong', 'error');
+                /*return false;*/
             }
             else {
                 $.ajax({
@@ -103,8 +104,9 @@ function AddNewUser(inputtxt,inputEmail) {
             }
             //alert('Correct, try another...')
             //return true;
+            Swal.fire('Error', 'Something Went Wrong', 'error');
         }
-
+        Swal.fire('Error', 'Something Went Wrong', 'error');
     }
     
 }
@@ -161,6 +163,22 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
             url: 'https://localhost:44395/API/Users',
             type: "PUT",
             data: JSON.stringify(edit),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json"
+        }).done((result) => {
+            Swal.fire('Success', 'User Has been Updated', 'success');
+            $('#tabledataUser').DataTable().ajax.reload();
+
+        }).fail((error) => {
+            Swal.fire('Error', 'Something Went Wrong', 'error');
+        });
+        var edit2 = new Object();
+        edit2.accountId = $('#idE').val();
+        edit2.roleId = $('#roleIdE').val();
+        $.ajax({
+            url: 'https://localhost:44395/API/RoleAccounts',
+            type: "POST",
+            data: JSON.stringify(edit2),
             contentType: "application/json; charset=utf-8",
             datatype: "json"
         }).done((result) => {

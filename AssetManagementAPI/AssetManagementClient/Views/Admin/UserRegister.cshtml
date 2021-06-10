@@ -71,10 +71,8 @@
                             <label for="id">Id</label>
                             <input type="text" class="form-control" id="id" placeholder="Id" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
 
                         </div>
@@ -83,10 +81,8 @@
                             <label for="contact">Contact</label>
                             <input type="number" class="form-control" id="contact" placeholder="08xx-xxxx-xxxx" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
@@ -95,20 +91,16 @@
                             <label for="firstName">First Name</label>
                             <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastName">Last Name</label>
                             <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
@@ -116,25 +108,21 @@
                         <div class="form-group col-md-6">
                             <label for="genderId">Gender</label>
                             <select class="form-control" id="genderId">
-                                <option hidden>Choose...</option>
+                                <option hidden>Choose</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="birthDate">Birth Date</label>
                             <input type="date" class="form-control" id="birthDate" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
@@ -143,10 +131,8 @@
                         <label for="address">Address</label>
                         <input type="text" class="form-control" id="address" placeholder="Address Now" required>
                         <div class="valid-feedback">
-                            Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Required!
                         </div>
                     </div>
 
@@ -155,7 +141,6 @@
                             <label for="email">Email</label>
                             <input name="emailReg" type="email" class="form-control" id="email" placeholder="Your Mail" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
                                 Gunakan format email yang benar!
@@ -166,7 +151,6 @@
                             <label for="password">Password</label>
                             <input name="passReg" type="password" class="form-control" id="password" pattern="(?=.*[A-Za-z\d]).{8,}" placeholder="Use Strong Password!" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
                                 Minimum 8 Character!
@@ -178,17 +162,15 @@
                         <div class="form-group col-md-6">
                             <label for="departmentId">Department</label>
                             <select class="form-control" id="departmentId">
-                                <option hidden>Choose...</option>
+                                <option hidden>Choose</option>
                                 <option value="1">Commercial</option>
                                 <option value="2">Human Resources</option>
                                 <option value="3">Finance</option>
                                 <option value="4">Administration</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
 
@@ -201,16 +183,14 @@
                                 <option value="3">Manager</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="#" class="btn btn-primary" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</a>
+                        <button class="btn btn-primary" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</button>
                     </div>
 
                 </form>
@@ -316,10 +296,8 @@
                             <label for="idE">Id</label>
                             <input type="text" class="form-control" id="idE" required disabled>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
 
                         </div>
@@ -328,10 +306,8 @@
                             <label for="contactE">Contact</label>
                             <input type="number" class="form-control" id="contactE" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
@@ -340,65 +316,54 @@
                             <label for="firstNameE">First Name</label>
                             <input type="text" class="form-control" id="firstNameE" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastNameE">Last Name</label>
                             <input type="text" class="form-control" id="lastNameE" required>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="genderIdE">Gender</label>
-                            <select class="form-control" id="genderIdE" disabled>
+                            <select class="form-control" id="genderIdE" >
                                 <option hidden>Choose</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="birthDateE">Birth Date</label>
                             <input type="date" class="form-control" id="birthDateE">
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="addressE">Address</label>
-                        <input type="text" class="form-control" id="addressE" required>
+                        <input type="text" class="form-control" id="addressE">
                         <div class="valid-feedback">
-                            Looks good!
                         </div>
                         <div class="invalid-feedback">
-                            Required!
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="emailE">Email</label>
-                        <input type="email" class="form-control" id="emailE" required>
+                        <input type="email" class="form-control" id="emailE">
                         <div class="valid-feedback">
-                            Looks good!
                         </div>
                         <div class="invalid-feedback">
                             Gunakan format email yang benar!
@@ -408,7 +373,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="departmentIdE">Department</label>
-                            <select class="form-control" id="departmentIdE" disabled>
+                            <select class="form-control" id="departmentIdE">
                                 <option hidden>Choose</option>
                                 <option value="1">Commercial</option>
                                 <option value="2">Human Resources</option>
@@ -416,26 +381,22 @@
                                 <option value="4">Administration</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="roleIdE">Role</label>
-                            <select class="form-control" id="roleIdE" disabled>
+                            <select class="form-control" id="roleIdE">
                                 <option hidden>Choose...</option>
                                 <option value="1">Employee</option>
                                 <option value="2">Admin</option>
                                 <option value="3">Manager</option>
                             </select>
                             <div class="valid-feedback">
-                                Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Required!
                             </div>
                         </div>
                     </div>
