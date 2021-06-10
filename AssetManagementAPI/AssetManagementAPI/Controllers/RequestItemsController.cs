@@ -552,7 +552,122 @@ namespace AssetManagementAPI.Controllers
                                   Notes = R.Notes
                               };
             return Ok(userRequest);
+        }
 
+        [HttpGet("ReqWaiting")]
+        public ActionResult ReqWaiting()
+        {
+            var reqWaiting = from R in myContext.RequestItems
+                            join S in myContext.Statuses on R.StatusId equals S.Id
+                            where R.StatusId == 1
+                            select new
+                            {
+                                Status = S.Name
+                            };
+            return Ok(reqWaiting);
+        }
+
+        [HttpGet("ReqApprove")]
+        public ActionResult ReqApprove()
+        {
+            var reqApprove = from R in myContext.RequestItems
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where R.StatusId == 2
+                             select new
+                             {
+                                 Status = S.Name
+                             };
+            return Ok(reqApprove);
+        }
+
+        [HttpGet("ReqReject")]
+        public ActionResult ReqReject()
+        {
+            var reqReject = from R in myContext.RequestItems
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where R.StatusId == 3
+                             select new
+                             {
+                                 Status = S.Name
+                             };
+            return Ok(reqReject);
+        }
+
+        [HttpGet("ReqReturn")]
+        public ActionResult ReqReturn()
+        {
+            var reqReturn = from R in myContext.RequestItems
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where R.StatusId == 5
+                             select new
+                             {
+                                 Status = S.Name
+                             };
+            return Ok(reqReturn);
+        }
+
+        [HttpGet("ReqWaiting/{id}")]
+        public ActionResult ReqWaiting(string id)
+        {
+            var reqWaiting = from U in myContext.Users
+                             join R in myContext.RequestItems on U.Id equals R.AccountId
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where U.Id == id && R.StatusId == 1 
+                             select new
+                             {
+                                 Id = U.Id,
+                                 Name = U.FirstName + " " + U.LastName,
+                                 Status = S.Name
+                             };
+            return Ok(reqWaiting);
+        }
+
+        [HttpGet("ReqApprove/{id}")]
+        public ActionResult ReqApprove(string id)
+        {
+            var reqApprove = from U in myContext.Users
+                             join R in myContext.RequestItems on U.Id equals R.AccountId
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where U.Id == id && R.StatusId == 2
+                             select new
+                             {
+                                 Id = U.Id,
+                                 Name = U.FirstName + " " + U.LastName,
+                                 Status = S.Name
+                             };
+            return Ok(reqApprove);
+        }
+
+        [HttpGet("ReqReject/{id}")]
+        public ActionResult ReqReject(string id)
+        {
+            var reqReject = from U in myContext.Users
+                             join R in myContext.RequestItems on U.Id equals R.AccountId
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where U.Id == id && R.StatusId == 3
+                             select new
+                             {
+                                 Id = U.Id,
+                                 Name = U.FirstName + " " + U.LastName,
+                                 Status = S.Name
+                             };
+            return Ok(reqReject);
+        }
+
+        [HttpGet("ReqReturn/{id}")]
+        public ActionResult ReqReturn(string id)
+        {
+            var reqReturn = from U in myContext.Users
+                             join R in myContext.RequestItems on U.Id equals R.AccountId
+                             join S in myContext.Statuses on R.StatusId equals S.Id
+                             where U.Id == id && R.StatusId == 5
+                             select new
+                             {
+                                 Id = U.Id,
+                                 Name = U.FirstName + " " + U.LastName,
+                                 Status = S.Name
+                             };
+            return Ok(reqReturn);
         }
     }
 

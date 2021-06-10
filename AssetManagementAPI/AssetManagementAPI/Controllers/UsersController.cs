@@ -67,8 +67,84 @@ namespace AssetManagementAPI.Controllers
             {
                 return StatusCode(400, new { Status = "400", message = "Id Sudah Digunakan!!!" });
             }
+        }
 
+        [HttpGet("GenderMale")]
+        public ActionResult GetGenderMale()
+        {
+            var genderMale = from U in myContext.Users
+                              join G in myContext.Genders on U.GenderId equals G.Id
+                              where U.GenderId == 1
+                              select new
+                              {
+                                  Gender = G.Name
+                              };
+            return Ok(genderMale);
+        }
 
+        [HttpGet("GenderFemale")]
+        public ActionResult GetGenderFemale()
+        {
+            var genderFemale = from U in myContext.Users
+                             join G in myContext.Genders on U.GenderId equals G.Id
+                             where U.GenderId == 2
+                             select new
+                             {
+                                 Gender = G.Name
+                             };
+            return Ok(genderFemale);
+        }
+
+        [HttpGet("DeptEngineering")]
+        public ActionResult GetDeptEngineering()
+        {
+            var deptEngineering = from U in myContext.Users
+                               join D in myContext.Departments on U.DepartmentId equals D.Id
+                               where U.DepartmentId == 1
+                               select new
+                               {
+                                   Department = D.Name
+                               };
+            return Ok(deptEngineering);
+        }
+
+        [HttpGet("DeptHR")]
+        public ActionResult GetDeptHR()
+        {
+            var deptHR = from U in myContext.Users
+                                  join D in myContext.Departments on U.DepartmentId equals D.Id
+                                  where U.DepartmentId == 2
+                                  select new
+                                  {
+                                      Department = D.Name
+                                  };
+            return Ok(deptHR);
+        }
+
+        [HttpGet("DeptFinance")]
+        public ActionResult GetDeptFinance()
+        {
+            var deptFinance = from U in myContext.Users
+                                  join D in myContext.Departments on U.DepartmentId equals D.Id
+                                  where U.DepartmentId == 3
+                                  select new
+                                  {
+                                      Department = D.Name
+                                  };
+            return Ok(deptFinance);
+        }
+
+        [HttpGet("DeptAdmin")]
+        public ActionResult GetDeptAdmin()
+        {
+            var deptAdmin = from U in myContext.Users
+                                  join D in myContext.Departments on U.DepartmentId equals D.Id
+                                  where U.DepartmentId == 4
+                                  select new
+                                  {
+                                      Department = D.Name
+                                  };
+            return Ok(deptAdmin);
         }
     }
 }
