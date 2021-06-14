@@ -2,7 +2,9 @@
     var data = $('#tabledatauserrequesthistory').DataTable({
         "dom": 'Bfrtip',
         "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            { extend: 'excel', text: '<i class="fas fa-file-excel" style="color:green;"></i>', titleAttr: 'Excel' },
+            { extend: 'pdf', text: '<i class="fas fa-file-pdf" style="color:crimson;"></i>', titleAttr: 'PDF' },
+            { extend: 'print', text: '<i class="fas fa-print"></i>', titleAttr: 'Print' }
         ],
         "ajax": {
             "url": "https://localhost:44395/API/RequestItems/UserRequest",

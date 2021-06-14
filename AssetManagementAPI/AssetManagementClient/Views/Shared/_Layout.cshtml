@@ -15,6 +15,7 @@
           rel="stylesheet">
 
     <!-- lib CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/icofont/icofont.min.css" rel="stylesheet">
@@ -23,6 +24,7 @@
     <link href="~/lib/venobox/venobox.css" rel="stylesheet">
     <link href="~/lib/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="~/lib/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="sweetalert2.min.css" />
 
     <!-- Template Main CSS File -->
     <link href="~/css/main/main.css" rel="stylesheet">
@@ -42,7 +44,8 @@
 
                 </ul>
             </nav><!-- .nav-menu -->
-            <a asp-controller="Auth" asp-action="Login" class="get-started-btn scrollto">Login</a>
+            @*<a asp-controller="Auth" asp-action="Login" class="get-started-btn scrollto">Login</a>*@
+            <a asp-controller="#" asp-action="#" class="get-started-btn scrollto" data-toggle='modal' data-target='#login'>Login</a>
         </div>
     </header>
     <!-- End Header -->
@@ -55,9 +58,9 @@
                      data-aos="fade-up" data-aos-delay="200">
                     <h1>Better Solutions For You to Request An Office Asset</h1>
                     <div class="d-lg-flex">
-                        <a asp-controller="Auth" asp-action="Login" class="btn-get-started scrollto">Get Started</a>
+                        <a asp-controller="#" asp-action="#" class="btn-get-started scrollto" data-toggle='modal' data-target='#login'>Get Started</a>
                         @*<a href="https://www.youtube.com/watch?v=ZG__w1ppRGI" class="venobox btn-watch-video" data-vbtype="video" target="_blank"
-        data-autoplay="true"> Watch Demo <i class="icofont-play-alt-2"></i></a>*@
+                            data-autoplay="true"> Watch Demo <i class="icofont-play-alt-2"></i></a>*@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -81,7 +84,7 @@
                 <div class="row content">
                     <div class="col-lg-6">
                         <p>
-                            We Provide a system for an employee to request office assets with a flexible system so that it can increase employee's work productivity 
+                            We Provide a system for an employee to request office assets with a flexible system so that it can increase employee's work productivity
                         </p>
                         <p style="font-weight:bold">
                             Features Available in Asset Management System:
@@ -210,6 +213,82 @@
 
     </main>
     <!-- End #main -->
+    <!-- Start Modal Login -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLogin">Sign In</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="emailLogin" class="form-control-label">Email</label>
+                            <input type="email" id="emailLogin" class="form-control form-control-alternative" placeholder="Enter Email" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="passwordLogin">Password</label>
+                            <input type="password" id="passwordLogin" class="form-control form-control-alternative" placeholder="Enter Password">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                                <label class="label-checkbox100 text-sm-left" for="ckb1">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <div class="col-6 text-right">
+                                <a asp-controller="#" asp-action="#" class="text-sm-right" data-toggle='modal' data-target='#forgotPassword' data-dismiss="modal">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li></li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#" class="btn btn-primary btn-lg" onclick="Login()">Login</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Login-->
+    <!-- Start Modal Forgot Password-->
+    <div class="modal fade" id="forgotPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalReset">Reset Password</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="resetForm">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h5 style="text-decoration:underline; font-weight:bold">Recover Your Asset Management Account</h5>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="emailReset" class="form-control-label">Email</label>
+                            <input type="email" id="emailResetPass" class="form-control form-control-alternative" placeholder="Please Enter Your Email" />
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <a href="#" class="btn btn-primary" onclick="ResetPassword()">Submit</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Forgot Password -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
@@ -218,7 +297,7 @@
                 &copy; Copyright <strong><span>PT. Mitra Integrasi Informatika</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                Developed by <a href="https://mestitahu.com/">Kuproy!</a>
+                Developed by <a href="#">Kuproy!</a>
             </div>
         </div>
     </footer>
@@ -228,10 +307,10 @@
     <div id="preloader"></div>
 
     <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
     <!-- lib JS Files -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -242,9 +321,13 @@
     <script src="~/lib/venobox/venobox.min.js"></script>
     <script src="~/lib/owl.carousel/owl.carousel.min.js"></script>
     <script src="~/lib/aos/aos.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="~/js/main/main.js"></script>
+    <script src="~/AssetManagement/Login.js" asp-append-version="true"></script>
+    <script src="~/AssetManagement/ResetPassword.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

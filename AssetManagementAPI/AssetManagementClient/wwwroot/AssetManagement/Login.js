@@ -13,6 +13,7 @@
             //alert("Successed to Login");
             localStorage.setItem('LoginRes', JSON.stringify(result));
             window.location.href = result;
+            $("#emailLogin").val(null);
         }
         else {
             alert("Failed to Login");
