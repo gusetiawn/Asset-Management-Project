@@ -55,7 +55,7 @@ namespace AssetManagementAPI.Controllers
                         EndDate = requestItem.EndDate,
                         Quantity = requestItem.Quantity,
                         Notes = requestItem.Notes,
-                        StatusId = 1 //Waiting for Approval"
+                        StatusId = 3 //Waiting for Approval"
                     };
                     myContext.RequestItems.Add(request);
                     myContext.SaveChanges();
@@ -144,7 +144,7 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 2 //Already Approved
+                    StatusId = 4 //Already Approved
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
@@ -273,7 +273,7 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 3 //Has Been Rejected
+                    StatusId = 1 //Has Been Rejected
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();
@@ -361,7 +361,7 @@ namespace AssetManagementAPI.Controllers
                     EndDate = requestItem.EndDate,
                     Quantity = requestItem.Quantity,
                     Notes = requestItem.Notes,
-                    StatusId = 4 //Already Picked Up
+                    StatusId = 5 //Already Picked Up
                 };
                 myContext.Entry(request).State = EntityState.Modified;
                 myContext.SaveChanges();

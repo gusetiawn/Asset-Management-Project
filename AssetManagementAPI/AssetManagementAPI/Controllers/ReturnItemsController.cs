@@ -47,7 +47,7 @@ namespace AssetManagementAPI.Controllers
                 myContext.Entry(data).State = EntityState.Modified;
                 myContext.SaveChanges();
 
-                dataRequest.StatusId = 5;
+                dataRequest.StatusId = 2; // Returned
                 myContext.Entry(dataRequest).State = EntityState.Modified;
                 myContext.SaveChanges();
 

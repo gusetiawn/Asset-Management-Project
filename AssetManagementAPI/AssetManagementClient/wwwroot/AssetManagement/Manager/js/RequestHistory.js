@@ -36,7 +36,8 @@
             },
             { 'data': 'quantity' },
             { 'data': 'notes' },
-            { 'data': 'status' }
+            { 'data': 'status' },
+            { 'data': 'statusId' }
         ],
         "columnDefs": [
             {
@@ -45,12 +46,22 @@
                 "targets": 0
             },
             {
-                "targets": [1],
+                "targets": [2],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [8],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [10],
                 "visible": false,
                 "searchable": false
             }
         ],
-        "order": [[1, "desc"]]
+        "order": [[10, "desc"]]
     });
     statusWaiting.on('order.dt search.dt', function () {
         statusWaiting.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {

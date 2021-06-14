@@ -30,7 +30,8 @@
             },
             { 'data': 'notes' },
             { 'data': 'quantity' },
-            { 'data': 'status' }
+            { 'data': 'status' },
+            { 'data': 'statusId' }
         ],
         "columnDefs": [
             {
@@ -45,9 +46,13 @@
             {
                 "visible": false,
                 "targets": 6
+            },
+            {
+                "visible": false,
+                "targets": 9
             }
         ],
-        "order": [[1, 'desc']]
+        "order": [[9, 'desc']]
 
     });
     data.on('order.dt search.dt', function () {
