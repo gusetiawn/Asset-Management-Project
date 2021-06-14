@@ -527,6 +527,7 @@ namespace AssetManagementAPI.Controllers
                                   AccountId = R.AccountId,
                                   Name = U.FirstName + " " + U.LastName,
                                   Item = I.Name,
+                                  ItemId = R.ItemId,
                                   StartDate = R.StartDate,
                                   EndDate = R.EndDate,
                                   Quantity = R.Quantity,

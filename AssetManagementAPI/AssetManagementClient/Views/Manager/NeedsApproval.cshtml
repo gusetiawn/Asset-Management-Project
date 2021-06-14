@@ -40,6 +40,7 @@
                     <th>User Id</th>
                     <th>Name</th>
                     <th>Requested Item</th>
+                    <th>Item Id</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Quantity</th>
@@ -56,6 +57,7 @@
                     <th>User Id</th>
                     <th>Name</th>
                     <th>Requested Item</th>
+                    <th>Item Id</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Quantity</th>
@@ -69,4 +71,73 @@
             </div>*@
     </div>
     @*</div>*@
+</div>
+
+<!-- Modal Needs Approval -->
+<div class="modal fade" id="needsApproval" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNeedsApproval">Approval Check</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" id="btnNeedsApprovalClose" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="needsApprovalForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="userId_emp">User Id</label>
+                                <input type="text" id="userId_emp" class="form-control form-control-alternative" placeholder="User Id" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="name_emp">Employee's Name</label>
+                                <input type="text" id="name_emp" class="form-control form-control-alternative" placeholder="Name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="req_id">Request Id</label>
+                                <input type="number" id="req_id" class="form-control form-control-alternative" placeholder="Request Id" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="item_name">Requested Item</label>
+                                <input type="text" id="item_name" class="form-control form-control-alternative" placeholder="Item Name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="req_date">Start - End Date</label>
+                                <input type="text" id="req_date" class="form-control form-control-alternative" placeholder="Date Borrowed" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="req_quantity">Quantity</label>
+                                <input type="number" id="req_quantity" class="form-control form-control-alternative" placeholder="Quantity" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group focused">
+                        <label>Notes</label>
+                        <textarea rows="4" class="form-control form-control-alternative" id="req_notes" placeholder="Type in your purpose for borrowing this item... " readonly></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <button class="btn btn-success rounded-circle" data-dismiss="modal" id="btnApproveReq" title="Approve"><i class='far fa-check-circle' style="color:white;"></i></button>
+                            <span> </span>
+                            <button class="btn btn-danger rounded-circle" data-dismiss="modal" id="btnRejectReq" title="Reject"><i class='far fa-times-circle' style="color:white;"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

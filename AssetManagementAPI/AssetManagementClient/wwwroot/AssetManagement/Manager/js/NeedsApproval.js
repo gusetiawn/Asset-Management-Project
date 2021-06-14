@@ -16,16 +16,17 @@
             { 'data': 'accountId' },
             { 'data': 'name' },
             { 'data': 'item' },
+            { 'data': 'itemId' },
             {
                 'data': 'startDate',
                 'render': function (data) {
-                    return moment(data).format('DD-MM-YYYY')
+                    return moment(data).format('DD MMM YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 'render': function (data) {
-                    return moment(data).format('DD-MM-YYYY')
+                    return moment(data).format('DD MMM YYYY')
                 }
             },
             { 'data': 'quantity' },
@@ -34,8 +35,8 @@
             {
                 'data': "null",
                 'render': function (data, type, row, meta) {
-                    if (row.status == "Waiting for Approval") {
-                        return "<button type='button' class='btn' onclick='approveRequest(" + '"' + row.id + '"' + ")' data-toggle='tooltip' data-placement='top' title='Approve'><span style='color: lime;'><i class='far fa-check-circle'></i></span></button><button type='button' class='btn' data-toggle='modal' data-target='#rejectModal' onclick='rejectRequest(" + '"' + row.id + '"' + ")' data-toggle='tooltip' data-placement='top' title='Reject'><span style='color: Tomato;'><i class='far fa-times-circle'></i></span></button>";
+                    if (row.status == "Waiting") {
+                        return "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#needsApproval' title='Detail Request' id='btnNeedsApproval'><i class='fas fa-check-square'></i></button>";
                     }
                     else {
                         return null;
@@ -51,12 +52,22 @@
                 "targets": 0
             },
             {
+                "targets": [1],
+                "visible": false,
+                "searchable": false
+            },
+            {
                 "targets": [2],
                 "visible": false,
                 "searchable": false
             },
             {
-                "targets": [8],
+                "targets": [5],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [9],
                 "visible": false,
                 "searchable": false
             }
@@ -70,28 +81,43 @@
     }).draw();
 });
 
-function approveRequest(ReqId) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#27e65a',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Approve it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "https://localhost:44395/API/RequestItems/Id=" + ReqId
-            }).done((result) => {
+// Ini Confirm Picked Up
+$("#tableDataListReq").on('click', '#btnNeedsApproval', function () {
+    var data = $("#tableDataListReq").DataTable().row($(this).parents('tr')).data();
+    console.log(data);
+    $('#userId_emp').val(data.accountId);
+    $('#name_emp').val(data.name);
+    $('#req_id').val(data.id);
+    $('#item_name').val(data.item);
+    $('#req_date').val(moment(data.startDate).format('DD MMM YYYY') + " to " + moment(data.endDate).format('DD MMM YYYY'));
+    $('#req_quantity').val(data.quantity);
+    $('#req_notes').val(data.notes);
+    $('#startDateE').val(data.startDate.slice(0, 10));
+    $('#endDateE').val(data.endDate.slice(0, 10));
+    $("#needsApproval").modal("show");
+    $("#needsApproval").on('click', '#btnNeedsApprovalClose', function () {
+        $("#needsApproval").modal("hide");
+    })
+    $("#needsApproval").on('click', '#btnApproveReq', function () {
+        $("#needsApproval").modal("hide");
+        Swal.fire({
+            title: 'You will approve the request?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#27e65a',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Approve it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 var obj = new Object();
-                obj.Id = result[0].id;
-                obj.AccountId = result[0].accountId;
-                obj.ItemId = result[0].itemId;
-                obj.StartDate = result[0].startDate;
-                obj.EndDate = result[0].endDate;
-                obj.Quantity = result[0].quantity;
-                obj.Notes = result[0].notes;
+                obj.Id = data.id;
+                obj.AccountId = data.accountId;
+                obj.ItemId = data.itemId;
+                obj.StartDate = data.startDate.slice(0, 10);
+                obj.EndDate = data.endDate.slice(0, 10);
+                obj.Quantity = data.quantity;
+                obj.Notes = data.notes;
                 $.ajax({
                     type: "PUT",
                     url: "https://localhost:44395/API/RequestItems/Approve",
@@ -113,39 +139,29 @@ function approveRequest(ReqId) {
                         'error'
                     );
                 });
-            }).fail((error) => {
-                Swal.fire(
-                    'Error!',
-                    'Data failed to approve !',
-                    'error'
-                );
-            });
-        }
-    });
-}
-
-function rejectRequest(ReqId) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Reject it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "https://localhost:44395/API/RequestItems/Id=" + ReqId
-            }).done((result) => {
+            }
+        });
+    })
+    $("#needsApproval").on('click', '#btnRejectReq', function () {
+        $("#needsApproval").modal("hide");
+        Swal.fire({
+            title: 'You will reject the request?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Reject it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 var obj = new Object();
-                obj.Id = result[0].id;
-                obj.AccountId = result[0].accountId;
-                obj.ItemId = result[0].itemId;
-                obj.StartDate = result[0].startDate;
-                obj.EndDate = result[0].endDate;
-                obj.Quantity = result[0].quantity;
-                obj.Notes = result[0].notes;
+                obj.Id = data.id;
+                obj.AccountId = data.accountId;
+                obj.ItemId = data.itemId;
+                obj.StartDate = data.startDate.slice(0, 10);
+                obj.EndDate = data.endDate.slice(0, 10);
+                obj.Quantity = data.quantity;
+                obj.Notes = data.notes;
                 $.ajax({
                     type: "PUT",
                     url: "https://localhost:44395/API/RequestItems/Reject",
@@ -163,17 +179,12 @@ function rejectRequest(ReqId) {
                 }).fail((notsuccess) => {
                     Swal.fire(
                         'Error!',
-                        'Request failed to reject !',
+                        'Data failed to reject !',
                         'error'
                     );
                 });
-            }).fail((error) => {
-                Swal.fire(
-                    'Error!',
-                    'Data failed to reject !',
-                    'error'
-                );
-            });
-        }
-    });
-}
+            }
+        });
+    })
+
+})
