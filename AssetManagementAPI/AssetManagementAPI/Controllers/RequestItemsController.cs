@@ -520,7 +520,7 @@ namespace AssetManagementAPI.Controllers
                               join I in myContext.Items on R.ItemId equals I.Id
                               join C in myContext.Categories on I.CategoryId equals C.Id
                               join S in myContext.Statuses on R.StatusId equals S.Id
-                              where R.StatusId == 1
+                              where R.StatusId == 3
                               select new
                               {
                                   Id = R.Id,
@@ -545,7 +545,7 @@ namespace AssetManagementAPI.Controllers
                               join C in myContext.Categories on I.CategoryId equals C.Id
                               join S in myContext.Statuses on R.StatusId equals S.Id
                               join U in myContext.Users on A.Id equals U.Id
-                              where R.StatusId == 2
+                              where R.StatusId == 4
                               select new
                               {
                                   Id = R.Id,
@@ -572,7 +572,7 @@ namespace AssetManagementAPI.Controllers
                               join C in myContext.Categories on I.CategoryId equals C.Id
                               join S in myContext.Statuses on R.StatusId equals S.Id
                               join U in myContext.Users on A.Id equals U.Id
-                              where R.StatusId == 4
+                              where R.StatusId == 5
                               select new
                               {
                                   Id = R.Id,
@@ -618,7 +618,7 @@ namespace AssetManagementAPI.Controllers
         {
             var reqWaiting = from R in myContext.RequestItems
                             join S in myContext.Statuses on R.StatusId equals S.Id
-                            where R.StatusId == 1
+                            where R.StatusId == 3
                             select new
                             {
                                 Status = S.Name
@@ -631,7 +631,7 @@ namespace AssetManagementAPI.Controllers
         {
             var reqApprove = from R in myContext.RequestItems
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where R.StatusId == 2
+                             where R.StatusId == 4
                              select new
                              {
                                  Status = S.Name
@@ -644,7 +644,7 @@ namespace AssetManagementAPI.Controllers
         {
             var reqReject = from R in myContext.RequestItems
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where R.StatusId == 3
+                             where R.StatusId == 1
                              select new
                              {
                                  Status = S.Name
@@ -657,7 +657,7 @@ namespace AssetManagementAPI.Controllers
         {
             var reqReturn = from R in myContext.RequestItems
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where R.StatusId == 5
+                             where R.StatusId == 2
                              select new
                              {
                                  Status = S.Name
@@ -671,7 +671,7 @@ namespace AssetManagementAPI.Controllers
             var reqWaiting = from U in myContext.Users
                              join R in myContext.RequestItems on U.Id equals R.AccountId
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where U.Id == id && R.StatusId == 1 
+                             where U.Id == id && R.StatusId == 3 
                              select new
                              {
                                  Id = U.Id,
@@ -687,7 +687,7 @@ namespace AssetManagementAPI.Controllers
             var reqApprove = from U in myContext.Users
                              join R in myContext.RequestItems on U.Id equals R.AccountId
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where U.Id == id && R.StatusId == 2
+                             where U.Id == id && R.StatusId == 4
                              select new
                              {
                                  Id = U.Id,
@@ -703,7 +703,7 @@ namespace AssetManagementAPI.Controllers
             var reqReject = from U in myContext.Users
                              join R in myContext.RequestItems on U.Id equals R.AccountId
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where U.Id == id && R.StatusId == 3
+                             where U.Id == id && R.StatusId == 1
                              select new
                              {
                                  Id = U.Id,
@@ -719,7 +719,7 @@ namespace AssetManagementAPI.Controllers
             var reqReturn = from U in myContext.Users
                              join R in myContext.RequestItems on U.Id equals R.AccountId
                              join S in myContext.Statuses on R.StatusId equals S.Id
-                             where U.Id == id && R.StatusId == 5
+                             where U.Id == id && R.StatusId == 2
                              select new
                              {
                                  Id = U.Id,
