@@ -13,13 +13,13 @@
             {
                 'data': 'startDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             { 'data': 'notes' },
@@ -28,7 +28,7 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return ' <button class="btn btn-outline-primary" data-toggle="modal" data-target="#returnAsset" id="btngetid"><i class="fas fa-check-square"></i></button> '
+                    return ' <button class="btn btn-outline-primary" data-toggle="modal" data-target="#returnAsset" id="btngetid" data-toggle="tooltip" data-placement="top" title="Verification"><i class="fas fa-check-square"></i></button> '
 
                 },
                 'searchable': false,

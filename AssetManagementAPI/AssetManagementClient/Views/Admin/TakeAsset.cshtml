@@ -78,8 +78,16 @@
                 <form onsubmit="return false" name="formAddNewRequest" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="accountIdE">AccountId</label>
-                            <input type="text" class="form-control" id="accountIdE" placeholder="Account Id" required disabled>
+                            <label for="accountIdE">Name</label>
+                            <input type="text" class="form-control" id="nameE" placeholder="Name" required disabled>
+                            <div class="valid-feedback">
+                            </div>
+                            <div class="invalid-feedback">
+                            </div>
+
+                        </div><div class="form-group col-md-6" hidden>
+                            <label for="accountIdE">Name</label>
+                            <input type="text" class="form-control" id="accountIdE" placeholder="Name" required disabled hidden>
                             <div class="valid-feedback">
                             </div>
                             <div class="invalid-feedback">
@@ -88,8 +96,16 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="itemIdE">Item Id</label>
-                            <input type="number" class="form-control" id="itemIdE" placeholder="Item Id" required disabled>
+                            <label for="itemIdE">Item</label>
+                            <input type="text" class="form-control" id="itemE" required disabled>
+                            <div class="valid-feedback">
+                            </div>
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6" hidden>
+                            <label for="itemIdE">Item</label>
+                            <input type="text" class="form-control" id="itemIdE" required disabled hidden>
                             <div class="valid-feedback">
                             </div>
                             <div class="invalid-feedback">

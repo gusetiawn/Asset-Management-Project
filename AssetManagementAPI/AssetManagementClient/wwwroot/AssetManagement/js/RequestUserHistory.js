@@ -17,13 +17,13 @@
             {
                 'data': 'startDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             { 'data': 'notes' },
@@ -39,6 +39,10 @@
             {
                 "visible": false,
                 "targets": 1
+            },
+            {
+                "visible": false,
+                "targets": 6
             }
         ],
         "order": [[1, 'desc']]

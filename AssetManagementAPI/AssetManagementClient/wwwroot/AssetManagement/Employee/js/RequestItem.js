@@ -46,13 +46,13 @@
             {
                 'data': 'startDate',
                 'render': function (data) {
-                    return data.slice(0, 10);
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 'render': function (data) {
-                    return data.slice(0, 10);
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             { 'data': 'quantity' },

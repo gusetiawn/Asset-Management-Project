@@ -99,6 +99,9 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + " ,</h4>";
                 mailbody += "<p style='color: black;'>You have just changed the password to your account,</p>";
                 mailbody += "<p style='color: black;'>If you feel you have not done so, immediately make changes by forgetting the password on your account</p>";
+                mailbody += "<br>";
+                mailbody += "<p style='color: black;'>Best Regards,</p>";
+                mailbody += "<p style='color: black;'>Management System</p>";
                 mailbody += "</div>";
 
                 mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
@@ -164,6 +167,9 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "<div style='background-color: white;'>";
                 mailbody += "<p style='text-align: center; padding: 10px;  color: black;'> " + resetPass + " </p>";
                 mailbody += "</div>";
+                mailbody += "<br>";
+                mailbody += "<p style='color: black;'>Best Regards,</p>";
+                mailbody += "<p style='color: black;'>Management System</p>";
                 mailbody += "</div>";
 
                 mailbody += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";

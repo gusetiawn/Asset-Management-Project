@@ -13,13 +13,13 @@
             {
                 'data': 'startDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 render: function (data, type, row) {
-                    return data.slice(0, 10)
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             { 'data': 'notes' },
@@ -28,7 +28,7 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return ' <button class="btn btn-primary" type="button" id="buttonTakeAnAsset"><i class="fas fa-check-square"></i></button> '
+                    return ' <button class="btn btn-primary" type="button" id="buttonTakeAnAsset" data-toggle="tooltip" data-placement="top" title="Verification"><i class="fas fa-check-square"></i></button> '
 
                 },
                 'searchable': false,
@@ -61,6 +61,8 @@ $("#tabledatauserrequesttaken").on('click', '#buttonTakeAnAsset', function () {
     var data = $("#tabledatauserrequesttaken").DataTable().row($(this).parents('tr')).data();
     console.log(data);
     $('#idE').val(data.id);
+    $('#nameE').val(data.name);
+    $('#itemE').val(data.item);
     $('#accountIdE').val(data.accountId);
     $('#itemIdE').val(data.itemId);
     $('#startDateE').val(data.startDate.slice(0, 10));

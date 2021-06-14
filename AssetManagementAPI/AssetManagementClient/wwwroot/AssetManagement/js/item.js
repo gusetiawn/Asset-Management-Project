@@ -2,19 +2,20 @@
 $(document).ready(function () {
     var data = $('#tabledataitem').DataTable({
         "ajax": {
-            "url": "https://localhost:44395/API/Items",
+            "url": "https://localhost:44395/API/Items/DataItem",
             "type": "get",
             "datatype": "json",
-            "dataSrc": "data"
+            "dataSrc": ""
         },
         "columns": [
             { 'data': null },
             { 'data': 'name' },
             { 'data': 'quantity' },
+            { 'data': 'category' },
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return '<a href="javascript:void(0)" id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-edit"></i></a>'
+                    return '<a href="javascript:void(0)" id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Update Item"><i class="fas fa-edit"></i></a>'
 
                 },
                 'searchable': false,

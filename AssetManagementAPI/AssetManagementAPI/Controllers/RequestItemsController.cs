@@ -70,7 +70,7 @@ namespace AssetManagementAPI.Controllers
                     var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
                     var item = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
                     
-                    var subject = $"Your Request With Id Number #{request.Id} Has Been Received";
+                    var subject = $"Request #{request.Id} Received";
                     string mailbody = string.Empty;
                     mailbody += "<body>";
                     mailbody += "<div style='margin: 25px;'>";
@@ -82,10 +82,10 @@ namespace AssetManagementAPI.Controllers
                     mailbody += "<p style='color: black;'>We have received your request,</p>";
                     mailbody += "<p style='color: black;'>We will process your request after getting approval from the Manager</p>";
                     mailbody += "<p style='color: black;'>Here are the details:</p>";
-                    mailbody += "<p style='color: black;'>Name: " + user.FirstName + " " + user.LastName + "</p>";
-                    mailbody += "<p style='color: black;'>Department: " + dep.Name + " </p>";
+                    mailbody += "<p style='color: black;'>Name        : " + user.FirstName + " " + user.LastName + "</p>";
+                    mailbody += "<p style='color: black;'>Department  : " + dep.Name + " </p>";
                     mailbody += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
-                    mailbody += "<p style='color: black;'>Date: " + request.StartDate.ToString().Substring(0,10) + " - " + request.EndDate.ToString().Substring(0,10) + "</p>";
+                    mailbody += "<p style='color: black;'>Date        : " + request.StartDate.ToString().Substring(0,10) + " - " + request.EndDate.ToString().Substring(0,10) + "</p>";
                     mailbody += "<br>";
                     mailbody += "<p style='color: black;'>Best Regards,</p>";
                     mailbody += "<p style='color: black;'>Management System</p>";
@@ -150,8 +150,9 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+                var item = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
 
+                var subject = $"Request #{request.Id} Approved";
                 string mailbody = string.Empty;
                 mailbody += "<body>";
                 mailbody += "<div style='margin: 25px;'>";
@@ -160,12 +161,14 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
                 mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
                 mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
-                mailbody += "<p style='color: black;'>Congratulations!, your request that you submitted was approved Manager.</p>";
+                mailbody += "<p style='color: black;'>Congratulations!, your request that you submitted has been approved by Manager.</p>";
+                mailbody += "<p style='color: black;'>Here are the details:</p>";
+                mailbody += "<p style='color: black;'>Name        : " + user.FirstName + " " + user.LastName + "</p>";
+                mailbody += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
+                mailbody += "<p style='color: black;'>Date        : " + request.StartDate.ToString().Substring(0, 10) + " - " + request.EndDate.ToString().Substring(0, 10) + "</p>";
                 mailbody += "<p style='color: black;'>Your request is being processed by us.</p>";
-                mailbody += "<p style='color: black;'>Please come to the Admin room for the next step.</p>";
+                mailbody += "<p style='color: black;'>Please come to the Admin room at APL Tower Lt. 18 for the next step.</p>";
                 mailbody += "<div style='text-align: center;'>";
-                mailbody += "<img src='https://svgsilh.com/png-512/146635-4caf50.png' style='width: 100px; height: 100px;' alt='approved'>";
-                mailbody += "</div>";
                 mailbody += "<br>";
                 mailbody += "<p style='color: black;'>Best Regards,</p>";
                 mailbody += "<p style='color: black;'>Management System</p>";
@@ -195,9 +198,55 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "</div>";
                 mailbody += "</div>";
                 mailbody += "</body>";
-                var subject = $"Your Request With Id Number #{request.Id} Has Been Approved";
                 var body = mailbody;
                 sendMail.SendEmail(user.Email, body, subject);
+
+                var subjectforadmin = $"Request #{request.Id} Need Asset";
+                string mailbodyforadmin = string.Empty;
+                mailbodyforadmin += "<body>";
+                mailbodyforadmin += "<div style='margin: 25px;'>";
+                mailbodyforadmin += "<div style='background-color: #4ac09d; border-radius: 25px;'>";
+                mailbodyforadmin += "<p style='font-weight: bold; font-size: 25px; padding-top: 25px; color: white; text-align: center;'>Asset Management System</p>";
+                mailbodyforadmin += "<div style='background-color:#f0f0f0; border-bottom-right-radius:25px; border-bottom-left-radius:25px; margin-top:-30px;'>";
+                mailbodyforadmin += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
+                mailbodyforadmin += "<h4 style='padding-top: 20px; color: black;'>Hello Admin,</h4>";
+                mailbodyforadmin += "<p style='color: black;'>There is an asset request, please prepare the item immediately</p>";
+                mailbodyforadmin += "<p style='color: black;'>Here are the details:</p>";
+                mailbodyforadmin += "<p style='color: black;'>Name        : " + user.FirstName + " " + user.LastName + "</p>";
+                mailbodyforadmin += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
+                mailbodyforadmin += "<p style='color: black;'>Date        : " + request.StartDate.ToString().Substring(0, 10) + " - " + request.EndDate.ToString().Substring(0, 10) + "</p>";
+                mailbodyforadmin += "<div style='text-align: center;'>";
+                mailbodyforadmin += "<br>";
+                mailbodyforadmin += "<p style='color: black;'>Best Regards,</p>";
+                mailbodyforadmin += "<p style='color: black;'>Management System</p>";
+                mailbodyforadmin += "</div>";
+
+                mailbodyforadmin += "<div style='color: inherit; font - size:inherit; line - height:inherit'>";
+                mailbodyforadmin += "<table width='100%' cellpadding='0' cellspacing='0' style='border-spacing:0!important;border-collapse:collapse;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:135%;color:#23496d;margin-bottom:0;padding:0' align='center'>";
+                mailbodyforadmin += "<tbody>";
+                mailbodyforadmin += "<tr>";
+                mailbodyforadmin += "<td align='center' valign='top' style='border-collapse:collapse;font-family:Lato,Tahoma,sans-serif;font-size:13px;color:#444444;word-break:break-word;text-align:center;margin-bottom:0;line-height:135%;padding:10px 20px'>";
+                mailbodyforadmin += "<p style='font-family:Verdana,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;font-style:normal;color:#444444'> APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470 </p>";
+                mailbodyforadmin += "<font color='#888888'>";
+                mailbodyforadmin += "<p>";
+                mailbodyforadmin += "<a style='font-family:Verdana,sans-serif;font-size:10px;color:#00000f;font-weight:normal;font-style:normal' rel='noreferrer'>© PT. Mitra Integrasi Informatika</a>";
+                mailbodyforadmin += "</p>";
+                mailbodyforadmin += "</font>";
+                mailbodyforadmin += "</td>";
+                mailbodyforadmin += "</tr>";
+                mailbodyforadmin += "</tbody>";
+                mailbodyforadmin += "</table>";
+                mailbodyforadmin += "<div>";
+                mailbodyforadmin += "<div>";
+                mailbodyforadmin += "<div>";
+
+                mailbodyforadmin += "</div>";
+                mailbodyforadmin += "</div>";
+                mailbodyforadmin += "</div>";
+                mailbodyforadmin += "</div>";
+                mailbodyforadmin += "</body>";
+                var bodyadmin = mailbodyforadmin;
+                sendMail.SendEmail("gusetiawn@gmail.com", bodyadmin, subjectforadmin);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Request Item Berhasil di Setujui Manager" });
 
@@ -236,9 +285,9 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var currentItem = myContext.RequestItems.Where(i => i.AccountId == user.Id).FirstOrDefault();
+                var item = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
 
-                var subject = $"Your Request With Id Number #{request.Id} Has Been Rejected";
+                var subject = $"Request #{request.Id} Rejected";
                 string mailbody = string.Empty;
                 mailbody += "<body>";
                 mailbody += "<div style='margin: 25px;'>";
@@ -248,10 +297,13 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
                 mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
                 mailbody += "<p style='color: black;'>Sorry, request that you submitted was rejected.</p>";
+                mailbody += "<p style='color: black;'>Here are the details:</p>";
+                mailbody += "<p style='color: black;'>Name        : " + user.FirstName + " " + user.LastName + "</p>";
+                mailbody += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
+                mailbody += "<p style='color: black;'>Date        : " + request.StartDate.ToString().Substring(0, 10) + " - " + request.EndDate.ToString().Substring(0, 10) + "</p>";
                 mailbody += "<p style='color: black;'>We can't process your request.</p>";
                 mailbody += "<p style='color: black;'>For more information you can contact the manager.</p>";
                 mailbody += "<div style='text-align: center;'>";
-                mailbody += "<img src='https://cdn4.iconfinder.com/data/icons/toolbar-std-pack/512/delete-512.png' style='width: 100px; height: 100px;' alt='rejected'>";
                 mailbody += "<br>";
                 mailbody += "<p style='color: black;'>Best Regards,</p>";
                 mailbody += "<p style='color: black;'>Management System</p>";
@@ -315,7 +367,9 @@ namespace AssetManagementAPI.Controllers
                 myContext.SaveChanges();
 
                 var user = myContext.Users.Where(u => u.Id == requestItem.AccountId).FirstOrDefault();
-                var subject = $"Request An Asset With Id Number #{request.Id}";
+                var item = myContext.Items.Where(i => i.Id == requestItem.ItemId).FirstOrDefault();
+
+                var subject = $"Request #{request.Id} Picked Up";
                 string mailbody = string.Empty;
                 mailbody += "<body>";
                 mailbody += "<div style='margin: 25px;'>";
@@ -325,6 +379,10 @@ namespace AssetManagementAPI.Controllers
                 mailbody += "<div style='margin-left: 50px; margin-right: 50px; padding-bottom: 50px;'>";
                 mailbody += "<h4 style='padding-top: 20px; color: black;'>Hello " + user.FirstName + ",</h4>";
                 mailbody += "<p style='color: black;'>Thank you for making a request with our system,.</p>";
+                mailbody += "<p style='color: black;'>Here are the details:</p>";
+                mailbody += "<p style='color: black;'>Name        : " + user.FirstName + " " + user.LastName + "</p>";
+                mailbody += "<p style='color: black;'>Item Request: " + item.Name + " </p>";
+                mailbody += "<p style='color: black;'>Date        : " + request.StartDate.ToString().Substring(0, 10) + " - " + request.EndDate.ToString().Substring(0, 10) + "</p>";
                 mailbody += "<p style='color: black;'>We hope you can keep the Assets well and return them according to the set schedule,</p>";
                 mailbody += "<p style='color: black;'>if there is damage and loss then you will be charged a penalty fee according to the conditions that occur, please cooperate..</p>";
                 mailbody += "<br>";
@@ -415,6 +473,7 @@ namespace AssetManagementAPI.Controllers
                                EndDate = R.EndDate,
                                Notes = R.Notes,
                                Quantity = R.Quantity,
+                               StatusId = S.Id,
                                Status = S.Name,
                                Category = C.Name
                            };

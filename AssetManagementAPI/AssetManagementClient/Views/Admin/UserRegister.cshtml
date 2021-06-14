@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="container-fluid mt-5">
-            <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addNewUser"><i class="fas fa-user-plus"></i></a>
+            <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addNewUser" data-placement="top" title="Add User"><i class="fas fa-user-plus"></i></a>
             <p></p>
             <table id="tabledataUser" class="table table-striped table-bordered dataTable" style="width:100%">
                 <thead class="thead-light">
@@ -150,6 +150,7 @@
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
                             <input name="passReg" type="password" class="form-control" id="password" pattern="(?=.*[A-Za-z\d]).{8,}" placeholder="Use Strong Password!" required>
+                            <small id="emailHelp" class="form-text text-muted">Minimum 8 Characters</small>
                             <div class="valid-feedback">
                             </div>
                             <div class="invalid-feedback">
@@ -163,7 +164,7 @@
                             <label for="departmentId">Department</label>
                             <select class="form-control" id="departmentId">
                                 <option hidden>Choose</option>
-                                <option value="1">Commercial</option>
+                                <option value="1">Engineering</option>
                                 <option value="2">Human Resources</option>
                                 <option value="3">Finance</option>
                                 <option value="4">Administration</option>
@@ -190,7 +191,7 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</button>
+                        <a class="btn btn-primary text-white" onclick="AddNewUser(document.formAdd.passReg, document.formAdd.emailReg)">Submit</a>
                     </div>
 
                 </form>
@@ -375,7 +376,7 @@
                             <label for="departmentIdE">Department</label>
                             <select class="form-control" id="departmentIdE">
                                 <option hidden>Choose</option>
-                                <option value="1">Commercial</option>
+                                <option value="1">Engineering</option>
                                 <option value="2">Human Resources</option>
                                 <option value="3">Finance</option>
                                 <option value="4">Administration</option>
@@ -388,7 +389,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="roleIdE">Role</label>
-                            <select class="form-control" id="roleIdE">
+                            <select class="form-control" id="roleIdE" disabled>
                                 <option hidden>Choose...</option>
                                 <option value="1">Employee</option>
                                 <option value="2">Admin</option>

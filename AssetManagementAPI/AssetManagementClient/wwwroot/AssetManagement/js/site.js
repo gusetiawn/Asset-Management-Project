@@ -23,8 +23,8 @@
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return ' <button id="buttonDetail" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetailUser"><i class="fas fa-info-circle"></i></button> ' +
-                        ' <button id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal"><i class="fas fa-user-edit"></i></button> ' + ' <button id="buttonDelete" type="button" class="btn btn-danger" data-toggle="modal" ><i class="fas fa-trash-alt"></i></button> '
+                    return ' <button id="buttonDetail" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetailUser" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-info-circle"></i></button> ' +
+                        ' <button id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Update Profile"><i class="fas fa-user-edit"></i></button> ' + ' <button id="buttonDelete" type="button" class="btn btn-danger" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button> '
 
                 },
                 'searchable': false,
@@ -79,8 +79,7 @@ function AddNewUser(inputtxt,inputEmail) {
     if (inputEmail.value.match(emaill)) {
         if (inputtxt.value.match(passw)) {
             if (user.Id == "" || user.FirstName == "" || user.LastName == "" || user.GenderId == "" || user.BirthDate == "" || user.Address == "" || user.Contact == "" || user.DepartmentId == "" || user.Email == "" || user.Password == "" || user.RoleId == "") {
-                return Swal.fire('Error', 'Something Went Wrong', 'error');
-                /*return false;*/
+                Swal.fire('Error', 'Something Went Wrong', 'error');
             }
             else {
                 $.ajax({
@@ -102,10 +101,14 @@ function AddNewUser(inputtxt,inputEmail) {
                 });
 
             }
-            //alert('Correct, try another...')
-            //return true;
+            
+        }
+        else {
             Swal.fire('Error', 'Something Went Wrong', 'error');
         }
+        
+    }
+    else {
         Swal.fire('Error', 'Something Went Wrong', 'error');
     }
     
@@ -163,22 +166,6 @@ $("#tabledataUser").on('click', '#buttonUpdate', function () {
             url: 'https://localhost:44395/API/Users',
             type: "PUT",
             data: JSON.stringify(edit),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json"
-        }).done((result) => {
-            Swal.fire('Success', 'User Has been Updated', 'success');
-            $('#tabledataUser').DataTable().ajax.reload();
-
-        }).fail((error) => {
-            Swal.fire('Error', 'Something Went Wrong', 'error');
-        });
-        var edit2 = new Object();
-        edit2.accountId = $('#idE').val();
-        edit2.roleId = $('#roleIdE').val();
-        $.ajax({
-            url: 'https://localhost:44395/API/RoleAccounts',
-            type: "POST",
-            data: JSON.stringify(edit2),
             contentType: "application/json; charset=utf-8",
             datatype: "json"
         }).done((result) => {
