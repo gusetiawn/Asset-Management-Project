@@ -1,33 +1,6 @@
-﻿function format(data) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-        '<tr>' +
-        '<td>Item Id:</td>' +
-        '<td>' + data.id + '</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td>Quantity of Requested Item:</td>' +
-        '<td>' + data.quantity + ' items</td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td>Name Items:</td>' +
-        '<td>' + data.name + '</td>' +
-        '</tr>' +
-        '</table>';
-
-    //$.ajax({
-    //    url: 'https://localhost:44395/api/items/Id=' + d.id
-    //}).done((result) => {
-    //    alert(result);
-        
-    //}).fail((error) => {
-    //    alert("error");
-    //});
-}
-
-// TABLE DATA ITEM
+﻿// TABLE DATA ITEM
 $(document).ready(function () {
-    var dataItem = $('#tabledataitems').DataTable({
+    var dataItem = $('#tabledataitem').DataTable({
         "ajax": {
             "url": "https://localhost:44395/API/Items/DataItem",
             "type": "get",
@@ -44,17 +17,11 @@ $(document).ready(function () {
             { 'data': 'name' },
             { 'data': 'id' },
             { 'data': 'quantity' },
-            {
-                'className': 'details-control',
-                'orderable': false,
-                'data': null,
-                'defaultContent': ''
-            },
             { 'data': 'category' },
             {
                 'data': null,
                 render: function (data, type, row, meta) {
-                    return '<a href="javascript:void(0)" id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Update Item"><i class="fas fa-edit"></i></a>'
+                    return '<a href="javascript:void(0)" id="buttonUpdate" type="button" class="btn btn-warning" data-toggle="modal" title="Update Item"><i class="fas fa-edit"></i></a>'
 
                 },
                 'searchable': false,
@@ -73,32 +40,12 @@ $(document).ready(function () {
                 "searchable": false
             },
             {
-                "targets": [4],
-                "visible": false,
-                "searchable": false
-            },
-            {
-                "targets": 6,
+                "targets": 5,
                 className: 'dt-body-center'
             }
         ],
         "order": [[1, 'asc']]
 
-    });
-
-    // Add event listener for opening and closing details
-    $('#tabledataitems tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = dataItem.row(tr);
-
-        if (row.child.isShown()) {
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-        }
     });
 
     dataItem.on('order.dt search.dt', function () {
