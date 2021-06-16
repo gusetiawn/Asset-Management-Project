@@ -30,8 +30,7 @@ namespace AssetManagementAPI.Controllers
         [HttpPost("NewRequest")] 
         public ActionResult ReturnItem(ReturnItem returnItem)
         {
-            try
-            {
+     
                 var returnItm = new ReturnItem
                 {
                     RequestItemId = returnItem.RequestItemId,
@@ -106,11 +105,7 @@ namespace AssetManagementAPI.Controllers
                 sendMail.SendEmail(user.Email, body, subject);
 
                 return StatusCode(200, new { status = HttpStatusCode.OK, message = "Return Item Berhasil" });
-            }
-            catch (Exception)
-            {
-                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Return Item Gagal" });
-            }
+           
         }
     }
 }

@@ -1,4 +1,23 @@
-﻿$(document).ready(function () {
+﻿function format(d) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<tr>' +
+        '<td>Request Id:</td>' +
+        '<td>' + d.id + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Quantity of Requested Item:</td>' +
+        '<td>' + d.quantity + ' items</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Notes for the Request:</td>' +
+        '<td>' + d.notes + '</td>' +
+        '</tr>' +
+        '</table>';
+}
+
+
+$(document).ready(function () {
     $.ajax({
         url: "https://localhost:44395/API/Items"
     }).done((result) => {
@@ -25,9 +44,12 @@
     });
 
     var dataReqItem = $('#tableDataReqItem').DataTable({
+        "responsive": true,
         "dom": 'Bfrtip',
         "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            { extend: 'excel', text: '<i class="fas fa-file-excel" style="color:green;"></i>', titleAttr: 'Excel' },
+            { extend: 'pdf', text: '<i class="fas fa-file-pdf" style="color:crimson;"></i>', titleAttr: 'PDF' },
+            { extend: 'print', text: '<i class="fas fa-print"></i>', titleAttr: 'Print' }
         ],
         "ajax": {
             "url": "https://localhost:44389/Employee/Get",
@@ -56,8 +78,14 @@
                 }
             },
             { 'data': 'quantity' },
+            { 'data': 'status' },
             { 'data': 'notes' },
-            { 'data': 'status' }
+            {
+                'className': 'details-control',
+                'orderable': false,
+                'data': null,
+                'defaultContent': ''
+            }
         ],
         "columnDefs": [
             {
@@ -69,11 +97,36 @@
                 "targets": [1],
                 "visible": false,
                 "searchable": false
+            },
+            {
+                "targets": [5],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [7],
+                "visible": false,
+                "searchable": false
             }
         ],
         "order": [[1, "desc"]]
-
     });
+
+    // Add event listener for opening and closing details
+    $('#tableDataReqItem tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = dataReqItem.row(tr);
+
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
+
     dataReqItem.on('order.dt search.dt', function () {
         dataReqItem.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
@@ -83,6 +136,9 @@
 
 $('#daterange').daterangepicker({
     //options
+    locale: {
+        format: 'DD MMM YYYY'
+    }
 }, function (start, end, label) {
         $('#input-start-date').val(start.format('MM-DD-YYYY'));
         $('#input-end-date').val(end.format('MM-DD-YYYY'));
@@ -91,6 +147,9 @@ $('#daterange').daterangepicker({
 function RequestNewItem() {
     $('#daterange').daterangepicker({
         //options
+        locale: {
+            format: 'DD MMM YYYY'
+        }
     }, function (start, end, label) {
         $('#input-start-date').val(start.format('MM-DD-YYYY'));
         $('#input-end-date').val(end.format('MM-DD-YYYY'));

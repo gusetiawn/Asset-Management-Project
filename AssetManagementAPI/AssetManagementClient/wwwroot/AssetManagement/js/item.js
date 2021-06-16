@@ -1,6 +1,33 @@
-﻿// TABLE DATA ITEM
+﻿function format(data) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<tr>' +
+        '<td>Item Id:</td>' +
+        '<td>' + data.id + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Quantity of Requested Item:</td>' +
+        '<td>' + data.quantity + ' items</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Name Items:</td>' +
+        '<td>' + data.name + '</td>' +
+        '</tr>' +
+        '</table>';
+
+    //$.ajax({
+    //    url: 'https://localhost:44395/api/items/Id=' + d.id
+    //}).done((result) => {
+    //    alert(result);
+        
+    //}).fail((error) => {
+    //    alert("error");
+    //});
+}
+
+// TABLE DATA ITEM
 $(document).ready(function () {
-    var data = $('#tabledataitem').DataTable({
+    var dataItem = $('#tabledataitems').DataTable({
         "ajax": {
             "url": "https://localhost:44395/API/Items/DataItem",
             "type": "get",
@@ -8,9 +35,21 @@ $(document).ready(function () {
             "dataSrc": ""
         },
         "columns": [
-            { 'data': null },
+            {
+                'data': null,
+                'render': function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
             { 'data': 'name' },
+            { 'data': 'id' },
             { 'data': 'quantity' },
+            {
+                'className': 'details-control',
+                'orderable': false,
+                'data': null,
+                'defaultContent': ''
+            },
             { 'data': 'category' },
             {
                 'data': null,
@@ -22,16 +61,48 @@ $(document).ready(function () {
                 'orderable': false
             }
         ],
-        "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": 0
-        }],
+        "columnDefs": [
+            {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            },
+            {
+                "targets": [2],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [4],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": 6,
+                className: 'dt-body-center'
+            }
+        ],
         "order": [[1, 'asc']]
 
     });
-    data.on('order.dt search.dt', function () {
-        data.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+
+    // Add event listener for opening and closing details
+    $('#tabledataitems tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = dataItem.row(tr);
+
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
+
+    dataItem.on('order.dt search.dt', function () {
+        dataItem.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
         });
     }).draw();

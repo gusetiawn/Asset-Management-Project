@@ -1,4 +1,26 @@
-﻿$(document).ready(function () {
+﻿function format(d) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<tr>' +
+        '<td>Request Id:</td>' +
+        '<td>' + d.id + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Employee' + "'s" + ' Id:</td>' +
+        '<td>' + d.accountId + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Quantity of Requested Item:</td>' +
+        '<td>' + d.quantity + ' items</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Notes for the Request:</td>' +
+        '<td>' + d.notes + '</td>' +
+        '</tr>' +
+        '</table>';
+}
+
+$(document).ready(function () {
     var statusWaiting = $('#tableDataListReq').DataTable({
         "ajax": {
             "url": "https://localhost:44395/API/RequestItems/RequestNeedsApproval",
@@ -20,13 +42,13 @@
             {
                 'data': 'startDate',
                 'render': function (data) {
-                    return moment(data).format('DD MMM YYYY')
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             {
                 'data': 'endDate',
                 'render': function (data) {
-                    return moment(data).format('DD MMM YYYY')
+                    return moment(data).format('DD-MM-YYYY')
                 }
             },
             { 'data': 'quantity' },
@@ -35,13 +57,14 @@
             {
                 'data': "null",
                 'render': function (data, type, row, meta) {
-                    if (row.status == "Waiting") {
-                        return "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#needsApproval' title='Detail Request' id='btnNeedsApproval'><i class='fas fa-check-square'></i></button>";
-                    }
-                    else {
-                        return null;
-                    }
+                        return "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#needsApproval' title='Approval Check' id='btnNeedsApproval'><i class='fas fa-check-square'></i></button>";
                 }
+            },
+            {
+                'className': 'details-control',
+                'orderable': false,
+                'data': null,
+                'defaultContent': ''
             }
             
         ],
@@ -67,13 +90,38 @@
                 "searchable": false
             },
             {
+                "targets": [8],
+                "visible": false,
+                "searchable": false
+            },
+            {
                 "targets": [9],
                 "visible": false,
                 "searchable": false
+            },
+            {
+                "targets": 11,
+                className: 'dt-body-center'
             }
         ],
         "order": [[1, "desc"]]
     });
+
+    // Add event listener for opening and closing details
+    $('#tableDataListReq tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = statusWaiting.row(tr);
+
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
+
     statusWaiting.on('order.dt search.dt', function () {
         statusWaiting.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
@@ -89,7 +137,7 @@ $("#tableDataListReq").on('click', '#btnNeedsApproval', function () {
     $('#name_emp').val(data.name);
     $('#req_id').val(data.id);
     $('#item_name').val(data.item);
-    $('#req_date').val(moment(data.startDate).format('DD MMM YYYY') + " to " + moment(data.endDate).format('DD MMM YYYY'));
+    $('#req_date').val(moment(data.startDate).format('DD-MM-YYYY') + " to " + moment(data.endDate).format('DD-MM-YYYY'));
     $('#req_quantity').val(data.quantity);
     $('#req_notes').val(data.notes);
     $('#startDateE').val(data.startDate.slice(0, 10));

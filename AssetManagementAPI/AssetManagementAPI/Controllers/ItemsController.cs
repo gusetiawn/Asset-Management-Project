@@ -39,5 +39,24 @@ namespace AssetManagementAPI.Controllers
             return Ok(dataItem);
 
         }
+
+        [HttpGet("Id={id}")]
+        public ActionResult WhoRequestByItemId(int id)
+        {
+            var dataItem = from U in myContext.Users
+                           join A in myContext.Accounts on U.Id equals A.Id
+                           join R in myContext.RequestItems on A.Id equals R.AccountId
+                           join I in myContext.Items on R.ItemId equals I.Id
+                           where I.Id == id
+                           select new
+                           {
+                               BorrowerName = U.FirstName + " " + U.LastName,
+                               QtyOfBorrowedItems = R.Quantity,
+                               StartBorrowedDate = R.StartDate,
+                               EndBorrowedDate = R.EndDate
+                           };
+            return Ok(dataItem);
+
+        }
     }
 }

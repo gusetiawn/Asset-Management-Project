@@ -31,11 +31,16 @@
                 'orderable': false
             }
         ],
-        "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": 0
-        }],
+        "columnDefs": [
+            {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            },
+            {
+                "targets": 5,
+                 className: 'dt-body-center'
+            }        ],
         "order": [[1, 'asc']]
 
     });
